@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurent Zhu - Personal Portfolio</title>
+    <meta name="description" content="Laurent Zhu - Developer | Open Source Enthusiast | Creator">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-text">Laurent.Zhu</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">关于我</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-greeting">你好，我是</span>
+                    <h1 class="hero-title">Laurent Zhu</h1>
+                    <div class="hero-typing">
+                        <span class="typing-text"></span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    <p class="hero-description">
+                        一位热爱技术的开发者，专注于创造优雅的解决方案。
+                        热衷于开源贡献，喜欢探索新技术，致力于构建出色的数字体验。
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="ri-eye-line"></i>
+                            查看项目
+                        </a>
+                        <a href="https://github.com/Laurent-Zhu" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                            <i class="ri-github-fill"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="ri-user-smile-line"></i>
+                        </div>
+                        <div class="avatar-glow"></div>
+                    </div>
+                    <div class="floating-icons">
+                        <div class="floating-icon" style="--delay: 0s; --x: 20px; --y: -30px;">
+                            <i class="ri-code-line"></i>
+                        </div>
+                        <div class="floating-icon" style="--delay: 0.5s; --x: -40px; --y: 20px;">
+                            <i class="ri-terminal-line"></i>
+                        </div>
+                        <div class="floating-icon" style="--delay: 1s; --x: 30px; --y: 40px;">
+                            <i class="ri-github-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>向下滚动</span>
+                <i class="ri-arrow-down-line"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">关于我</h2>
+                <p class="section-subtitle">了解一下我的故事</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-illustration">
+                        <i class="ri-code-s-slash-line"></i>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>你好，我是一名热情的开发者</h3>
+                    <p>
+                        我对技术和编程充满热情，专注于构建高质量的软件解决方案。
+                        在我的开发旅程中，我不断学习新技术，提升自己的技能，
+                        致力于创造出优雅、高效且用户友好的产品。
+                    </p>
+                    <p>
+                        我的技术栈涵盖前端开发、后端服务、数据库设计等多个领域。
+                        我相信代码不仅仅是功能的实现，更是艺术的表达。
+                        每一个项目都是一次创造的机会，每一个挑战都是成长的契机。
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="2">0</span>
+                            <span class="stat-label">年+经验</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">个项目</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-label">% 热情</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">技能栈</h2>
+                <p class="section-subtitle">我的技术专长</p>
+            </div>
+            <div class="skills-grid">
+                <!-- Frontend -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="ri-layout-4-line"></i>
+                        </div>
+                        <h3>前端开发</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML5 / CSS3</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript (ES6+)</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">React / Vue</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Responsive Design</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="ri-server-line"></i>
+                        </div>
+                        <h3>后端开发</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-level">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-level">78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">RESTful API</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Database (SQL/NoSQL)</span>
+                                <span class="skill-level">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="ri-tools-line"></i>
+                        </div>
+                        <h3>工具与平台</h3>
+                    </div>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git / GitHub</span>
+                                <span class="skill-level">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-level">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Linux / CLI</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">CI/CD</span>
+                                <span class="skill-level">72%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--progress: 72%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tech Tags -->
+            <div class="tech-tags">
+                <span class="tech-tag"><i class="ri-reactjs-line"></i> React</span>
+                <span class="tech-tag"><i class="ri-javascript-line"></i> JavaScript</span>
+                <span class="tech-tag"><i class="ri-html5-line"></i> HTML5</span>
+                <span class="tech-tag"><i class="ri-css3-line"></i> CSS3</span>
+                <span class="tech-tag"><i class="ri-nodejs-line"></i> Node.js</span>
+                <span class="tech-tag"><i class="ri-python-line"></i> Python</span>
+                <span class="tech-tag"><i class="ri-database-2-line"></i> MongoDB</span>
+                <span class="tech-tag"><i class="ri-git-branch-line"></i> Git</span>
+                <span class="tech-tag"><i class="ri-docker-line"></i> Docker</span>
+                <span class="tech-tag"><i class="ri-terminal-line"></i> Linux</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">项目展示</h2>
+                <p class="section-subtitle">我的开源项目和工作成果</p>
+            </div>
+            <div class="projects-grid" id="projects-container">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+            <div class="projects-more">
+                <a href="https://github.com/Laurent-Zhu?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i class="ri-github-fill"></i>
+                    查看更多项目
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">联系</h2>
+                <p class="section-subtitle">期待与你的交流</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-text">
+                        <p>
+                            如果你对我的工作感兴趣，或者想要讨论合作机会，
+                            欢迎通过以下方式联系我。我会尽快回复你的消息。
+                        </p>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:laurent.zhu@example.com" class="contact-item" style="pointer-events: none; cursor: default;">
+                            <div class="contact-icon">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">邮箱</span>
+                                <span class="contact-value">laurent.zhu@example.com</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/Laurent-Zhu" target="_blank" rel="noopener noreferrer" class="contact-item">
+                            <div class="contact-icon">
+                                <i class="ri-github-fill"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">@Laurent-Zhu</span>
+                            </div>
+                        </a>
+                        <a href="#" class="contact-item" style="pointer-events: none; cursor: default;">
+                            <div class="contact-icon">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">位置</span>
+                                <span class="contact-value">China</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <h3>社交媒体</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/Laurent-Zhu" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn" style="pointer-events: none; opacity: 0.5;">
+                            <i class="ri-linkedin-box-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter" style="pointer-events: none; opacity: 0.5;">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WeChat" style="pointer-events: none; opacity: 0.5;">
+                            <i class="ri-wechat-2-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p class="footer-text">
+                    © 2024 Laurent Zhu. 用 <i class="ri-heart-fill"></i> 构建
+                </p>
+                <p class="footer-credit">
+                    托管于 <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
