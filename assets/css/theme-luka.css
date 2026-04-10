@@ -186,6 +186,14 @@ body.theme-luka .site-name {
   line-height: 1.2;
 }
 
+body.theme-luka .site-tagline {
+  margin: 0 0 12px;
+  color: var(--luka-text);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
 body.theme-luka .site-email {
   margin: 0 0 24px;
   color: var(--luka-secondary);
@@ -218,6 +226,35 @@ body.theme-luka .social-icons a:hover {
   background: var(--luka-accent);
   color: #fff !important;
   transform: translateY(-2px);
+}
+
+body.theme-luka .profile-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+body.theme-luka .profile-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 84px;
+  padding: 8px 14px;
+  border: 1px solid var(--luka-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--luka-text) !important;
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body.theme-luka .profile-link:hover {
+  border-color: var(--luka-accent);
+  background: rgba(194, 113, 79, 0.1);
+  transform: translateY(-1px);
 }
 
 body.theme-luka .visitor-card {
@@ -386,6 +423,12 @@ body.theme-luka .pub-content .periodical {
   margin-bottom: 6px;
   color: var(--luka-accent);
   font-size: 14px;
+}
+
+body.theme-luka .pub-content .pub-summary {
+  color: var(--luka-secondary);
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 body.theme-luka .pub-content .links a {

@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yifan Zhu - Homepage</title>
-  <meta name="description" content="Yifan Zhu - Software Engineering @ Northwestern Polytechnical University | LLM &amp; CAD Research">
-  <meta name="keywords" content="Yifan Zhu, NPU, Northwestern Polytechnical University, Software Engineering, Machine Learning, LLM, CAD">
+  <title>Yifan Zhu | LLM, CAD, and AI Agents</title>
+  <meta name="description" content="Yifan Zhu at Northwestern Polytechnical University. Interests in multimodal LLMs, 3D CAD understanding, code generation, and AI agents.">
+  <meta name="keywords" content="Yifan Zhu, Zhu Yifan, 朱羿帆, NPU, Northwestern Polytechnical University, LLM, CAD, B-Rep, AI Agent">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,15 +37,21 @@
     <header class="sidebar">
       <div class="profile-card">
         <a class="image avatar">
-          <img src="assets/img/avatar.svg" alt="Yifan Zhu">
+          <img src="assets/img/profile_1.jpg" alt="Yifan Zhu">
         </a>
 
         <h1 class="site-name">Yifan Zhu</h1>
+        <p class="site-tagline">Zhu Yifan / 朱羿帆<br>Software Engineering @ NPU</p>
         <p class="site-email">laurent.zhu666@mail.nwpu.edu.cn</p>
 
         <div class="social-icons">
           <a href="mailto:laurent.zhu666@mail.nwpu.edu.cn" title="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://github.com/Laurent-Zhu" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://github.com/Laurent-Zhu" title="GitHub" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
+        </div>
+
+        <div class="profile-links">
+          <a class="profile-link" href="assets/cv/yifan_zhu_resume.pdf" target="_blank" rel="noreferrer">CV</a>
+          <a class="profile-link" href="#research">Research</a>
         </div>
       </div>
     </header>
@@ -54,9 +60,9 @@
       <div class="section" id="about">
         <h2 class="section-title">About Me</h2>
         <div class="section-body">
-          <p>I am <strong>Yifan Zhu (&#x6731;&#x7F9F;&#x5E06;)</strong>, a junior undergraduate student majoring in Software Engineering at <strong>Northwestern Polytechnical University (NPU)</strong>, Xi'an, China.</p>
-          <p>My research interests include <strong>Large Language Models (LLM)</strong>, <strong>CAD Model Generation</strong>, <strong>Machine Learning</strong>, and <strong>NLP</strong>. I am currently involved in research on enabling LLMs to understand Boundary Representations (B-Rep) and multimodal CAD code generation.</p>
-          <p>I have been awarded the <strong>National Scholarship</strong> for two consecutive years (only 3 recipients in the entire grade).</p>
+          <p>I am <strong>Yifan Zhu (&#x6731;&#x7F9F;&#x5E06;)</strong>, a third-year undergraduate student in <strong>Software Engineering</strong> at <strong>Northwestern Polytechnical University (NPU)</strong>, Xi'an, China.</p>
+          <p>My current interests center on <strong>multimodal large language models</strong>, <strong>3D CAD / B-Rep understanding</strong>, <strong>code generation</strong>, and <strong>AI agents</strong>. I enjoy building research systems that connect language, geometry, and practical applications.</p>
+          <p>I am currently involved in research on <strong>BrepLLM</strong> for boundary-representation understanding and an ongoing project on <strong>CAD code generation with LLMs</strong>. Alongside research, I completed an industry internship on agentic workflow systems and have received the <strong>National Scholarship</strong> for two consecutive years.</p>
         </div>
       </div>
 
@@ -69,8 +75,8 @@
               <div class="experience-content">
                 <p class="exp-title"><strong>Northwestern Polytechnical University (NPU)</strong></p>
                 <p class="exp-detail">B.S. in Software Engineering</p>
-                <p class="exp-detail">GPA: 3.813 / 4.1 &nbsp;|&nbsp; Rank: 11 / 270 (Top 4%)</p>
-                <p class="exp-detail">CET-4: 613 &nbsp;|&nbsp; CET-6: 587 &nbsp;|&nbsp; CET-6 Oral: Excellent</p>
+                <p class="exp-detail">GPA: 3.813 / 4.1 &nbsp;|&nbsp; Ranking: top students in the cohort</p>
+                <p class="exp-detail">National Scholarship (2024, 2025) &nbsp;|&nbsp; CET-4: 613 &nbsp;|&nbsp; CET-6: 587 &nbsp;|&nbsp; CET-6 Oral: Excellent</p>
                 <p class="exp-period">2023.08 - Present</p>
               </div>
             </div>
@@ -87,7 +93,8 @@
               <div class="experience-content">
                 <p class="exp-title"><strong>Shenzhen Kuakua Jingling Technology Co., Ltd.</strong></p>
                 <p class="exp-detail">Backend Development Engineer (Intern)</p>
-                <p class="exp-detail">Developed AI agent workflow orchestration for automated enterprise document generation; assisted in API development for a municipal big data bureau project; conducted research on AI multi-turn dialogue and knowledge base products.</p>
+                <p class="exp-detail">Worked on agentic workflow orchestration for automated generation of enterprise materials in government-oriented scenarios.</p>
+                <p class="exp-detail">Helped develop an interface for adapting agent-generated data to an external municipal big-data system and supported internal product research on AI chat and knowledge-base tooling.</p>
                 <p class="exp-period">2025.07 - 2025.08</p>
               </div>
             </div>
@@ -95,8 +102,8 @@
         </div>
       </div>
 
-      <div class="section" id="publications">
-        <h2 class="section-title">Publications</h2>
+      <div class="section" id="research">
+        <h2 class="section-title">Research</h2>
         <div class="section-body">
           <div class="publications">
             <ol class="bibliography">
@@ -104,17 +111,18 @@
                 <div class="pub-row">
                   <div class="pub-content">
                     <div class="title">BrepLLM: Enabling Large Language Models to Understand Boundary Representations</div>
-                    <div class="author">... , <strong>Yifan Zhu</strong>, ... (5th author)</div>
-                    <div class="periodical"><em><strong>ECCV 2026</strong></em> (Under Review)</div>
+                    <div class="author">with collaborators, <strong>Yifan Zhu</strong> as the fifth author</div>
+                    <div class="periodical"><em><strong>ECCV 2026 submission</strong></em></div>
+                    <div class="pub-summary">Multimodal modeling of geometric and topological information for B-Rep understanding.</div>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="pub-row">
                   <div class="pub-content">
-                    <div class="title">CAD Code Generation via LLM (Ongoing Project)</div>
-                    <div class="author">Targeting <strong>NeurIPS 2026</strong> submission (May 2026)</div>
-                    <div class="periodical"><em>Leveraging LLM code generation for multimodal-to-CadQuery-to-CAD model generation; constructing high-quality multimodal datasets and conducting SFT experiments.</em></div>
+                    <div class="title">CAD Code Generation with Large Language Models</div>
+                    <div class="author"><strong>Independent ongoing project</strong>, targeting <strong>NeurIPS 2026</strong></div>
+                    <div class="periodical"><em>End-to-end generation from multimodal inputs to Python CadQuery code and CAD models, with dataset construction and SFT exploration.</em></div>
                   </div>
                 </div>
               </li>
@@ -127,7 +135,7 @@
         <h2 class="section-title">Projects</h2>
         <div class="section-body">
           <div class="card project-card">
-            <strong>Campus Mall System</strong> (Course Project): Designed and implemented a campus e-commerce web system using Spring Boot, MyBatis, and AJAX. Responsible for search and favorites features development and testing.
+            <strong>Campus Mall System</strong> (Course Project): Designed and implemented a campus e-commerce web system using Spring Boot, MyBatis, and AJAX. I was responsible for the search and favorites modules, along with related implementation and testing.
           </div>
         </div>
       </div>
@@ -138,27 +146,27 @@
           <div class="awards-grid">
             <div class="award-item">
               <span class="award-icon"><i class="fa-solid fa-trophy" style="color: var(--luka-accent);"></i></span>
-              <div class="award-text"><strong>National Scholarship</strong> (2024 &amp; 2025, only 3 recipients in the entire grade)</div>
+              <div class="award-text"><strong>National Scholarship</strong> (2024 &amp; 2025)</div>
             </div>
             <div class="award-item">
               <span class="award-icon"><i class="fa-solid fa-medal" style="color: var(--luka-accent);"></i></span>
-              <div class="award-text"><strong>2nd Prize</strong>, 19th "Challenge Cup" National Academic Science and Technology Competition (2024.11)</div>
+              <div class="award-text"><strong>Second Prize</strong>, 19th Challenge Cup National Academic Science and Technology Competition (2024.11)</div>
             </div>
             <div class="award-item">
               <span class="award-icon"><i class="fa-solid fa-award" style="color: var(--luka-accent);"></i></span>
-              <div class="award-text"><strong>3rd Prize</strong>, 16th National Undergraduate Mathematics Competition, Non-Math Category A (2024.12)</div>
+              <div class="award-text"><strong>Third Prize</strong>, 16th National Undergraduate Mathematics Competition, Category A (Non-Math Major) (2024.12)</div>
             </div>
             <div class="award-item">
               <span class="award-icon"><i class="fa-solid fa-award" style="color: var(--luka-accent);"></i></span>
-              <div class="award-text"><strong>3rd Prize</strong>, 18th National Undergraduate Software Innovation Competition - Northwest Region (2025.04)</div>
+              <div class="award-text"><strong>Third Prize</strong>, 18th National Undergraduate Software Innovation Competition, Northwest Region (2025.04)</div>
             </div>
             <div class="award-item">
               <span class="award-icon"><i class="fa-solid fa-award" style="color: var(--luka-accent);"></i></span>
-              <div class="award-text"><strong>3rd Prize</strong>, 11th National Undergraduate Statistical Modeling Competition - Shaanxi Region (2025.05)</div>
+              <div class="award-text"><strong>Third Prize</strong>, 11th National Undergraduate Statistical Modeling Competition, Shaanxi Region (2025.05)</div>
             </div>
             <div class="award-item">
               <span class="award-icon"><i class="fa-solid fa-award" style="color: var(--luka-accent);"></i></span>
-              <div class="award-text"><strong>2nd Prize</strong>, National Undergraduate Mathematical Modeling Competition - Shaanxi Region (2025.11)</div>
+              <div class="award-text"><strong>Second Prize</strong>, National Undergraduate Mathematical Modeling Competition, Shaanxi Region (2025.11)</div>
             </div>
           </div>
         </div>
@@ -168,8 +176,8 @@
         <h2 class="section-title">Skills</h2>
         <div class="section-body">
           <p><strong>Programming:</strong> Python, C++, Java</p>
-          <p><strong>AI / ML:</strong> Machine Learning, NLP, LLM, AI Agent, Deep Learning</p>
-          <p><strong>Frameworks:</strong> Spring Boot, MyBatis</p>
+          <p><strong>AI / ML:</strong> Machine Learning, NLP, LLM, Multimodal Modeling, AI Agent</p>
+          <p><strong>Tools / Frameworks:</strong> CadQuery, Spring Boot, MyBatis, AJAX, Git</p>
         </div>
       </div>
     </section>
