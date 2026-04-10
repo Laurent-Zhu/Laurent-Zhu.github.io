@@ -115,6 +115,41 @@ body.theme-luka .nav-left a {
   font-weight: 600;
 }
 
+body.theme-luka .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body.theme-luka .lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--luka-border);
+}
+
+body.theme-luka .lang-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--luka-secondary) !important;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body.theme-luka .lang-link.active {
+  background: var(--luka-social-bg);
+  color: var(--luka-text) !important;
+  box-shadow: 0 2px 8px rgba(61, 57, 41, 0.08);
+}
+
 body.theme-luka .theme-toggle {
   border: none;
   background: transparent;
@@ -528,6 +563,15 @@ body.theme-luka strong {
 }
 
 @media (max-width: 640px) {
+  body.theme-luka .nav-actions {
+    gap: 8px;
+  }
+
+  body.theme-luka .lang-link {
+    min-width: 42px;
+    padding: 6px 8px;
+  }
+
   body.theme-luka .image.avatar img {
     width: 148px;
     height: 148px;
