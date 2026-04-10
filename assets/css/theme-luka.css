@@ -211,7 +211,7 @@ body.theme-luka .image.avatar img {
   height: 220px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: 52% 22%;
+  object-position: center center;
   box-shadow: 0 6px 24px var(--luka-shadow);
 }
 
