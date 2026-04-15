@@ -183,6 +183,25 @@ nav {
 }
 .theme-toggle:hover { background: var(--bg-hover); }
 
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: 7.5px;
+  height: 36px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background 150ms ease;
+}
+.lang-toggle:hover { background: var(--bg-hover); }
+
 .menu-toggle {
   display: none;
   background: transparent;
@@ -204,6 +223,27 @@ main {
 }
 
 .hero { margin-bottom: 80px; }
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  background: var(--bg-card);
+}
+.hero-heading { flex: 1; min-width: 220px; }
+.hero-heading .eyebrow { margin-bottom: 12px; }
+.hero-heading .hero-title { margin-bottom: 6px; }
+.hero-heading .hero-subtitle { margin-bottom: 0; }
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 12px;
@@ -399,6 +439,8 @@ footer {
   .nav-links.open a { display: block; padding: 12px 24px; }
   main { padding: 48px 24px 80px; }
   .hero { margin-bottom: 56px; }
+  .hero-top { gap: 20px; }
+  .avatar { width: 96px; height: 96px; }
   h2 { margin-top: 48px; margin-bottom: 24px; }
   .award-item { grid-template-columns: 1fr; gap: 4px; }
   .award-tier { justify-self: start; }
@@ -418,15 +460,16 @@ footer {
 <body>
 
 <nav>
-  <a href="#" class="nav-brand">Yifan Zhu</a>
+  <a href="#" class="nav-brand" data-i18n="brand">Yifan Zhu</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#research">Research</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#awards">Awards</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#education" data-i18n="nav.education">Education</a></li>
+    <li><a href="#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+    <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
   </ul>
   <div class="nav-actions">
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">中文</button>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">≡</button>
   </div>
@@ -434,16 +477,21 @@ footer {
 
 <main>
   <header class="hero">
-    <div class="eyebrow">Software Engineering · Junior</div>
-    <h1 class="hero-title">Yifan Zhu</h1>
-    <div class="hero-subtitle">朱羿帆</div>
-    <p class="lead">
+    <div class="hero-top">
+      <img class="avatar" src="assets/img/profile_1_centered.jpg" alt="Yifan Zhu" loading="eager">
+      <div class="hero-heading">
+        <div class="eyebrow" data-i18n="hero.eyebrow">Software Engineering · Junior</div>
+        <h1 class="hero-title" data-i18n="hero.title">Yifan Zhu</h1>
+        <div class="hero-subtitle" data-i18n="hero.subtitle">朱羿帆</div>
+      </div>
+    </div>
+    <p class="lead" data-i18n="hero.lead">
       Junior undergraduate in Software Engineering at Northwestern Polytechnical University,
       researching large language models and CAD model generation. Awarded the National Scholarship
       two years in a row (top 3 in the entire grade), with a GPA of 3.813 / 4.1 (rank 11 / 270).
     </p>
     <div class="hero-meta">
-      <span>Xi&#39;an, China</span>
+      <span data-i18n="hero.location">Xi&#39;an, China</span>
       <span aria-hidden="true">·</span>
       <a href="mailto:laurent.zhu666@mail.nwpu.edu.cn">laurent.zhu666@mail.nwpu.edu.cn</a>
       <span aria-hidden="true">·</span>
@@ -452,14 +500,14 @@ footer {
   </header>
 
   <section id="about" class="about">
-    <h2>About</h2>
-    <p>
+    <h2 data-i18n="about.title">About</h2>
+    <p data-i18n="about.p1">
       I am a third-year Software Engineering undergraduate at Northwestern Polytechnical University (NPU).
-      My research interests lie at the intersection of <em>large language models</em>, <em>CAD model generation</em>,
+      My research interests lie at the intersection of large language models, CAD model generation,
       machine learning and natural language processing. I am currently contributing to two research projects:
-      <strong>BrepLLM</strong> (under review at ECCV 2026) and a CAD code generation project (targeting NeurIPS 2026).
+      BrepLLM (under review at ECCV 2026) and a CAD code generation project (targeting NeurIPS 2026).
     </p>
-    <p>
+    <p data-i18n="about.p2">
       Outside of research, I enjoy building things end-to-end — from backend services and AI agent
       orchestration to small experiments that connect language models with structured engineering domains.
       I aim to pursue graduate studies that deepen my understanding of how language models can reason about
@@ -468,30 +516,30 @@ footer {
   </section>
 
   <section id="education">
-    <h2>Education</h2>
+    <h2 data-i18n="edu.title">Education</h2>
     <div class="entry">
       <div class="entry-head">
-        <div class="entry-title">Northwestern Polytechnical University</div>
-        <div class="entry-meta">2023 — Present</div>
+        <div class="entry-title" data-i18n="edu.school">Northwestern Polytechnical University</div>
+        <div class="entry-meta" data-i18n="edu.period">2023 — Present</div>
       </div>
-      <div class="entry-org">B.Eng. in Software Engineering · Xi&#39;an, China</div>
+      <div class="entry-org" data-i18n="edu.degree">B.Eng. in Software Engineering · Xi&#39;an, China</div>
       <div class="entry-body">
         <ul>
-          <li>GPA <strong>3.813 / 4.1</strong> · Rank <strong>11 / 270</strong></li>
-          <li>CET-4 <strong>613</strong> · CET-6 <strong>587</strong></li>
-          <li>National Scholarship recipient (2024, 2025) — top 3 in grade for two consecutive years</li>
+          <li data-i18n="edu.li1">GPA 3.813 / 4.1 · Rank 11 / 270</li>
+          <li data-i18n="edu.li2">CET-4 613 · CET-6 587</li>
+          <li data-i18n="edu.li3">National Scholarship recipient (2024, 2025) — top 3 in grade for two consecutive years</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="research">
-    <h2>Research</h2>
+    <h2 data-i18n="research.title">Research</h2>
 
     <div class="project-card">
-      <h3>BrepLLM — Boundary Representation with LLMs</h3>
-      <div class="entry-meta">5th author · Under review at ECCV 2026</div>
-      <p>
+      <h3 data-i18n="research.r1.title">BrepLLM — Boundary Representation with LLMs</h3>
+      <div class="entry-meta" data-i18n="research.r1.meta">5th author · Under review at ECCV 2026</div>
+      <p data-i18n="research.r1.body">
         Exploring how large language models can understand and generate boundary representation (B-rep)
         data for solid CAD models. Contributing to dataset construction, model evaluation pipelines,
         and ablation experiments on geometry-aware tokenization.
@@ -505,45 +553,45 @@ footer {
     </div>
 
     <div class="project-card">
-      <h3>CAD Code Generation with LLMs</h3>
-      <div class="entry-meta">In progress · Targeting NeurIPS 2026</div>
-      <p>
+      <h3 data-i18n="research.r2.title">CAD Code Generation with LLMs</h3>
+      <div class="entry-meta" data-i18n="research.r2.meta">In progress · Targeting NeurIPS 2026</div>
+      <p data-i18n="research.r2.body">
         Investigating LLM-driven generation of parametric CAD code (e.g. CadQuery / OpenSCAD) from
         natural-language descriptions, with a focus on structural validity, edit-ability and
         downstream geometric constraints.
       </p>
       <div class="tags">
         <span class="tag">LLM</span>
-        <span class="tag">Code Generation</span>
+        <span class="tag" data-i18n="tag.codegen">Code Generation</span>
         <span class="tag">CAD</span>
       </div>
     </div>
   </section>
 
   <section id="experience">
-    <h2>Experience</h2>
+    <h2 data-i18n="exp.title">Experience</h2>
     <div class="entry">
       <div class="entry-head">
-        <div class="entry-title">Backend Development Engineer Intern</div>
-        <div class="entry-meta">Jul — Aug 2025</div>
+        <div class="entry-title" data-i18n="exp.role">Backend Development Engineer Intern</div>
+        <div class="entry-meta" data-i18n="exp.period">Jul — Aug 2025</div>
       </div>
-      <div class="entry-org">Shenzhen Kuakua Jingling Technology Co., Ltd.</div>
+      <div class="entry-org" data-i18n="exp.org">Shenzhen Kuakua Jingling Technology Co., Ltd.</div>
       <div class="entry-body">
         <ul>
-          <li>Designed and implemented AI Agent workflow orchestration for an internal product line.</li>
-          <li>Developed and maintained backend interfaces for a big-data analytics project.</li>
-          <li>Worked across the stack with Spring Boot, MyBatis and a service-oriented backend architecture.</li>
+          <li data-i18n="exp.li1">Designed and implemented AI Agent workflow orchestration for an internal product line.</li>
+          <li data-i18n="exp.li2">Developed and maintained backend interfaces for a big-data analytics project.</li>
+          <li data-i18n="exp.li3">Worked across the stack with Spring Boot, MyBatis and a service-oriented backend architecture.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Selected Project</h2>
+    <h2 data-i18n="proj.title">Selected Project</h2>
     <div class="project-card">
-      <h3>Campus Mall System</h3>
-      <div class="entry-meta">Course / Personal Project</div>
-      <p>
+      <h3 data-i18n="proj.p1.title">Campus Mall System</h3>
+      <div class="entry-meta" data-i18n="proj.p1.meta">Course / Personal Project</div>
+      <p data-i18n="proj.p1.body">
         A full-stack campus marketplace web application supporting product browsing, cart, ordering
         and order management. Backend built with Spring Boot and MyBatis; frontend uses native
         JavaScript with AJAX for asynchronous interactions.
@@ -558,40 +606,40 @@ footer {
   </section>
 
   <section id="awards">
-    <h2>Awards &amp; Honors</h2>
+    <h2 data-i18n="awards.title">Awards &amp; Honors</h2>
     <ul class="award-list">
       <li class="award-item">
-        <span class="award-tier">National</span>
-        <span class="award-text">National Scholarship (top 3 in entire grade)</span>
+        <span class="award-tier" data-i18n="tier.national">National</span>
+        <span class="award-text" data-i18n="awards.a1">National Scholarship (top 3 in entire grade)</span>
         <span class="award-date">2024 &amp; 2025</span>
       </li>
       <li class="award-item">
-        <span class="award-tier">National</span>
-        <span class="award-text">Challenge Cup — National Second Prize</span>
+        <span class="award-tier" data-i18n="tier.national">National</span>
+        <span class="award-text" data-i18n="awards.a2">Challenge Cup — National Second Prize</span>
         <span class="award-date">2024</span>
       </li>
       <li class="award-item">
-        <span class="award-tier">Provincial</span>
-        <span class="award-text">China College Students&#39; Computer Design Competition — Provincial Award</span>
+        <span class="award-tier" data-i18n="tier.provincial">Provincial</span>
+        <span class="award-text" data-i18n="awards.a3">China College Students&#39; Computer Design Competition — Provincial Award</span>
         <span class="award-date">2024</span>
       </li>
       <li class="award-item">
-        <span class="award-tier">University</span>
-        <span class="award-text">Outstanding Student of NPU</span>
+        <span class="award-tier" data-i18n="tier.university">University</span>
+        <span class="award-text" data-i18n="awards.a4">Outstanding Student of NPU</span>
         <span class="award-date">2024</span>
       </li>
       <li class="award-item">
-        <span class="award-tier">University</span>
-        <span class="award-text">First-Class Academic Scholarship (multiple times)</span>
+        <span class="award-tier" data-i18n="tier.university">University</span>
+        <span class="award-text" data-i18n="awards.a5">First-Class Academic Scholarship (multiple times)</span>
         <span class="award-date">2023 — 2025</span>
       </li>
     </ul>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
+    <h2 data-i18n="skills.title">Skills</h2>
     <div class="skill-row">
-      <div class="skill-label">Languages</div>
+      <div class="skill-label" data-i18n="skills.languages">Languages</div>
       <div class="skill-tags">
         <span class="tag">Python</span>
         <span class="tag">C++</span>
@@ -600,18 +648,18 @@ footer {
       </div>
     </div>
     <div class="skill-row">
-      <div class="skill-label">AI / ML</div>
+      <div class="skill-label" data-i18n="skills.aiml">AI / ML</div>
       <div class="skill-tags">
         <span class="tag">PyTorch</span>
         <span class="tag">LLM</span>
         <span class="tag">NLP</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">Deep Learning</span>
+        <span class="tag" data-i18n="skills.ml">Machine Learning</span>
+        <span class="tag" data-i18n="skills.dl">Deep Learning</span>
         <span class="tag">AI Agent</span>
       </div>
     </div>
     <div class="skill-row">
-      <div class="skill-label">Backend</div>
+      <div class="skill-label" data-i18n="skills.backend">Backend</div>
       <div class="skill-tags">
         <span class="tag">Spring Boot</span>
         <span class="tag">MyBatis</span>
@@ -620,7 +668,7 @@ footer {
       </div>
     </div>
     <div class="skill-row">
-      <div class="skill-label">Tools</div>
+      <div class="skill-label" data-i18n="skills.tools">Tools</div>
       <div class="skill-tags">
         <span class="tag">Git</span>
         <span class="tag">Linux</span>
@@ -629,17 +677,17 @@ footer {
       </div>
     </div>
     <div class="skill-row">
-      <div class="skill-label">Languages (Human)</div>
+      <div class="skill-label" data-i18n="skills.human">Languages (Human)</div>
       <div class="skill-tags">
-        <span class="tag">Chinese — Native</span>
-        <span class="tag">English — CET-6 587</span>
+        <span class="tag" data-i18n="skills.zh">Chinese — Native</span>
+        <span class="tag" data-i18n="skills.en">English — CET-6 587</span>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  © 2026 Yifan Zhu (朱羿帆) · Built with care, hosted on GitHub Pages
+  <span data-i18n="footer">© 2026 Yifan Zhu (朱羿帆) · Built with care, hosted on GitHub Pages</span>
 </footer>
 
 <script>
@@ -665,6 +713,155 @@ footer {
   });
   navLinks.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () { navLinks.classList.remove('open'); });
+  });
+
+  /* ---------- i18n ---------- */
+  const I18N = {
+    en: {
+      'brand': 'Yifan Zhu',
+      'nav.about': 'About',
+      'nav.education': 'Education',
+      'nav.research': 'Research',
+      'nav.experience': 'Experience',
+      'nav.awards': 'Awards',
+      'hero.eyebrow': 'Software Engineering · Junior',
+      'hero.title': 'Yifan Zhu',
+      'hero.subtitle': '朱羿帆',
+      'hero.lead': 'Junior undergraduate in Software Engineering at Northwestern Polytechnical University, researching large language models and CAD model generation. Awarded the National Scholarship two years in a row (top 3 in the entire grade), with a GPA of 3.813 / 4.1 (rank 11 / 270).',
+      'hero.location': "Xi'an, China",
+      'about.title': 'About',
+      'about.p1': 'I am a third-year Software Engineering undergraduate at Northwestern Polytechnical University (NPU). My research interests lie at the intersection of large language models, CAD model generation, machine learning and natural language processing. I am currently contributing to two research projects: BrepLLM (under review at ECCV 2026) and a CAD code generation project (targeting NeurIPS 2026).',
+      'about.p2': 'Outside of research, I enjoy building things end-to-end — from backend services and AI agent orchestration to small experiments that connect language models with structured engineering domains. I aim to pursue graduate studies that deepen my understanding of how language models can reason about structured, geometric and engineering knowledge.',
+      'edu.title': 'Education',
+      'edu.school': 'Northwestern Polytechnical University',
+      'edu.period': '2023 — Present',
+      'edu.degree': "B.Eng. in Software Engineering · Xi'an, China",
+      'edu.li1': 'GPA 3.813 / 4.1 · Rank 11 / 270',
+      'edu.li2': 'CET-4 613 · CET-6 587',
+      'edu.li3': 'National Scholarship recipient (2024, 2025) — top 3 in grade for two consecutive years',
+      'research.title': 'Research',
+      'research.r1.title': 'BrepLLM — Boundary Representation with LLMs',
+      'research.r1.meta': '5th author · Under review at ECCV 2026',
+      'research.r1.body': 'Exploring how large language models can understand and generate boundary representation (B-rep) data for solid CAD models. Contributing to dataset construction, model evaluation pipelines, and ablation experiments on geometry-aware tokenization.',
+      'research.r2.title': 'CAD Code Generation with LLMs',
+      'research.r2.meta': 'In progress · Targeting NeurIPS 2026',
+      'research.r2.body': 'Investigating LLM-driven generation of parametric CAD code (e.g. CadQuery / OpenSCAD) from natural-language descriptions, with a focus on structural validity, edit-ability and downstream geometric constraints.',
+      'tag.codegen': 'Code Generation',
+      'exp.title': 'Experience',
+      'exp.role': 'Backend Development Engineer Intern',
+      'exp.period': 'Jul — Aug 2025',
+      'exp.org': 'Shenzhen Kuakua Jingling Technology Co., Ltd.',
+      'exp.li1': 'Designed and implemented AI Agent workflow orchestration for an internal product line.',
+      'exp.li2': 'Developed and maintained backend interfaces for a big-data analytics project.',
+      'exp.li3': 'Worked across the stack with Spring Boot, MyBatis and a service-oriented backend architecture.',
+      'proj.title': 'Selected Project',
+      'proj.p1.title': 'Campus Mall System',
+      'proj.p1.meta': 'Course / Personal Project',
+      'proj.p1.body': 'A full-stack campus marketplace web application supporting product browsing, cart, ordering and order management. Backend built with Spring Boot and MyBatis; frontend uses native JavaScript with AJAX for asynchronous interactions.',
+      'awards.title': 'Awards & Honors',
+      'tier.national': 'National',
+      'tier.provincial': 'Provincial',
+      'tier.university': 'University',
+      'awards.a1': 'National Scholarship (top 3 in entire grade)',
+      'awards.a2': 'Challenge Cup — National Second Prize',
+      'awards.a3': "China College Students' Computer Design Competition — Provincial Award",
+      'awards.a4': 'Outstanding Student of NPU',
+      'awards.a5': 'First-Class Academic Scholarship (multiple times)',
+      'skills.title': 'Skills',
+      'skills.languages': 'Languages',
+      'skills.aiml': 'AI / ML',
+      'skills.ml': 'Machine Learning',
+      'skills.dl': 'Deep Learning',
+      'skills.backend': 'Backend',
+      'skills.tools': 'Tools',
+      'skills.human': 'Languages (Human)',
+      'skills.zh': 'Chinese — Native',
+      'skills.en': 'English — CET-6 587',
+      'footer': '© 2026 Yifan Zhu (朱羿帆) · Built with care, hosted on GitHub Pages'
+    },
+    zh: {
+      'brand': '朱羿帆',
+      'nav.about': '关于',
+      'nav.education': '教育',
+      'nav.research': '科研',
+      'nav.experience': '经历',
+      'nav.awards': '荣誉',
+      'hero.eyebrow': '软件工程 · 大三在读',
+      'hero.title': '朱羿帆',
+      'hero.subtitle': 'Yifan Zhu',
+      'hero.lead': '西北工业大学软件工程本科三年级在读，研究方向为大语言模型（LLM）与 CAD 模型生成。连续两年获得国家奖学金（全年级仅 3 位），GPA 3.813 / 4.1，排名 11 / 270。',
+      'hero.location': '中国 · 西安',
+      'about.title': '关于我',
+      'about.p1': '我是西北工业大学软件工程专业本科三年级在读学生。研究兴趣集中在大语言模型（LLM）、CAD 模型生成、机器学习与自然语言处理的交叉领域。目前参与两项科研项目：BrepLLM（在投 ECCV 2026）以及 CAD 代码生成项目（拟投 NeurIPS 2026）。',
+      'about.p2': '在科研之外，我喜欢端到端地构建系统——从后端服务、AI Agent 流程编排，到将语言模型与结构化工程领域相连接的小型实验。我希望继续深造，深入理解语言模型如何对结构化、几何与工程知识进行推理。',
+      'edu.title': '教育经历',
+      'edu.school': '西北工业大学',
+      'edu.period': '2023 — 至今',
+      'edu.degree': '软件工程 · 工学学士 · 中国西安',
+      'edu.li1': 'GPA 3.813 / 4.1 · 排名 11 / 270',
+      'edu.li2': 'CET-4 613 · CET-6 587',
+      'edu.li3': '连续两年获得国家奖学金（2024、2025），位列全年级前 3',
+      'research.title': '科研项目',
+      'research.r1.title': 'BrepLLM —— 基于 LLM 的边界表示建模',
+      'research.r1.meta': '第 5 作者 · 在投 ECCV 2026',
+      'research.r1.body': '研究大语言模型如何理解并生成实体 CAD 模型的边界表示（B-rep）数据。参与数据集构建、模型评估流程、以及面向几何感知 tokenization 的消融实验。',
+      'research.r2.title': '基于 LLM 的 CAD 代码生成',
+      'research.r2.meta': '进行中 · 拟投 NeurIPS 2026',
+      'research.r2.body': '研究如何利用大语言模型从自然语言描述生成参数化 CAD 代码（如 CadQuery / OpenSCAD），重点关注结构有效性、可编辑性以及下游几何约束。',
+      'tag.codegen': '代码生成',
+      'exp.title': '实习经历',
+      'exp.role': '后端开发工程师实习生',
+      'exp.period': '2025 年 7 — 8 月',
+      'exp.org': '深圳市夸夸精灵科技有限公司',
+      'exp.li1': '负责内部产品线 AI Agent 工作流的设计与实现。',
+      'exp.li2': '负责大数据分析项目的后端接口开发与维护。',
+      'exp.li3': '基于 Spring Boot、MyBatis 等技术栈进行服务化后端架构开发。',
+      'proj.title': '代表项目',
+      'proj.p1.title': '校园商城系统',
+      'proj.p1.meta': '课程项目 / 个人项目',
+      'proj.p1.body': '一个支持商品浏览、购物车、下单与订单管理的全栈校园电商 Web 应用。后端基于 Spring Boot 与 MyBatis，前端使用原生 JavaScript 配合 AJAX 实现异步交互。',
+      'awards.title': '荣誉奖项',
+      'tier.national': '国家级',
+      'tier.provincial': '省级',
+      'tier.university': '校级',
+      'awards.a1': '国家奖学金（全年级前 3）',
+      'awards.a2': '挑战杯 —— 全国二等奖',
+      'awards.a3': '中国大学生计算机设计大赛 —— 省级奖项',
+      'awards.a4': '西北工业大学优秀学生',
+      'awards.a5': '一等学业奖学金（多次）',
+      'skills.title': '技能',
+      'skills.languages': '编程语言',
+      'skills.aiml': 'AI / 机器学习',
+      'skills.ml': '机器学习',
+      'skills.dl': '深度学习',
+      'skills.backend': '后端',
+      'skills.tools': '工具',
+      'skills.human': '语言能力',
+      'skills.zh': '中文 —— 母语',
+      'skills.en': '英语 —— CET-6 587',
+      'footer': '© 2026 朱羿帆 (Yifan Zhu) · 用心构建，托管于 GitHub Pages'
+    }
+  };
+
+  const langToggle = document.getElementById('langToggle');
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.en;
+    document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    langToggle.textContent = (lang === 'zh') ? 'EN' : '中文';
+    langToggle.setAttribute('aria-label', (lang === 'zh') ? 'Switch to English' : '切换到中文');
+  }
+  const storedLang = localStorage.getItem('lang');
+  const browserLang = (navigator.language || 'en').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+  applyLang(storedLang || browserLang);
+  langToggle.addEventListener('click', function () {
+    const current = (document.documentElement.lang === 'zh-CN') ? 'zh' : 'en';
+    const next = current === 'zh' ? 'en' : 'zh';
+    localStorage.setItem('lang', next);
+    applyLang(next);
   });
 })();
 </script>
