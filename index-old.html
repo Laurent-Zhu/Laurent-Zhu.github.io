@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yifan Zhu · 朱羿帆</title>
+<meta name="description" content="Yifan Zhu (朱羿帆) — Software Engineering undergraduate at Northwestern Polytechnical University. Research on LLMs and CAD model generation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand-clay: #d97757;
+
+  --bg-primary: #faf9f5;
+  --bg-secondary: #f0eee6;
+  --bg-hover: #f5f4f0;
+  --bg-active: rgba(20,20,19,0.06);
+  --bg-card: #fefdfb;
+  --bg-button: #0f0f0e;
+  --bg-button-hover: #3d3d3a;
+  --bg-muted: #f0efe8;
+
+  --text-primary: #141413;
+  --text-body: rgba(20,20,19,0.85);
+  --text-secondary: #5e5d59;
+  --text-tertiary: #b0aea5;
+  --text-on-button: #faf9f5;
+
+  --font-sans: Inter, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-reading: Lora, "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  --border-light: rgba(20,20,19,0.08);
+  --border-default: rgba(20,20,19,0.12);
+  --border-section: rgba(20,20,19,0.06);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark {
+  --bg-primary: #1a1a18;
+  --bg-secondary: #232320;
+  --bg-hover: #2a2a27;
+  --bg-active: rgba(236,233,225,0.08);
+  --bg-card: #232320;
+  --bg-button: #ece9e1;
+  --bg-button-hover: #d4d1c9;
+  --bg-muted: #2a2a27;
+
+  --text-primary: #ece9e1;
+  --text-body: rgba(236,233,225,0.85);
+  --text-secondary: #9b9b95;
+  --text-tertiary: #6b6b66;
+  --text-on-button: #1a1a18;
+
+  --border-light: rgba(236,233,225,0.08);
+  --border-default: rgba(236,233,225,0.12);
+  --border-section: rgba(236,233,225,0.06);
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.24);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.32);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.40);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-reading);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-body);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+::selection { background: rgba(204,120,92,0.5); color: inherit; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgba(20,20,19,0.3);
+  transition: text-decoration-color 150ms ease;
+}
+a:hover { text-decoration-color: rgba(20,20,19,0.6); }
+.dark a { text-decoration-color: rgba(236,233,225,0.3); }
+.dark a:hover { text-decoration-color: rgba(236,233,225,0.6); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 2.041rem + 1.959vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  letter-spacing: -0.01em;
+  margin-top: 64px;
+  margin-bottom: 32px;
+}
+h3 {
+  font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+p { margin-bottom: 20px; }
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 68px;
+  padding: 0 clamp(1.5rem, 1.08rem + 3.92vw, 5rem);
+  border-bottom: 1px solid var(--border-section);
+  background: rgba(250,249,245,0.85);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-sans);
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.dark nav { background: rgba(26,26,24,0.85); }
+
+.nav-brand {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.nav-brand:hover { text-decoration: none; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 15px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: 7.5px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 150ms ease, border-color 150ms ease;
+  font-size: 16px;
+}
+.theme-toggle:hover { background: var(--bg-hover); }
+
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: 7.5px;
+  height: 36px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: background 150ms ease;
+}
+.lang-toggle:hover { background: var(--bg-hover); }
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: 7.5px;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 18px;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px clamp(1.5rem, 1.08rem + 3.92vw, 3rem) 120px;
+}
+
+.hero { margin-bottom: 80px; }
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  background: var(--bg-card);
+}
+.hero-heading { flex: 1; min-width: 220px; }
+.hero-heading .eyebrow { margin-bottom: 12px; }
+.hero-heading .hero-title { margin-bottom: 6px; }
+.hero-heading .hero-subtitle { margin-bottom: 0; }
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.hero-title { margin-bottom: 12px; }
+.hero-subtitle {
+  font-family: var(--font-reading);
+  font-style: italic;
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+.lead {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--text-body);
+  margin-bottom: 32px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.hero-meta span, .hero-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+section { margin-bottom: 16px; }
+section h2:first-child { margin-top: 64px; }
+
+.about p { font-size: 17px; line-height: 1.7; }
+
+.entry {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-section);
+}
+.entry:last-child { border-bottom: none; }
+.entry-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 8px;
+}
+.entry-title {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.entry-meta {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+.entry-org {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.entry-body { font-size: 16px; line-height: 1.65; }
+.entry-body ul { padding-left: 20px; margin-top: 8px; }
+.entry-body li { margin-bottom: 6px; }
+
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+.project-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+.project-card .entry-meta { margin-bottom: 12px; }
+.project-card p { font-size: 15.5px; line-height: 1.65; margin-bottom: 12px; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.tag {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  background: var(--bg-muted);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+.award-list { list-style: none; padding: 0; }
+.award-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-section);
+  align-items: baseline;
+}
+.award-item:last-child { border-bottom: none; }
+.award-tier {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  background: var(--bg-muted);
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+.award-text {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.award-date {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-section);
+  align-items: baseline;
+}
+.skill-row:last-child { border-bottom: none; }
+.skill-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+footer {
+  border-top: 1px solid var(--border-section);
+  padding: 40px clamp(1.5rem, 1.08rem + 3.92vw, 5rem);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-section);
+    padding: 8px 0;
+  }
+  .nav-links.open li { width: 100%; }
+  .nav-links.open a { display: block; padding: 12px 24px; }
+  main { padding: 48px 24px 80px; }
+  .hero { margin-bottom: 56px; }
+  .hero-top { gap: 20px; }
+  .avatar { width: 96px; height: 96px; }
+  h2 { margin-top: 48px; margin-bottom: 24px; }
+  .award-item { grid-template-columns: 1fr; gap: 4px; }
+  .award-tier { justify-self: start; }
+  .skill-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand" data-i18n="brand">Yifan Zhu</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#education" data-i18n="nav.education">Education</a></li>
+    <li><a href="#research" data-i18n="nav.research">Research</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+    <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">中文</button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">≡</button>
+  </div>
+</nav>
+
+<main>
+  <header class="hero">
+    <div class="hero-top">
+      <img class="avatar" src="assets/img/profile_1_centered.jpg" alt="Yifan Zhu" loading="eager">
+      <div class="hero-heading">
+        <div class="eyebrow" data-i18n="hero.eyebrow">Software Engineering · Junior</div>
+        <h1 class="hero-title" data-i18n="hero.title">Yifan Zhu</h1>
+        <div class="hero-subtitle" data-i18n="hero.subtitle">朱羿帆</div>
+      </div>
+    </div>
+    <p class="lead" data-i18n="hero.lead">
+      Junior undergraduate in Software Engineering at Northwestern Polytechnical University,
+      researching large language models and CAD model generation. Awarded the National Scholarship
+      two years in a row (top 3 in the entire grade), with a GPA of 3.813 / 4.1 (rank 11 / 270).
+    </p>
+    <div class="hero-meta">
+      <span data-i18n="hero.location">Xi&#39;an, China</span>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:laurent.zhu666@mail.nwpu.edu.cn">laurent.zhu666@mail.nwpu.edu.cn</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/Laurent-Zhu" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+  </header>
+
+  <section id="about" class="about">
+    <h2 data-i18n="about.title">About</h2>
+    <p data-i18n="about.p1">
+      I am a third-year Software Engineering undergraduate at Northwestern Polytechnical University (NPU).
+      My research interests lie at the intersection of large language models, CAD model generation,
+      machine learning and natural language processing. I am currently contributing to two research projects:
+      BrepLLM (under review at ECCV 2026) and a CAD code generation project (targeting NeurIPS 2026).
+    </p>
+    <p data-i18n="about.p2">
+      Outside of research, I enjoy building things end-to-end — from backend services and AI agent
+      orchestration to small experiments that connect language models with structured engineering domains.
+      I aim to pursue graduate studies that deepen my understanding of how language models can reason about
+      structured, geometric and engineering knowledge.
+    </p>
+  </section>
+
+  <section id="education">
+    <h2 data-i18n="edu.title">Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title" data-i18n="edu.school">Northwestern Polytechnical University</div>
+        <div class="entry-meta" data-i18n="edu.period">2023 — Present</div>
+      </div>
+      <div class="entry-org" data-i18n="edu.degree">B.Eng. in Software Engineering · Xi&#39;an, China</div>
+      <div class="entry-body">
+        <ul>
+          <li data-i18n="edu.li1">GPA 3.813 / 4.1 · Rank 11 / 270</li>
+          <li data-i18n="edu.li2">CET-4 613 · CET-6 587</li>
+          <li data-i18n="edu.li3">National Scholarship recipient (2024, 2025) — top 3 in grade for two consecutive years</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2 data-i18n="research.title">Research</h2>
+
+    <div class="project-card">
+      <h3 data-i18n="research.r1.title">BrepLLM — Boundary Representation with LLMs</h3>
+      <div class="entry-meta" data-i18n="research.r1.meta">5th author · Under review at ECCV 2026</div>
+      <p data-i18n="research.r1.body">
+        Exploring how large language models can understand the boundary representation (B-rep)
+        data of solid CAD models. Contributing as the fifth author to dataset construction and
+        experimental validation.
+      </p>
+      <div class="tags">
+        <span class="tag">LLM</span>
+        <span class="tag">CAD</span>
+        <span class="tag">Geometry</span>
+        <span class="tag">PyTorch</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3 data-i18n="research.r2.title">CAD Code Generation with LLMs</h3>
+      <div class="entry-meta" data-i18n="research.r2.meta">In progress · Targeting NeurIPS 2026 (May 2026 submission)</div>
+      <p data-i18n="research.r2.body">
+        Leveraging the code generation ability of LLMs to go from multimodal inputs (text / images)
+        to Python CadQuery code and finally to solid CAD models. My main work is to build a
+        high-quality multimodal dataset and to carry out SFT and experimental validation on the LLM.
+      </p>
+      <div class="tags">
+        <span class="tag">LLM</span>
+        <span class="tag" data-i18n="tag.codegen">Code Generation</span>
+        <span class="tag">CAD</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 data-i18n="exp.title">Experience</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title" data-i18n="exp.role">Backend Development Engineer Intern</div>
+        <div class="entry-meta" data-i18n="exp.period">Jul — Aug 2025</div>
+      </div>
+      <div class="entry-org" data-i18n="exp.org">Shenzhen Kuakua Jingling Technology Co., Ltd.</div>
+      <div class="entry-body">
+        <ul>
+          <li data-i18n="exp.li1">Built the workflow orchestration of a "digital employee" AI agent that automatically generates enterprise materials.</li>
+          <li data-i18n="exp.li2">Co-developed the integration interfaces for a municipal Big-Data Bureau project, covering the full cycle from requirements to launch.</li>
+          <li data-i18n="exp.li3">Assisted my mentor with research on AI multi-turn QA and knowledge-base products, producing a detailed report that informed the company&#39;s technology choices and product planning.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 data-i18n="proj.title">Selected Project</h2>
+    <div class="project-card">
+      <h3 data-i18n="proj.p1.title">Campus Mall System</h3>
+      <div class="entry-meta" data-i18n="proj.p1.meta">Course / Personal Project</div>
+      <p data-i18n="proj.p1.body">
+        A full-stack campus marketplace web application supporting product browsing, cart, ordering
+        and order management. Backend built with Spring Boot and MyBatis; frontend uses native
+        JavaScript with AJAX for asynchronous interactions.
+      </p>
+      <div class="tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">MyBatis</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">AJAX</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <h2 data-i18n="awards.title">Awards &amp; Honors</h2>
+    <ul class="award-list">
+      <li class="award-item">
+        <span class="award-tier" data-i18n="tier.national">National</span>
+        <span class="award-text" data-i18n="awards.a1">National Scholarship for Undergraduates (top 3 in the entire grade)</span>
+        <span class="award-date">2024 &amp; 2025</span>
+      </li>
+      <li class="award-item">
+        <span class="award-tier" data-i18n="tier.national">National</span>
+        <span class="award-text" data-i18n="awards.a2">19th "Challenge Cup" National College Students&#39; Extracurricular Academic &amp; Technological Work Competition — Second Prize (Open-Call Track)</span>
+        <span class="award-date">2024.11</span>
+      </li>
+      <li class="award-item">
+        <span class="award-tier" data-i18n="tier.provincial">Provincial</span>
+        <span class="award-text" data-i18n="awards.a3">16th Chinese Mathematics Competitions (Non-Math Group A) — Third Prize</span>
+        <span class="award-date">2024.12</span>
+      </li>
+      <li class="award-item">
+        <span class="award-tier" data-i18n="tier.provincial">Provincial</span>
+        <span class="award-text" data-i18n="awards.a4">18th National College Software Innovation Contest — Software Design Innovation Track, Northwest Regional Third Prize</span>
+        <span class="award-date">2025.04</span>
+      </li>
+      <li class="award-item">
+        <span class="award-tier" data-i18n="tier.provincial">Provincial</span>
+        <span class="award-text" data-i18n="awards.a5">11th National College Students&#39; Statistical Modeling Competition — Shaanxi Division Third Prize</span>
+        <span class="award-date">2025.05</span>
+      </li>
+      <li class="award-item">
+        <span class="award-tier" data-i18n="tier.provincial">Provincial</span>
+        <span class="award-text" data-i18n="awards.a6">2025 National College Students&#39; Mathematical Contest in Modeling — Shaanxi Division Second Prize</span>
+        <span class="award-date">2025.11</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2 data-i18n="skills.title">Skills</h2>
+    <div class="skill-row">
+      <div class="skill-label" data-i18n="skills.languages">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">C++</span>
+        <span class="tag">Java</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label" data-i18n="skills.aiml">AI / ML</div>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">LLM</span>
+        <span class="tag">NLP</span>
+        <span class="tag" data-i18n="skills.ml">Machine Learning</span>
+        <span class="tag" data-i18n="skills.dl">Deep Learning</span>
+        <span class="tag">AI Agent</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label" data-i18n="skills.backend">Backend</div>
+      <div class="skill-tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">MyBatis</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">REST API</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label" data-i18n="skills.tools">Tools</div>
+      <div class="skill-tags">
+        <span class="tag">Git</span>
+        <span class="tag">Linux</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">LaTeX</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label" data-i18n="skills.human">Languages (Human)</div>
+      <div class="skill-tags">
+        <span class="tag" data-i18n="skills.zh">Chinese — Native</span>
+        <span class="tag" data-i18n="skills.en">English — CET-6 587</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span data-i18n="footer">© 2026 Yifan Zhu (朱羿帆) · Built with care, hosted on GitHub Pages</span>
+</footer>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const toggle = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = stored || (prefersDark ? 'dark' : 'light');
+  if (initial === 'dark') root.classList.add('dark');
+  toggle.textContent = root.classList.contains('dark') ? '☀' : '☾';
+  toggle.addEventListener('click', function () {
+    root.classList.toggle('dark');
+    const isDark = root.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    toggle.textContent = isDark ? '☀' : '☾';
+  });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', function () {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { navLinks.classList.remove('open'); });
+  });
+
+  /* ---------- i18n ---------- */
+  const I18N = {
+    en: {
+      'brand': 'Yifan Zhu',
+      'nav.about': 'About',
+      'nav.education': 'Education',
+      'nav.research': 'Research',
+      'nav.experience': 'Experience',
+      'nav.awards': 'Awards',
+      'hero.eyebrow': 'Software Engineering · Junior',
+      'hero.title': 'Yifan Zhu',
+      'hero.subtitle': '朱羿帆',
+      'hero.lead': 'Junior undergraduate in Software Engineering at Northwestern Polytechnical University, researching large language models and CAD model generation. Awarded the National Scholarship two years in a row (top 3 in the entire grade), with a GPA of 3.813 / 4.1 (rank 11 / 270).',
+      'hero.location': "Xi'an, China",
+      'about.title': 'About',
+      'about.p1': 'I am a third-year Software Engineering undergraduate at Northwestern Polytechnical University (NPU). My research interests lie at the intersection of large language models, CAD model generation, machine learning and natural language processing. I am currently contributing to two research projects: BrepLLM (under review at ECCV 2026) and a CAD code generation project (targeting NeurIPS 2026).',
+      'about.p2': 'Outside of research, I enjoy building things end-to-end — from backend services and AI agent orchestration to small experiments that connect language models with structured engineering domains. I aim to pursue graduate studies that deepen my understanding of how language models can reason about structured, geometric and engineering knowledge.',
+      'edu.title': 'Education',
+      'edu.school': 'Northwestern Polytechnical University',
+      'edu.period': '2023 — Present',
+      'edu.degree': "B.Eng. in Software Engineering · Xi'an, China",
+      'edu.li1': 'GPA 3.813 / 4.1 · Rank 11 / 270',
+      'edu.li2': 'CET-4 613 · CET-6 587',
+      'edu.li3': 'National Scholarship recipient (2024, 2025) — top 3 in grade for two consecutive years',
+      'research.title': 'Research',
+      'research.r1.title': 'BrepLLM: Enabling LLMs to Understand Boundary Representations',
+      'research.r1.meta': '5th author · Under review at ECCV 2026',
+      'research.r1.body': 'Exploring how large language models can understand the boundary representation (B-rep) data of solid CAD models. Contributing as the fifth author to dataset construction and experimental validation.',
+      'research.r2.title': 'LLM-based CAD Code Generation',
+      'research.r2.meta': 'In progress · Targeting NeurIPS 2026 (May 2026 submission)',
+      'research.r2.body': 'Leveraging the code generation ability of LLMs to go from multimodal inputs (text / images) to Python CadQuery code and finally to solid CAD models. My main work is to build a high-quality multimodal dataset and to carry out SFT and experimental validation on the LLM.',
+      'tag.codegen': 'Code Generation',
+      'exp.title': 'Experience',
+      'exp.role': 'Backend Development Engineer (Intern)',
+      'exp.period': 'Jul — Aug 2025',
+      'exp.org': 'Shenzhen Kuakua Jingling Technology Co., Ltd.',
+      'exp.li1': 'Built the workflow orchestration of a "digital employee" AI agent that automatically generates enterprise materials.',
+      'exp.li2': 'Co-developed the integration interfaces for a municipal Big-Data Bureau project, covering the full cycle from requirements to launch.',
+      'exp.li3': "Assisted my mentor with research on AI multi-turn QA and knowledge-base products, producing a detailed report that informed the company's technology choices and product planning.",
+      'proj.title': 'Selected Project',
+      'proj.p1.title': 'Campus Mall System',
+      'proj.p1.meta': 'Course / Personal Project',
+      'proj.p1.body': 'A full-stack campus marketplace web application supporting product browsing, cart, ordering and order management. Backend built with Spring Boot and MyBatis; frontend uses native JavaScript with AJAX for asynchronous interactions.',
+      'awards.title': 'Awards & Honors',
+      'tier.national': 'National',
+      'tier.provincial': 'Provincial',
+      'tier.university': 'University',
+      'awards.a1': 'National Scholarship for Undergraduates (top 3 in the entire grade)',
+      'awards.a2': "19th \"Challenge Cup\" National College Students' Extracurricular Academic & Technological Work Competition — Second Prize (Open-Call Track)",
+      'awards.a3': '16th Chinese Mathematics Competitions (Non-Math Group A) — Third Prize',
+      'awards.a4': '18th National College Software Innovation Contest — Software Design Innovation Track, Northwest Regional Third Prize',
+      'awards.a5': "11th National College Students' Statistical Modeling Competition — Shaanxi Division Third Prize",
+      'awards.a6': "2025 National College Students' Mathematical Contest in Modeling — Shaanxi Division Second Prize",
+      'skills.title': 'Skills',
+      'skills.languages': 'Languages',
+      'skills.aiml': 'AI / ML',
+      'skills.ml': 'Machine Learning',
+      'skills.dl': 'Deep Learning',
+      'skills.backend': 'Backend',
+      'skills.tools': 'Tools',
+      'skills.human': 'Languages (Human)',
+      'skills.zh': 'Chinese — Native',
+      'skills.en': 'English — CET-6 587',
+      'footer': '© 2026 Yifan Zhu (朱羿帆) · Built with care, hosted on GitHub Pages'
+    },
+    zh: {
+      'brand': '朱羿帆',
+      'nav.about': '关于',
+      'nav.education': '教育',
+      'nav.research': '科研',
+      'nav.experience': '经历',
+      'nav.awards': '荣誉',
+      'hero.eyebrow': '软件工程 · 大三在读',
+      'hero.title': '朱羿帆',
+      'hero.subtitle': 'Yifan Zhu',
+      'hero.lead': '西北工业大学软件工程本科三年级在读，研究方向为大语言模型（LLM）与 CAD 模型生成。连续两年获得国家奖学金（全年级仅 3 位），GPA 3.813 / 4.1，排名 11 / 270。',
+      'hero.location': '中国 · 西安',
+      'about.title': '关于我',
+      'about.p1': '我是西北工业大学软件工程专业本科三年级在读学生。研究兴趣集中在大语言模型（LLM）、CAD 模型生成、机器学习与自然语言处理的交叉领域。目前参与两项科研项目：BrepLLM（在投 ECCV 2026）以及 CAD 代码生成项目（拟投 NeurIPS 2026）。',
+      'about.p2': '在科研之外，我喜欢端到端地构建系统——从后端服务、AI Agent 流程编排，到将语言模型与结构化工程领域相连接的小型实验。我希望继续深造，深入理解语言模型如何对结构化、几何与工程知识进行推理。',
+      'edu.title': '教育经历',
+      'edu.school': '西北工业大学',
+      'edu.period': '2023 — 至今',
+      'edu.degree': '软件工程 · 工学学士 · 中国西安',
+      'edu.li1': 'GPA 3.813 / 4.1 · 排名 11 / 270',
+      'edu.li2': 'CET-4 613 · CET-6 587',
+      'edu.li3': '连续两年获得国家奖学金（2024、2025），位列全年级前 3',
+      'research.title': '科研项目',
+      'research.r1.title': 'BrepLLM：让大语言模型理解边界表示',
+      'research.r1.meta': '第 5 作者 · 在投 ECCV 2026',
+      'research.r1.body': '研究大语言模型如何理解实体 CAD 模型的边界表示（B-rep）数据。作为第 5 作者，参与数据集构建与实验验证工作。',
+      'research.r2.title': '基于 LLM 的 CAD 代码生成',
+      'research.r2.meta': '进行中 · 拟于 2026 年 5 月投稿 NeurIPS',
+      'research.r2.body': '聚焦于利用 LLM 的代码生成能力，实现从文本 / 图像等多模态输入数据，到 Python CadQuery 代码，再到 CAD 模型的生成。主要工作是构建高质量的多模态数据集，并对 LLM 进行 SFT 和实验验证。',
+      'tag.codegen': '代码生成',
+      'exp.title': '实习经历',
+      'exp.role': '后端开发工程师',
+      'exp.period': '2025.07 — 2025.08',
+      'exp.org': '深圳夸夸菁领科技有限公司',
+      'exp.li1': '完成一项"数智员工" Agent 的流程编排，实现企业材料的自动生成。',
+      'exp.li2': '协助完成某市大数据局项目的对接接口开发，走通从需求到上线的全流程。',
+      'exp.li3': '协助 mentor 开展 AI 多轮对话问答与知识库产品调研，撰写详实调研报告，为公司技术选型与产品规划提供了关键参考。',
+      'proj.title': '代表项目',
+      'proj.p1.title': '校园商城系统',
+      'proj.p1.meta': '课程项目 / 个人项目',
+      'proj.p1.body': '一个支持商品浏览、购物车、下单与订单管理的全栈校园电商 Web 应用。后端基于 Spring Boot 与 MyBatis，前端使用原生 JavaScript 配合 AJAX 实现异步交互。',
+      'awards.title': '荣誉奖项',
+      'tier.national': '国家级',
+      'tier.provincial': '省级',
+      'tier.university': '校级',
+      'awards.a1': '本科生国家奖学金（全年级仅 3 位）',
+      'awards.a2': '第十九届"挑战杯"全国大学生课外学术科技作品竞赛 —— 揭榜挂帅专项赛二等奖',
+      'awards.a3': '第十六届全国大学生数学竞赛（非数学 A 类）三等奖',
+      'awards.a4': '第十八届全国大学生软件创新大赛 —— 软件设计创新赛西北区域赛三等奖',
+      'awards.a5': '2025 年（第十一届）全国大学生统计建模大赛陕西赛区三等奖',
+      'awards.a6': '2025 全国大学生数学建模竞赛陕西赛区二等奖',
+      'skills.title': '技能',
+      'skills.languages': '编程语言',
+      'skills.aiml': 'AI / 机器学习',
+      'skills.ml': '机器学习',
+      'skills.dl': '深度学习',
+      'skills.backend': '后端',
+      'skills.tools': '工具',
+      'skills.human': '语言能力',
+      'skills.zh': '中文 —— 母语',
+      'skills.en': '英语 —— CET-6 587',
+      'footer': '© 2026 朱羿帆 (Yifan Zhu) · 用心构建，托管于 GitHub Pages'
+    }
+  };
+
+  const langToggle = document.getElementById('langToggle');
+  function applyLang(lang) {
+    const dict = I18N[lang] || I18N.en;
+    document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    langToggle.textContent = (lang === 'zh') ? 'EN' : '中文';
+    langToggle.setAttribute('aria-label', (lang === 'zh') ? 'Switch to English' : '切换到中文');
+  }
+  const storedLang = localStorage.getItem('lang');
+  const browserLang = (navigator.language || 'en').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+  applyLang(storedLang || browserLang);
+  langToggle.addEventListener('click', function () {
+    const current = (document.documentElement.lang === 'zh-CN') ? 'zh' : 'en';
+    const next = current === 'zh' ? 'en' : 'zh';
+    localStorage.setItem('lang', next);
+    applyLang(next);
+  });
+})();
+</script>
+</body>
+</html>
