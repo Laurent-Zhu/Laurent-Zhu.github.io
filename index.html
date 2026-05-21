@@ -347,12 +347,14 @@
       font-weight: 500;
     }
 
+    .hidden-links,
     .cv-links {
       display: inline-flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
+    .hidden-links a,
     .cv-links a {
       display: inline-flex;
       align-items: center;
@@ -367,6 +369,7 @@
       font-weight: 600;
     }
 
+    .hidden-links a:hover,
     .cv-links a:hover {
       border-color: var(--clay-mid);
       background: var(--clay-light);
@@ -521,7 +524,13 @@
         <ul class="author__urls">
           <li><span class="label" data-i18n="label.location">Location</span><span data-i18n="author.location">Xi'an, China</span></li>
           <li><span class="label" data-i18n="label.affiliation">Affiliation</span><span data-i18n="author.affiliation">Northwestern Polytechnical University</span></li>
-          <li><span class="label" data-i18n="label.email">Email</span><a href="mailto:laurent.zhu666@mail.nwpu.edu.cn">laurent.zhu666@mail.nwpu.edu.cn</a></li>
+          <li>
+            <span class="label" data-i18n="label.email">Email</span>
+            <span class="hidden-links">
+              <a href="mailto:laurent.zhu666@mail.nwpu.edu.cn" data-i18n="author.email.npu">NPU Mail</a>
+              <a href="mailto:laurent.zhu666@gmail.com" data-i18n="author.email.gmail">Gmail</a>
+            </span>
+          </li>
           <li><span class="label" data-i18n="label.github">GitHub</span><a href="https://github.com/Laurent-Zhu">Laurent-Zhu</a></li>
           <li>
             <span class="label" data-i18n="label.cv">CV</span>
@@ -658,6 +667,8 @@
         "author.follow": "Follow",
         "author.location": "Xi'an, China",
         "author.affiliation": "Northwestern Polytechnical University",
+        "author.email.npu": "NPU Mail",
+        "author.email.gmail": "Gmail",
         "author.cv.zh": "Chinese",
         "author.cv.en": "English",
         "label.location": "Location",
@@ -728,6 +739,8 @@
         "author.follow": "链接",
         "author.location": "中国西安",
         "author.affiliation": "西北工业大学",
+        "author.email.npu": "学校邮箱",
+        "author.email.gmail": "Gmail",
         "author.cv.zh": "中文",
         "author.cv.en": "英文",
         "label.location": "地点",
