@@ -165,7 +165,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 40% 35%;
+      object-position: 22% 26%;
       display: block;
     }
 
@@ -220,14 +220,21 @@
       overflow-wrap: anywhere;
     }
 
+    .author__urls li {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      align-items: start;
+      column-gap: 14px;
+    }
+
     .author__urls a:hover { color: var(--clay); }
     .author__urls .label {
-      display: inline-block;
-      width: 70px;
       color: var(--ink-3);
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 600;
+      overflow-wrap: normal;
+      white-space: nowrap;
     }
 
     .page__content {
@@ -338,6 +345,32 @@
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 500;
+    }
+
+    .cv-links {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cv-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border: 1px solid var(--rule-soft);
+      border-radius: 999px;
+      background: var(--bg-card);
+      padding: 2px 9px;
+      color: var(--ink-2);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .cv-links a:hover {
+      border-color: var(--clay-mid);
+      background: var(--clay-light);
+      color: var(--clay);
     }
 
     .compact-list {
@@ -490,7 +523,13 @@
           <li><span class="label" data-i18n="label.affiliation">Affiliation</span><span data-i18n="author.affiliation">Northwestern Polytechnical University</span></li>
           <li><span class="label" data-i18n="label.email">Email</span><a href="mailto:laurent.zhu666@mail.nwpu.edu.cn">laurent.zhu666@mail.nwpu.edu.cn</a></li>
           <li><span class="label" data-i18n="label.github">GitHub</span><a href="https://github.com/Laurent-Zhu">Laurent-Zhu</a></li>
-          <li><span class="label" data-i18n="label.cv">CV</span><a href="assets/cv/yifan_zhu_resume.pdf" data-i18n="author.cv">Download PDF</a></li>
+          <li>
+            <span class="label" data-i18n="label.cv">CV</span>
+            <span class="cv-links">
+              <a href="assets/cv/yifan_zhu_resume.pdf" data-i18n="author.cv.zh">Chinese</a>
+              <a href="assets/cv/yifan_zhu_resume_en.pdf" data-i18n="author.cv.en">English</a>
+            </span>
+          </li>
         </ul>
       </div>
     </aside>
@@ -619,7 +658,8 @@
         "author.follow": "Follow",
         "author.location": "Xi'an, China",
         "author.affiliation": "Northwestern Polytechnical University",
-        "author.cv": "Download PDF",
+        "author.cv.zh": "Chinese",
+        "author.cv.en": "English",
         "label.location": "Location",
         "label.affiliation": "Affiliation",
         "label.email": "Email",
@@ -688,7 +728,8 @@
         "author.follow": "链接",
         "author.location": "中国西安",
         "author.affiliation": "西北工业大学",
-        "author.cv": "下载 PDF",
+        "author.cv.zh": "中文",
+        "author.cv.en": "英文",
         "label.location": "地点",
         "label.affiliation": "单位",
         "label.email": "邮箱",
