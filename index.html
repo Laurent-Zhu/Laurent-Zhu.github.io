@@ -401,6 +401,23 @@
       background: var(--clay);
     }
 
+    .news-list {
+      gap: 12px;
+    }
+
+    .news-list li {
+      line-height: 1.65;
+    }
+
+    .news-date {
+      display: inline-block;
+      min-width: 86px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .two-column {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -481,6 +498,7 @@
       .author__name { font-size: 23px; }
       .page__lead { font-size: 16px; }
       .two-column { grid-template-columns: 1fr; }
+      .news-date { display: block; min-width: 0; margin-bottom: 2px; }
     }
   </style>
 </head>
@@ -494,6 +512,7 @@
       <div class="masthead__menu">
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#news" data-i18n="nav.news">News</a>
           <a href="#research" data-i18n="nav.research">Research</a>
           <a href="#publications" data-i18n="nav.publications">Publications</a>
           <a href="#experience" data-i18n="nav.experience">Experience</a>
@@ -550,6 +569,20 @@
         <div class="notice" data-i18n="hero.notice">I am especially interested in building LLM systems that connect language, vision, code, and structured engineering knowledge.</div>
         <p data-i18n="about.p1">I am contributing to BrepLLM, an ECCV 2026 conference submission that studies how large language models understand boundary representations, and to a unified multimodal LLM framework for CadQuery-based CAD generation, understanding, and editing.</p>
         <p data-i18n="about.p2">In graduate study, I hope to systematically explore model architecture design, multimodal understanding, and AI agents, and later work on frontier LLM research in leading technology companies or high-level research labs.</p>
+      </section>
+
+      <section id="news">
+        <h2 data-i18n="news.title">News</h2>
+        <ul class="compact-list news-list">
+          <li data-i18n="news.n1"><span class="news-date">2026.05</span> BrepLLM was submitted to ECCV 2026, and I contributed to paper writing, revision, and experiment organization.</li>
+          <li data-i18n="news.n2"><span class="news-date">2025.12</span> I received the 2025 National Scholarship for Undergraduates.</li>
+          <li data-i18n="news.n3"><span class="news-date">2025.08</span> I joined a Singapore academic exchange program with NTU, NUS, SMU, and NPU, and presented an Agentic AI tutoring project.</li>
+          <li data-i18n="news.n4"><span class="news-date">2025.07-08</span> I interned as a backend development engineer at Shenzhen Kuakua Jingling Technology, working on agent workflow orchestration.</li>
+          <li data-i18n="news.n5"><span class="news-date">2025.06</span> I completed my term as President of the Student Software Association at Northwestern Polytechnical University.</li>
+          <li data-i18n="news.n6"><span class="news-date">2024.12</span> I received the 2024 National Scholarship for Undergraduates.</li>
+          <li data-i18n="news.n7"><span class="news-date">2024.05</span> I began serving as President of the Student Software Association, organizing programming courses, competitions, and technology events.</li>
+          <li data-i18n="news.n8"><span class="news-date">2024.01</span> I participated in the NTU-NPU academic exchange program and completed an RPA capstone project with my team.</li>
+        </ul>
       </section>
 
       <section id="education">
@@ -655,6 +688,7 @@
         "site.eyebrow": "Academic Homepage",
         "site.title": "Yifan Zhu",
         "nav.about": "About",
+        "nav.news": "News",
         "nav.research": "Research",
         "nav.publications": "Publications",
         "nav.experience": "Experience",
@@ -681,6 +715,15 @@
         "hero.notice": "I am especially interested in building LLM systems that connect language, vision, code, and structured engineering knowledge.",
         "about.p1": "I am contributing to BrepLLM, an ECCV 2026 conference submission that studies how large language models understand boundary representations, and to a unified multimodal LLM framework for CadQuery-based CAD generation, understanding, and editing.",
         "about.p2": "In graduate study, I hope to systematically explore model architecture design, multimodal understanding, and AI agents, and later work on frontier LLM research in leading technology companies or high-level research labs.",
+        "news.title": "News",
+        "news.n1": "<span class=\"news-date\">2026.05</span> BrepLLM was submitted to ECCV 2026, and I contributed to paper writing, revision, and experiment organization.",
+        "news.n2": "<span class=\"news-date\">2025.12</span> I received the 2025 National Scholarship for Undergraduates.",
+        "news.n3": "<span class=\"news-date\">2025.08</span> I joined a Singapore academic exchange program with NTU, NUS, SMU, and NPU, and presented an Agentic AI tutoring project.",
+        "news.n4": "<span class=\"news-date\">2025.07-08</span> I interned as a backend development engineer at Shenzhen Kuakua Jingling Technology, working on agent workflow orchestration.",
+        "news.n5": "<span class=\"news-date\">2025.06</span> I completed my term as President of the Student Software Association at Northwestern Polytechnical University.",
+        "news.n6": "<span class=\"news-date\">2024.12</span> I received the 2024 National Scholarship for Undergraduates.",
+        "news.n7": "<span class=\"news-date\">2024.05</span> I began serving as President of the Student Software Association, organizing programming courses, competitions, and technology events.",
+        "news.n8": "<span class=\"news-date\">2024.01</span> I participated in the NTU-NPU academic exchange program and completed an RPA capstone project with my team.",
         "education.title": "Education",
         "education.degree": "B.Eng. in Software Engineering",
         "education.meta": "Northwestern Polytechnical University · Xi'an, China · Aug 2023 - Present",
@@ -727,6 +770,7 @@
         "site.eyebrow": "学术主页",
         "site.title": "朱羿帆",
         "nav.about": "关于",
+        "nav.news": "News",
         "nav.research": "科研",
         "nav.publications": "论文",
         "nav.experience": "经历",
@@ -753,6 +797,15 @@
         "hero.notice": "我尤其关注如何构建连接语言、视觉、代码与结构化工程知识的大模型系统。",
         "about.p1": "目前我参与两项科研工作：BrepLLM，一篇研究大语言模型理解边界表示的 ECCV 2026 在投论文；以及面向 CadQuery 的统一多模态 LLM 框架，用于支持 CAD 的生成、理解与编辑。",
         "about.p2": "未来我希望在研究生阶段系统开展大模型方向研究，重点聚焦模型架构、多模态理解和 AI Agent 等前沿课题。毕业后，期待进入行业内顶尖企业或高水平实验室，从事大模型相关研究与落地工作。",
+        "news.title": "News",
+        "news.n1": "<span class=\"news-date\">2026.05</span> BrepLLM 投稿至 ECCV 2026，我参与论文写作、修改与实验材料整理。",
+        "news.n2": "<span class=\"news-date\">2025.12</span> 获得 2025 年本科生国家奖学金。",
+        "news.n3": "<span class=\"news-date\">2025.08</span> 参加 NTU、NUS、SMU 与西北工业大学新加坡学术交流项目，并展示 Agentic AI 个性化辅导项目。",
+        "news.n4": "<span class=\"news-date\">2025.07-08</span> 在深圳夸夸菁领科技有限公司担任后端开发工程师实习生，参与 Agent 工作流编排。",
+        "news.n5": "<span class=\"news-date\">2025.06</span> 完成西北工业大学学生软件协会主席任期。",
+        "news.n6": "<span class=\"news-date\">2024.12</span> 获得 2024 年本科生国家奖学金。",
+        "news.n7": "<span class=\"news-date\">2024.05</span> 开始担任学生软件协会主席，组织编程课程、竞赛与学生技术活动。",
+        "news.n8": "<span class=\"news-date\">2024.01</span> 参加 NTU-NPU 学术交流项目，并与团队完成 RPA 结课项目。",
         "education.title": "教育背景",
         "education.degree": "软件工程本科",
         "education.meta": "西北工业大学 · 中国西安 · 2023.08 至今",
