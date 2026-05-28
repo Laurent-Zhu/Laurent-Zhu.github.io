@@ -347,6 +347,28 @@
       font-weight: 500;
     }
 
+    .project-demo {
+      margin-top: 16px;
+    }
+
+    .project-demo video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--rule-soft);
+      border-radius: 8px;
+      background: #000;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .project-demo figcaption {
+      margin-top: 8px;
+      color: var(--ink-3);
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
     .hidden-links,
     .cv-links {
       display: inline-flex;
@@ -642,6 +664,13 @@
           <p class="page__meta" data-i18n="projects.p1.meta">Undergraduate Innovation Training Project</p>
           <p class="archive__item-excerpt" data-i18n="projects.p1.body">A visible-light and infrared dual-modal drone traffic detection and visualization system for five urban scenes. I designed the edge-cloud-dashboard architecture, integrating RGB+IR YOLOv8-OBB inference, 15 FPS WebSocket reporting, FastAPI multi-node relay, and a React dashboard for live monitoring and offline playback.</p>
           <div class="tag-list"><span class="tag">YOLOv8-OBB</span><span class="tag">DroneVehicle</span><span class="tag">FastAPI</span><span class="tag">React</span></div>
+          <figure class="project-demo">
+            <video controls preload="metadata" playsinline aria-label="Demo video for the drone traffic perception project">
+              <source src="assets/video/drone-traffic-demo.mp4" type="video/mp4">
+              <span data-i18n="projects.p1.videoFallback">Your browser does not support embedded video.</span>
+            </video>
+            <figcaption data-i18n="projects.p1.videoCaption">Project demo: real-time dual-modal drone traffic perception and dashboard visualization.</figcaption>
+          </figure>
         </article>
         <article class="archive__item">
           <h3 class="archive__item-title" data-i18n="projects.p2.title">Campus Mall System</h3>
@@ -750,6 +779,8 @@
         "projects.p1.title": "Dual-Modal Drone Urban Traffic Perception and Intelligent Analytics System",
         "projects.p1.meta": "Undergraduate Innovation Training Project",
         "projects.p1.body": "A visible-light and infrared dual-modal drone traffic detection and visualization system for five urban scenes. I designed the edge-cloud-dashboard architecture, integrating RGB+IR YOLOv8-OBB inference, 15 FPS WebSocket reporting, FastAPI multi-node relay, and a React dashboard for live monitoring and offline playback.",
+        "projects.p1.videoFallback": "Your browser does not support embedded video.",
+        "projects.p1.videoCaption": "Project demo: real-time dual-modal drone traffic perception and dashboard visualization.",
         "projects.p2.title": "Campus Mall System",
         "projects.p2.meta": "Software Development Fundamentals course project",
         "projects.p2.body": "A campus marketplace web system for product browsing, shopping cart, and order management. The stack uses Spring Boot, MyBatis, and AJAX, with simulated payment and inventory management; I mainly implemented and tested search and favorites features.",
@@ -832,6 +863,8 @@
         "projects.p1.title": "无人机双模态城市交通感知与智能分析系统",
         "projects.p1.meta": "大学生创新训练项目",
         "projects.p1.body": "基于可见光与红外双模态融合的无人机城市交通目标检测与可视化系统，面向停车场、主干道、住宅区等五类城市场景。我负责设计并实现 Edge-云-仪表盘三层架构，集成 RGB+红外 YOLOv8-OBB 推理、15 fps WebSocket 上报、FastAPI 多节点转发，以及支持实时监控与离线回放的 React 仪表盘。",
+        "projects.p1.videoFallback": "当前浏览器不支持内嵌视频播放。",
+        "projects.p1.videoCaption": "项目 Demo：无人机双模态交通感知与仪表盘实时可视化。",
         "projects.p2.title": "校园商城系统",
         "projects.p2.meta": "《软件开发基础能力训练》课程项目",
         "projects.p2.body": "面向师生提供商品浏览、购物车与订单管理功能的校园商城 Web 系统，技术栈包括 Spring Boot、MyBatis 与 AJAX，并模拟实现支付与库存管理。我主要负责搜索、收藏等功能的编码与测试。",
