@@ -663,7 +663,7 @@
         <article class="archive__item">
           <h3 class="archive__item-title" data-i18n="projects.p1.title">Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System</h3>
           <p class="page__meta" data-i18n="projects.p1.meta">Undergraduate Innovation Training Project</p>
-          <p class="archive__item-excerpt" data-i18n="projects.p1.body">A visible-light and infrared UAV traffic perception system using a customized YOLOv8-OBB fusion model on the DroneVehicle dataset. I built an Edge-Cloud-Dashboard architecture with WebSocket streaming, FastAPI services, and React-based real-time visualization.</p>
+          <p class="archive__item-excerpt" data-i18n="projects.p1.body">A UAV-based urban traffic object detection and visualization system using visible-light and infrared dual-modal fusion. The system targets parking lots, main roads, residential areas, and other urban scenes, trains a customized YOLOv8-OBB fusion model on DroneVehicle, and uses an Edge-Cloud-Dashboard architecture for 15 fps WebSocket streaming, FastAPI multi-node forwarding, and React-based real-time monitoring and offline replay.</p>
           <div class="tag-list"><span class="tag">YOLOv8-OBB</span><span class="tag">DroneVehicle</span><span class="tag">FastAPI</span><span class="tag">React</span></div>
           <figure class="project-demo">
             <video controls preload="metadata" playsinline aria-label="Demo video for the drone traffic perception project">
@@ -674,10 +674,17 @@
           </figure>
         </article>
         <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="projects.p2.title">Campus Mall System</h3>
-          <p class="page__meta" data-i18n="projects.p2.meta">Software Development Fundamentals course project</p>
-          <p class="archive__item-excerpt" data-i18n="projects.p2.body">A campus marketplace web system for product browsing, shopping cart, and order management. The stack uses Spring Boot, MyBatis, and AJAX, with simulated payment and inventory management; I mainly implemented and tested search and favorites features.</p>
-          <div class="tag-list"><span class="tag">Spring Boot</span><span class="tag">MyBatis</span><span class="tag">AJAX</span><span class="tag">MySQL</span></div>
+          <h3 class="archive__item-title" data-i18n="projects.p2.title">AgriGuard Smart Agricultural Pest Management Platform</h3>
+          <p class="page__meta" data-i18n="projects.p2.meta">Agile Development Practice · Software Engineering Capstone Course</p>
+          <p class="archive__item-excerpt" data-i18n="projects.p2.body">An end-to-end digital pest control system for farmers, managers, and field workers, integrating pest image recognition, RAG-based treatment recommendation, task scheduling, work-log traceability, and 7-day risk forecasting into a browser-accessible workflow. The stack uses Vue 3, Element Plus, ECharts, Django 5, DRF, JWT, YOLO, FAISS, LLM, and MySQL; our 7-person Scrum team delivered 3 sprints and 298+ backend automated test cases. I worked on backend APIs for pest recognition, YOLO model training and deployment, and selected frontend pages.</p>
+          <div class="tag-list"><span class="tag">Vue 3</span><span class="tag">Django 5</span><span class="tag">YOLO</span><span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">MySQL</span></div>
+          <figure class="project-demo">
+            <video controls preload="metadata" playsinline aria-label="Demo video for the AgriGuard smart agricultural pest management platform">
+              <source src="assets/video/agri-guard-demo.mp4" type="video/mp4">
+              <span data-i18n="projects.p2.videoFallback">Your browser does not support embedded video.</span>
+            </video>
+            <figcaption data-i18n="projects.p2.videoCaption">Project demo: AgriGuard pest recognition, RAG recommendation, task workflow, and risk forecasting.</figcaption>
+          </figure>
         </article>
       </section>
 
@@ -780,12 +787,14 @@
         "projects.title": "Projects",
         "projects.p1.title": "Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System",
         "projects.p1.meta": "Undergraduate Innovation Training Project",
-        "projects.p1.body": "A visible-light and infrared UAV traffic perception system using a customized YOLOv8-OBB fusion model on the DroneVehicle dataset. I built an Edge-Cloud-Dashboard architecture with WebSocket streaming, FastAPI services, and React-based real-time visualization.",
+        "projects.p1.body": "A UAV-based urban traffic object detection and visualization system using visible-light and infrared dual-modal fusion. The system targets parking lots, main roads, residential areas, and other urban scenes, trains a customized YOLOv8-OBB fusion model on DroneVehicle, and uses an Edge-Cloud-Dashboard architecture for 15 fps WebSocket streaming, FastAPI multi-node forwarding, and React-based real-time monitoring and offline replay.",
         "projects.p1.videoFallback": "Your browser does not support embedded video.",
         "projects.p1.videoCaption": "Project demo: real-time dual-modal drone traffic perception and dashboard visualization.",
-        "projects.p2.title": "Campus Mall System",
-        "projects.p2.meta": "Software Development Fundamentals course project",
-        "projects.p2.body": "A campus marketplace web system for product browsing, shopping cart, and order management. The stack uses Spring Boot, MyBatis, and AJAX, with simulated payment and inventory management; I mainly implemented and tested search and favorites features.",
+        "projects.p2.title": "AgriGuard Smart Agricultural Pest Management Platform",
+        "projects.p2.meta": "Agile Development Practice · Software Engineering Capstone Course",
+        "projects.p2.body": "An end-to-end digital pest control system for farmers, managers, and field workers, integrating pest image recognition, RAG-based treatment recommendation, task scheduling, work-log traceability, and 7-day risk forecasting into a browser-accessible workflow. The stack uses Vue 3, Element Plus, ECharts, Django 5, DRF, JWT, YOLO, FAISS, LLM, and MySQL; our 7-person Scrum team delivered 3 sprints and 298+ backend automated test cases. I worked on backend APIs for pest recognition, YOLO model training and deployment, and selected frontend pages.",
+        "projects.p2.videoFallback": "Your browser does not support embedded video.",
+        "projects.p2.videoCaption": "Project demo: AgriGuard pest recognition, RAG recommendation, task workflow, and risk forecasting.",
         "honors.title": "Honors and Awards",
         "honors.a1": "Honorable Mention, Mathematical Contest in Modeling (MCM), 2026.05",
         "honors.a2": "National Scholarship for Undergraduates, 2024 and 2025",
@@ -865,12 +874,14 @@
         "projects.title": "项目经验",
         "projects.p1.title": "无人机双模态城市交通感知与智能分析系统",
         "projects.p1.meta": "大学生创新训练项目",
-        "projects.p1.body": "基于可见光与红外双模态融合的无人机交通感知系统，使用 DroneVehicle 数据集训练定制化 YOLOv8-OBB 融合模型。我负责构建 Edge-云-仪表盘三层架构，集成 WebSocket 流式传输、FastAPI 服务与基于 React 的实时可视化。",
+        "projects.p1.body": "基于可见光与红外双模态融合的无人机城市交通目标检测与可视化系统，面向停车场、主干道、住宅区等城市场景，使用 DroneVehicle 数据集训练定制化 YOLOv8-OBB 融合模型。我负责构建 Edge-云-仪表盘三层架构，支持 15 fps WebSocket 视频流与检测结果上报、FastAPI 多节点转发，以及基于 React 的实时监控与离线回放。",
         "projects.p1.videoFallback": "当前浏览器不支持内嵌视频播放。",
         "projects.p1.videoCaption": "项目 Demo：无人机双模态交通感知与仪表盘实时可视化。",
-        "projects.p2.title": "校园商城系统",
-        "projects.p2.meta": "《软件开发基础能力训练》课程项目",
-        "projects.p2.body": "面向师生提供商品浏览、购物车与订单管理功能的校园商城 Web 系统，技术栈包括 Spring Boot、MyBatis 与 AJAX，并模拟实现支付与库存管理。我主要负责搜索、收藏等功能的编码与测试。",
+        "projects.p2.title": "AgriGuard 智慧农业病虫害管理平台",
+        "projects.p2.meta": "敏捷开发实践 · 软件工程综合能力训练课程项目",
+        "projects.p2.body": "面向农户、管理员与田间工作人员的端到端数字化病虫害防治系统，整合病虫害图像识别、基于 RAG 的处置建议、任务调度、工作日志追溯与 7 日风险预测，形成完整的浏览器端业务流程。技术栈包括 Vue 3、Element Plus、ECharts、Django 5、DRF、JWT、YOLO、FAISS、LLM 与 MySQL；7 人 Scrum 团队完成 3 次 Sprint，并交付 298+ 条后端自动化测试用例。我负责病虫害识别模块后端 API、YOLO 模型训练与部署，以及部分前端页面。",
+        "projects.p2.videoFallback": "当前浏览器不支持内嵌视频播放。",
+        "projects.p2.videoCaption": "项目 Demo：AgriGuard 病虫害识别、RAG 建议、任务流程与风险预测。",
         "honors.title": "主要荣誉奖励",
         "honors.a1": "2026 年美国大学生数学建模竞赛（MCM）Honorable Mention，2026.05",
         "honors.a2": "本科生国家奖学金，2024、2025",
