@@ -8,11 +8,13 @@
   <meta name="description" content="Yifan Zhu, Software Engineering undergraduate at Northwestern Polytechnical University. Research in large language models, multimodal agents and intelligent 3D-CAD modeling.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/silkscreen-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin="">
-  <link rel="stylesheet" href="assets/css/moonshot.css?v=academic-2">
+  <link rel="stylesheet" href="assets/css/moonshot.css?v=nebula-1">
   <script src="assets/js/moonshot-content.js" defer=""></script>
   <script src="assets/js/moonshot.js?v=academic-2" defer=""></script>
+  <script src="assets/js/moonshot-background.js?v=nebula-1" defer=""></script>
 </head>
 <body>
+  <canvas class="space-background" id="space-background" aria-hidden="true"></canvas>
   <a class="skip-link" href="#about" data-copy="skip">Skip to content</a>
   <header class="site-header">
     <div class="header-inner page-width">
@@ -27,6 +29,7 @@
         <a href="#honors" data-i18n="nav.honors">Honors</a>
       </nav>
       <div class="header-actions">
+        <button class="motion-toggle icon-button" type="button" aria-label="Pause background animation" title="Pause background animation" hidden><img class="icon" src="assets/icons/moonshot/pause.svg" alt=""></button>
         <div class="language-switch" role="group" aria-label="Language">
           <button type="button" data-language="en" aria-pressed="true" lang="en">EN</button>
           <span aria-hidden="true">/</span>

@@ -50,3 +50,27 @@ The existing video posters remain in use.
 The browser connector remained unavailable, so viewport screenshots and actual
 in-browser video playback could not be verified. The original `index.html`, CVs,
 video files and content dictionary have no modifications.
+
+## Land-on Background
+
+Reference: https://careers.kimi.com/land-on (inspected 2026-09-22).
+Its public LandOnBackground module renders a low-resolution, grayscale, ordered-
+dithered nebula and slowly twinkling stars using Canvas 2D. Recreate that visual
+technique independently in `moonshot-background.js`, without copying its code,
+assets, moon scene controller, navigation or application dependencies.
+
+Place a pointer-transparent, fixed canvas behind the unchanged academic layout.
+Keep the pixels dark enough for muted dates and captions to stay readable. Cache
+the noise field on resize, cap the backing canvas at 360 by 300, and limit drawing
+to 20 fps on desktop / 12 fps on mobile. A bilingual header icon pauses motion and
+remembers the choice. Reduced motion keeps a static frame; hidden tabs and page
+navigation stop animation. If Canvas is unavailable, keep the plain background.
+
+Verification: the previous ten DOM checks still pass. Sixteen additional checks
+exercise actual Canvas pixel output at 320, 390, 768, 1024, 1440 and 2560 viewport
+widths, changing frames, frame-rate caps, pause persistence, translated controls,
+visibility/page lifecycle, live reduced-motion changes, blocked storage and no-
+Canvas fallback. Desktop and mobile raster previews were visually inspected.
+The brightest pixel is capped at #303030 for at least 4.5:1 contrast with muted
+text. The browser connector is still unavailable, so these are Canvas render
+checks, not full browser screenshots or an in-browser layout inspection.
