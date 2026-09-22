@@ -221,7 +221,6 @@ img { display: block; max-width: 100%; }
   .section { padding-block: 60px; }
   .about, .news, .experience, .honors, .education, .publications, .research-item, .project-heading, .project-description, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
   .section-heading h2, .wide-heading h2 { font-size: 38px; margin-top: 18px; }
-  .section-heading h2 br { display: none; }
   .intro { font-size: 21px; }
   .about-content p + p { margin-top: 18px; }
   .education { margin-top: 10px; padding-top: 34px; }
