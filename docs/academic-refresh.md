@@ -49,6 +49,8 @@ Desktop navigation highlights the last section whose heading has crossed the
 reading line just below the sticky header. At the document bottom, it selects
 the final Honors section even when the footer prevents that heading from
 reaching the top of the viewport.
+The active underline slides and resizes between links while their text color
+eases between states. Reduced-motion preferences disable these transitions.
 
 Experience now uses the fixed-square logo, institution/date/role/detail, and
 individual card layout of https://chang-xinhai.github.io/, recolored for the

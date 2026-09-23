@@ -90,7 +90,10 @@
   try { savedLanguage = localStorage.getItem('moonshot-language'); } catch { /* Use browser language. */ }
   applyLanguage(savedLanguage || (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en'), false);
   document.querySelectorAll('[data-language]').forEach(button => {
-    button.addEventListener('click', () => applyLanguage(button.dataset.language));
+    button.addEventListener('click', () => {
+      applyLanguage(button.dataset.language);
+      updateCurrentSection();
+    });
   });
 
   menuButton.addEventListener('click', () => setMenu(menu.hidden));
@@ -115,7 +118,9 @@
   const desktop = window.matchMedia('(min-width: 1151px)');
   desktop.addEventListener('change', event => { if (event.matches) setMenu(false); });
 
-  const navigation = [...document.querySelectorAll('.desktop-nav a')];
+  const nav = document.querySelector('.desktop-nav');
+  const navigation = [...nav.querySelectorAll('a')];
+  const indicator = nav.querySelector('.nav-indicator');
   const sections = navigation.map(link => document.querySelector(link.hash));
   const header = document.querySelector('.site-header');
   function updateCurrentSection() {
@@ -132,6 +137,15 @@
       if (index === currentIndex) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
+    const linkRect = navigation[currentIndex].getBoundingClientRect();
+    if (linkRect.width > 0) {
+      indicator.style.width = `${linkRect.width}px`;
+      indicator.style.transform = `translateX(${linkRect.left - nav.getBoundingClientRect().left}px)`;
+      if (!indicator.classList.contains('is-ready')) {
+        indicator.getBoundingClientRect();
+        indicator.classList.add('is-ready');
+      }
+    }
   }
   window.addEventListener('scroll', updateCurrentSection, { passive: true });
   window.addEventListener('resize', updateCurrentSection);
