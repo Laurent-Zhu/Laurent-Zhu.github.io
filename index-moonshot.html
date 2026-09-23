@@ -7,9 +7,9 @@
   <title>Yifan Zhu · 朱羿帆</title>
   <meta name="description" content="Yifan Zhu, Software Engineering undergraduate at Northwestern Polytechnical University. Research in large language models, multimodal agents and intelligent 3D-CAD modeling.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/academic.css?v=academic-nav-motion-1">
-  <script src="assets/js/academic-content.js?v=academic-education-1" defer=""></script>
-  <script src="assets/js/moonshot.js?v=academic-nav-motion-1" defer=""></script>
+  <link rel="stylesheet" href="assets/css/academic.css?v=academic-portfolio-1">
+  <script src="assets/js/academic-content.js?v=academic-portfolio-1" defer=""></script>
+  <script src="assets/js/moonshot.js?v=academic-portfolio-1" defer=""></script>
   <script src="assets/js/moonshot-background.js?v=academic-dark-1" defer=""></script>
 </head>
 <body>
@@ -22,9 +22,8 @@
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#news" data-i18n="nav.news">News</a>
         <a href="#publications" data-i18n="nav.publications">Publications</a>
-        <a href="#research" data-i18n="nav.research">Research</a>
         <a href="#experience" data-i18n="nav.experience">Experience</a>
-        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#projects" data-i18n="nav.projects">Portfolio</a>
         <a href="#honors" data-i18n="nav.honors">Honors</a>
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
@@ -41,8 +40,8 @@
     </div>
     <nav class="mobile-nav page-width" id="mobile-nav" aria-label="Mobile navigation" hidden="">
       <a href="#about" data-i18n="nav.about">About</a><a href="#news" data-i18n="nav.news">News</a>
-      <a href="#publications" data-i18n="nav.publications">Publications</a><a href="#research" data-i18n="nav.research">Research</a>
-      <a href="#experience" data-i18n="nav.experience">Experience</a><a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#publications" data-i18n="nav.publications">Publications</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a><a href="#projects" data-i18n="nav.projects">Portfolio</a>
       <a href="#honors" data-i18n="nav.honors">Honors</a><a href="#cv" data-i18n="nav.cv">CV</a>
     </nav>
   </header>
@@ -121,15 +120,6 @@
         </article>
       </section>
 
-      <section id="research" aria-labelledby="research-title">
-        <h2 data-i18n="research.title" id="research-title">Research</h2>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="research.r2.title">Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing</h3>
-          <p class="page__meta" data-i18n="research.r2.meta">Ongoing research</p>
-          <p class="archive__item-excerpt" data-i18n="research.r2.body">An ongoing CadQuery-based multimodal agent project for CAD generation, understanding, and editing. My work covers data construction, SFT format design, fine-tuning, and CAD-kernel verification.</p>
-        </article>
-      </section>
-
       <section id="experience" aria-labelledby="experience-title">
         <h2 data-i18n="experience.title" id="experience-title">Experience</h2>
         <div class="experience-list">
@@ -195,37 +185,75 @@
       </section>
 
       <section id="projects" aria-labelledby="projects-title">
-        <h2 data-i18n="projects.title" id="projects-title">Projects</h2>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="projects.p1.title">Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System</h3>
-          <p class="page__meta" data-i18n="projects.p1.meta">Undergraduate Innovation Training Project</p>
-          <p class="archive__item-excerpt" data-i18n="projects.p1.body">Built a visible-light and infrared UAV traffic perception system with YOLOv8-OBB detection and real-time Edge-Cloud-Dashboard visualization.</p>
-          <details class="project-details">
-            <summary data-i18n="projects.watchDemo">Watch demo</summary>
-            <figure class="project-demo">
-            <video controls="" preload="none" playsinline="" aria-label="Demo video for the drone traffic perception project" poster="assets/img/moonshot/drone-poster.webp">
-              <source src="assets/video/drone-traffic-demo.mp4" type="video/mp4">
-              <span data-i18n="projects.p1.videoFallback">Your browser does not support embedded video.</span>
-            </video>
-              <figcaption><a href="assets/video/drone-traffic-demo.mp4" target="_blank" rel="noopener noreferrer" data-copy="openVideo">Open video</a></figcaption>
-            </figure>
-          </details>
-        </article>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="projects.p2.title">AgriGuard Smart Agricultural Pest Management Platform</h3>
-          <p class="page__meta" data-i18n="projects.p2.meta">Agile Development Practice · Software Engineering Capstone Course</p>
-          <p class="archive__item-excerpt" data-i18n="projects.p2.body">Developed pest recognition APIs and deployed a YOLO model in a Scrum-built agricultural management system with RAG advice, task workflows and risk forecasting.</p>
-          <details class="project-details">
-            <summary data-i18n="projects.watchDemo">Watch demo</summary>
-            <figure class="project-demo">
-            <video controls="" preload="none" playsinline="" aria-label="Demo video for the AgriGuard smart agricultural pest management platform" poster="assets/img/moonshot/agri-poster.webp">
-              <source src="assets/video/agri-guard-demo.mp4" type="video/mp4">
-              <span data-i18n="projects.p2.videoFallback">Your browser does not support embedded video.</span>
-            </video>
-              <figcaption><a href="assets/video/agri-guard-demo.mp4" target="_blank" rel="noopener noreferrer" data-copy="openVideo">Open video</a></figcaption>
-            </figure>
-          </details>
-        </article>
+        <div class="portfolio-heading">
+          <h2 data-i18n="projects.title" id="projects-title">Portfolio</h2>
+          <div class="portfolio-controls" aria-label="Portfolio navigation" data-aria-copy="portfolioNavigation">
+            <span class="portfolio-counter" aria-live="polite"><span data-portfolio-index>01</span> / 03</span>
+            <button class="portfolio-arrow" type="button" data-portfolio-prev aria-label="Previous project" title="Previous project" data-aria-copy="previousProject" disabled>&larr;</button>
+            <button class="portfolio-arrow" type="button" data-portfolio-next aria-label="Next project" title="Next project" data-aria-copy="nextProject">&rarr;</button>
+          </div>
+        </div>
+        <div class="portfolio-track" data-portfolio-track role="region" aria-label="Projects" data-aria-copy="portfolioTrack" tabindex="0">
+          <article class="portfolio-card">
+            <div class="portfolio-card__media portfolio-card__media--diagram">
+              <img src="assets/img/portfolio/cadqueryllm.png" width="372" height="213" alt="CadQueryLLM workflow diagram showing model training and CAD agent verification" data-alt-copy="cadqueryImage" loading="lazy" decoding="async">
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__eyebrow"><span>01 / 03</span><span data-i18n="projects.cadquery.type">Multimodal CAD agent</span></p>
+              <h3 data-i18n="research.r2.title">Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing</h3>
+              <p class="portfolio-card__description" data-i18n="research.r2.body">I work on CadQuery data construction, unified SFT data design, model fine-tuning, and CAD-kernel-based verification and repair for an agent that generates, understands, and edits 3D-CAD models.</p>
+              <ul class="portfolio-card__tags" aria-label="Topics" data-aria-copy="portfolioTopics"><li>CadQuery</li><li data-i18n="projects.cadquery.tag">Multimodal agents</li></ul>
+              <p class="portfolio-card__status" data-i18n="research.r2.meta">Ongoing research</p>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <div class="portfolio-card__media">
+              <img src="assets/img/portfolio/uav-traffic-poster.webp" width="1600" height="900" alt="UAV viewing urban traffic through visible and infrared cameras" data-alt-copy="uavImage" loading="lazy" decoding="async">
+              <span class="portfolio-card__badge" data-i18n="projects.p1.badge">Innovation project</span>
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__eyebrow"><span>02 / 03</span><span data-i18n="projects.p1.type">Computer vision</span></p>
+              <h3 data-i18n="projects.p1.title">Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System</h3>
+              <p class="portfolio-card__meta" data-i18n="projects.p1.meta">National Undergraduate Innovation Training Project · Completed with a Good rating</p>
+              <p class="portfolio-card__description" data-i18n="projects.p1.body">Built a visible-light and infrared UAV traffic perception system with YOLOv8-OBB detection and real-time Edge-Cloud-Dashboard visualization.</p>
+              <ul class="portfolio-card__tags" aria-label="Topics" data-aria-copy="portfolioTopics"><li>YOLOv8-OBB</li><li data-i18n="projects.p1.tag">Edge-cloud</li></ul>
+              <details class="project-details">
+                <summary data-i18n="projects.watchDemo">Watch demo</summary>
+                <figure class="project-demo">
+                  <video controls="" preload="none" playsinline="" aria-label="UAV traffic perception demo" poster="assets/img/moonshot/drone-poster.webp">
+                    <source src="assets/video/drone-traffic-demo.mp4" type="video/mp4">
+                    <span data-i18n="projects.p1.videoFallback">Your browser does not support embedded video.</span>
+                  </video>
+                  <figcaption><a href="assets/video/drone-traffic-demo.mp4" target="_blank" rel="noopener noreferrer" data-copy="openVideo">Open video</a></figcaption>
+                </figure>
+              </details>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <div class="portfolio-card__media">
+              <img src="assets/img/portfolio/agriguard-poster.webp" width="1600" height="900" alt="Rice leaf roller moth detection and pest management workflow" data-alt-copy="agriImage" loading="lazy" decoding="async">
+              <span class="portfolio-card__badge" data-i18n="projects.p2.badge">Course project</span>
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__eyebrow"><span>03 / 03</span><span data-i18n="projects.p2.type">Agricultural AI</span></p>
+              <h3 data-i18n="projects.p2.title">AgriGuard Smart Agricultural Pest Management Platform</h3>
+              <p class="portfolio-card__meta" data-i18n="projects.p2.meta">Agile Software Development Course Project</p>
+              <p class="portfolio-card__description" data-i18n="projects.p2.body">Developed pest recognition APIs and deployed a YOLO model in a Scrum-built agricultural management system with RAG advice, task workflows and risk forecasting.</p>
+              <ul class="portfolio-card__tags" aria-label="Topics" data-aria-copy="portfolioTopics"><li data-i18n="projects.p2.tag">Pest recognition</li><li>RAG</li></ul>
+              <details class="project-details">
+                <summary data-i18n="projects.watchDemo">Watch demo</summary>
+                <figure class="project-demo">
+                  <video controls="" preload="none" playsinline="" aria-label="AgriGuard pest management demo" poster="assets/img/moonshot/agri-poster.webp">
+                    <source src="assets/video/agri-guard-demo.mp4" type="video/mp4">
+                    <span data-i18n="projects.p2.videoFallback">Your browser does not support embedded video.</span>
+                  </video>
+                  <figcaption><a href="assets/video/agri-guard-demo.mp4" target="_blank" rel="noopener noreferrer" data-copy="openVideo">Open video</a></figcaption>
+                </figure>
+              </details>
+            </div>
+          </article>
+        </div>
+        <div class="portfolio-progress" aria-hidden="true"><span data-portfolio-progress></span></div>
       </section>
 
       <section id="honors" aria-labelledby="honors-title">

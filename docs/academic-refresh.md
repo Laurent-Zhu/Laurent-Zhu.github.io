@@ -7,16 +7,15 @@ The layout uses the template's academic reading hierarchy rather than its
 source code or assets: compact navigation, a portrait/contact column, and a
 continuous content column. Mobile stacks the profile above the content.
 
-The reading order is About, News, Publications, Ongoing Research, Experience,
-Selected Projects, and Honors. Recent News items are visible;
-earlier updates are available in a native disclosure. Each project keeps its
-embedded video in an expandable demo. The Skills list and decorative background
-were omitted from the initial academic revision.
+The reading order is About, News, Publications, Experience, Portfolio, and
+Honors. Recent News items are visible; earlier updates are available in a
+native disclosure. The Skills list and decorative background were omitted
+from the initial academic revision.
 
 The BrepLLM entry includes its verified ECCV 2026 author list, publisher page,
 preprint, project page, and code. Springer lists it as first published online on
-2026-09-15. The CadQuery work appears under Ongoing Research rather than
-Publications. The current Chinese and English CVs are the content reference.
+2026-09-15. The CadQuery work appears in Portfolio rather than Publications.
+The current Chinese and English CVs are the content reference.
 
 The final design restores the dark palette and animated pixel nebula inspired by
 https://careers.kimi.com/land-on while retaining the compact academic hierarchy.
@@ -69,10 +68,20 @@ logo from https://en.wikipedia.org/wiki/File:NationalUniversityofSingapore.svg.
 The NUS crest and namestyle are kept together in line with its identity
 guidelines (https://nus.edu.sg/identity/guidelines/logo-guideline).
 
+Portfolio combines the former Ongoing Research and Selected Projects sections.
+Its image-led, horizontally scrollable cards and arrow/progress controls are
+adapted from the structure of https://chenxxxxxx06.github.io/ while retaining
+this page's dark green palette and compact academic copy. The owner's
+`assets/img/cadqueryllm.png` diagram is copied to `assets/img/portfolio/` and
+displayed without cropping. The UAV and AgriGuard card art is newly generated
+project-poster imagery, not a screenshot of either working system. Their
+original demo videos and real interface frames remain available through the
+expandable Watch demo controls. The original `#projects` anchor remains intact.
+
 This refresh uses `assets/css/academic.css`, `assets/js/academic-content.js`,
 and `assets/js/moonshot-background.js`.
 The original homepage, CVs, videos, and former dark-theme files are retained.
-Twelve DOM checks cover assets, reading order, publication metadata, translation,
+Fourteen DOM checks cover assets, reading order, publication metadata, translation,
 chronological News and Experience, CVs, demos, and mobile navigation. Sixteen Canvas checks
 cover desktop/mobile pixels, controls, lifecycle and fallback states. Browser visual QA was
 unavailable because the computer-use browser connection failed and local file

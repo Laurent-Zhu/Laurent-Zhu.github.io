@@ -9,7 +9,12 @@
       backTop: 'Back to top', profileAlt: 'Yifan Zhu',
       videoUAV: 'UAV traffic perception demo', videoAgri: 'AgriGuard pest management demo',
       profileLinks: 'Profile links', resumeZh: 'Chinese CV', resumeEn: 'English CV',
-      poster: 'View full BrepLLM poster', posterAlt: 'BrepLLM ECCV 2026 research poster'
+      poster: 'View full BrepLLM poster', posterAlt: 'BrepLLM ECCV 2026 research poster',
+      portfolioNavigation: 'Portfolio navigation', portfolioTrack: 'Projects',
+      portfolioTopics: 'Topics', previousProject: 'Previous project', nextProject: 'Next project',
+      cadqueryImage: 'CadQueryLLM workflow diagram showing model training and CAD agent verification',
+      uavImage: 'UAV viewing urban traffic through visible and infrared cameras',
+      agriImage: 'Rice leaf roller moth detection and pest management workflow'
     },
     zh: {
       skip: '跳转到正文',
@@ -18,7 +23,12 @@
       backTop: '回到顶部', profileAlt: '朱羿帆',
       videoUAV: '无人机交通感知系统演示', videoAgri: 'AgriGuard 病虫害管理平台演示',
       profileLinks: '个人主页链接', resumeZh: '中文简历', resumeEn: '英文简历',
-      poster: '查看 BrepLLM 完整海报', posterAlt: 'BrepLLM ECCV 2026 研究海报'
+      poster: '查看 BrepLLM 完整海报', posterAlt: 'BrepLLM ECCV 2026 研究海报',
+      portfolioNavigation: '作品集切换', portfolioTrack: '项目作品',
+      portfolioTopics: '项目关键词', previousProject: '上一个项目', nextProject: '下一个项目',
+      cadqueryImage: 'CadQueryLLM 模型训练与 CAD Agent 验证流程图',
+      uavImage: '无人机通过可见光与红外影像观察城市交通',
+      agriImage: '稻纵卷叶螟识别与病虫害管理流程'
     }
   };
   let language = 'en';
@@ -152,6 +162,43 @@
   window.addEventListener('hashchange', updateCurrentSection);
   window.addEventListener('load', updateCurrentSection);
   updateCurrentSection();
+
+  const portfolioTrack = document.querySelector('[data-portfolio-track]');
+  const portfolioCards = [...portfolioTrack.querySelectorAll('.portfolio-card')];
+  const portfolioIndex = document.querySelector('[data-portfolio-index]');
+  const portfolioProgress = document.querySelector('[data-portfolio-progress]');
+  const previousProject = document.querySelector('[data-portfolio-prev]');
+  const nextProject = document.querySelector('[data-portfolio-next]');
+  let currentProject = 0;
+  function updatePortfolio() {
+    const trackCenter = portfolioTrack.getBoundingClientRect().left + portfolioTrack.clientWidth / 2;
+    let nearestDistance = Infinity;
+    portfolioCards.forEach((card, index) => {
+      const bounds = card.getBoundingClientRect();
+      const distance = Math.abs(bounds.left + bounds.width / 2 - trackCenter);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        currentProject = index;
+      }
+    });
+    portfolioIndex.textContent = String(currentProject + 1).padStart(2, '0');
+    portfolioProgress.style.width = `${(currentProject + 1) / portfolioCards.length * 100}%`;
+    previousProject.disabled = currentProject === 0;
+    nextProject.disabled = currentProject === portfolioCards.length - 1;
+  }
+  function scrollToProject(index) {
+    const target = portfolioCards[Math.max(0, Math.min(index, portfolioCards.length - 1))];
+    portfolioTrack.scrollTo({
+      left: target.offsetLeft - portfolioCards[0].offsetLeft,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+    });
+  }
+  previousProject.addEventListener('click', () => scrollToProject(currentProject - 1));
+  nextProject.addEventListener('click', () => scrollToProject(currentProject + 1));
+  portfolioTrack.addEventListener('scroll', updatePortfolio, { passive: true });
+  window.addEventListener('resize', updatePortfolio);
+  window.addEventListener('load', updatePortfolio);
+  updatePortfolio();
 
   // Keep only one project soundtrack playing at a time.
   const videos = [...document.querySelectorAll('video')];
