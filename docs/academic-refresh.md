@@ -45,6 +45,10 @@ On desktop the sidebar stays sticky while the main column scrolls. Short
 viewports can scroll the sidebar's own content to reach the globe; mobile
 layouts keep the sidebar in the normal document flow.
 
+Desktop navigation highlights the latest visible section within the reading
+band. At the document bottom, it selects the final Honors section even when
+the footer prevents that heading from reaching the top of the viewport.
+
 Experience now uses the fixed-square logo, institution/date/role/detail, and
 individual card layout of https://chang-xinhai.github.io/, recolored for the
 dark Moonshot theme. Every logo frame is 100 x 100 pixels on desktop and
