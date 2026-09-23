@@ -144,6 +144,8 @@ img { display: block; max-width: 100%; }
 .page__content .portfolio-card__eyebrow { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 0 0 9px; color: var(--muted); font-size: 11px; line-height: 1.35; text-transform: uppercase; }
 .portfolio-card__eyebrow span:last-child { text-align: right; }
 .page__content .portfolio-card h3 { color: var(--ink); font: 600 18px/1.35 Georgia, 'Songti SC', serif; overflow-wrap: anywhere; }
+.portfolio-card h3 a { color: inherit; text-decoration: underline; text-decoration-color: #668d6e; text-underline-offset: 3px; }
+.portfolio-card h3 a:hover { color: var(--link); text-decoration-color: currentColor; }
 .page__content .portfolio-card__meta { margin-top: 7px; color: var(--muted); font-size: 12px; line-height: 1.45; }
 .page__content .portfolio-card__description { margin-top: 10px; color: var(--body); font-size: 13px; line-height: 1.55; }
 .portfolio-card__tags { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 0; margin-top: 14px; }
