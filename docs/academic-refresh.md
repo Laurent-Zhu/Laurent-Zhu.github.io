@@ -7,8 +7,8 @@ The layout uses the template's academic reading hierarchy rather than its
 source code or assets: compact navigation, a portrait/contact column, and a
 continuous content column. Mobile stacks the profile above the content.
 
-The reading order is About, News, Publications, Ongoing Research, Education,
-Experience, Selected Projects, and Honors. Recent News items are visible;
+The reading order is About, News, Publications, Ongoing Research, Experience,
+Selected Projects, and Honors. Recent News items are visible;
 earlier updates are available in a native disclosure. Each project keeps its
 embedded video in an expandable demo. The Skills list and decorative background
 were omitted from the initial academic revision.
@@ -55,7 +55,10 @@ eases between states. Reduced-motion preferences disable these transitions.
 Experience now uses the fixed-square logo, institution/date/role/detail, and
 individual card layout of https://chang-xinhai.github.io/, recolored for the
 dark Moonshot theme. Every logo frame is 100 x 100 pixels on desktop and
-88 x 88 pixels on small screens. The Singapore exchange remains one entry
+88 x 88 pixels on small screens. Education is the first, ongoing NPU card,
+including the degree, GPA, and class rank; there is no separate Education
+section or navigation item. Its seal comes from the NPU archives at
+https://dag.nwpu.edu.cn/info/1308/4519.htm. The Singapore exchange remains one entry
 with NTU, NUS, and SMU logos; the 2024 exchange pairs NTU with NPU. The
 internship and software-association entries use the owner's supplied icons.
 School marks are stored locally at `assets/img/experience/`: NTU from
@@ -69,7 +72,7 @@ guidelines (https://nus.edu.sg/identity/guidelines/logo-guideline).
 This refresh uses `assets/css/academic.css`, `assets/js/academic-content.js`,
 and `assets/js/moonshot-background.js`.
 The original homepage, CVs, videos, and former dark-theme files are retained.
-Eleven DOM checks cover assets, reading order, publication metadata, translation,
+Twelve DOM checks cover assets, reading order, publication metadata, translation,
 chronological News and Experience, CVs, demos, and mobile navigation. Sixteen Canvas checks
 cover desktop/mobile pixels, controls, lifecycle and fallback states. Browser visual QA was
 unavailable because the computer-use browser connection failed and local file
