@@ -4,17 +4,15 @@
   const copy = {
     en: {
       skip: 'Skip to content',
-      aboutIntro: "I'm Yifan Zhu, a Software Engineering undergraduate at Northwestern Polytechnical University.",
       openVideo: 'Open video',
-      original: 'Original homepage', menuOpen: 'Open navigation', menuClose: 'Close navigation',
+      home: 'Yifan Zhu, home', menuOpen: 'Open navigation', menuClose: 'Close navigation',
       backTop: 'Back to top', profileAlt: 'Yifan Zhu',
       videoUAV: 'UAV traffic perception demo', videoAgri: 'AgriGuard pest management demo'
     },
     zh: {
       skip: '跳转到正文',
-      aboutIntro: '我是朱羿帆，西北工业大学软件工程专业本科生。',
       openVideo: '打开视频',
-      original: '原版主页', menuOpen: '打开导航', menuClose: '关闭导航',
+      home: '朱羿帆，回到顶部', menuOpen: '打开导航', menuClose: '关闭导航',
       backTop: '回到顶部', profileAlt: '朱羿帆',
       videoUAV: '无人机交通感知系统演示', videoAgri: 'AgriGuard 病虫害管理平台演示'
     }
@@ -57,6 +55,7 @@
     document.querySelector('.header-cv').href = language === 'zh'
       ? 'assets/cv/yifan_zhu_resume.pdf' : 'assets/cv/yifan_zhu_resume_en.pdf';
     document.querySelector('.profile-photo').alt = copy[language].profileAlt;
+    document.querySelector('.wordmark').setAttribute('aria-label', copy[language].home);
     document.querySelectorAll('video').forEach((video, index) => {
       video.setAttribute('aria-label', copy[language][index === 0 ? 'videoUAV' : 'videoAgri']);
     });
@@ -94,7 +93,7 @@
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
-  const desktop = window.matchMedia('(min-width: 1024px)');
+  const desktop = window.matchMedia('(min-width: 1151px)');
   desktop.addEventListener('change', event => { if (event.matches) setMenu(false); });
 
   if ('IntersectionObserver' in window) {
@@ -119,4 +118,9 @@
   videos.forEach(video => video.addEventListener('play', () => {
     videos.forEach(other => { if (other !== video) other.pause(); });
   }));
+  document.querySelectorAll('.project-details').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (!details.open) details.querySelector('video')?.pause();
+    });
+  });
 })();

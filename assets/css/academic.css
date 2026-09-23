@@ -1,0 +1,134 @@
+:root {
+  color-scheme: light;
+  --page: #fff;
+  --ink: #222a30;
+  --body: #394149;
+  --muted: #626d75;
+  --line: #e1e6e8;
+  --link: #176a84;
+  --hover: #0b495e;
+  --sans: Arial, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+* { box-sizing: border-box; letter-spacing: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+body { margin: 0; background: var(--page); color: var(--body); font: 15px/1.65 var(--sans); }
+body.menu-open { overflow: hidden; }
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--hover); text-decoration: underline; text-underline-offset: 3px; }
+button { border: 0; color: inherit; font: inherit; cursor: pointer; }
+button, a { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+:where(button, a, video, summary):focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { color: var(--ink); line-height: 1.35; }
+ul, ol { margin: 0; padding-left: 20px; }
+img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+.page-width { width: min(1100px, calc(100% - 56px)); margin-inline: auto; }
+.icon { width: 17px; height: 17px; flex: 0 0 17px; }
+.icon-button { display: inline-flex; justify-content: center; align-items: center; width: 38px; height: 38px; background: transparent; border-radius: 3px; }
+.icon-button:hover { background: #edf3f5; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; background: var(--ink); color: #fff; padding: 8px 14px; }
+.skip-link:focus { top: 12px; }
+
+.site-header { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 64px; }
+.wordmark { color: var(--ink); font-size: 15px; font-weight: 700; white-space: nowrap; }
+.wordmark:hover { color: var(--link); text-decoration: none; }
+.wordmark-cn { color: var(--muted); font-size: 13px; font-weight: 400; }
+.desktop-nav { display: flex; align-items: center; gap: 18px; margin-left: auto; }
+.desktop-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--body); font-size: 13px; white-space: nowrap; border-bottom: 2px solid transparent; padding-top: 2px; }
+.desktop-nav a:hover, .desktop-nav a[aria-current] { color: var(--link); text-decoration: none; border-color: var(--link); }
+.header-actions { display: flex; align-items: center; gap: 14px; }
+.language-switch { display: flex; align-items: center; color: var(--muted); font-size: 12px; }
+.language-switch button { min-width: 30px; height: 38px; background: none; padding: 0 3px; }
+.language-switch button[aria-pressed='true'] { color: var(--ink); font-weight: 700; }
+.language-switch button:hover { color: var(--link); }
+.header-cv { display: inline-flex; align-items: center; gap: 5px; color: var(--link); font-size: 13px; white-space: nowrap; }
+.header-cv .icon { width: 15px; height: 15px; flex-basis: 15px; }
+.menu-toggle { display: none; }
+.mobile-nav { position: absolute; top: 100%; inset-inline: 0; max-height: calc(100dvh - 64px); overflow-y: auto; background: #fff; border: 1px solid var(--line); border-top: 0; padding: 10px 22px 18px; }
+.mobile-nav a { display: block; padding: 10px 0; color: var(--ink); font-size: 15px; }
+
+.page-layout { display: grid; grid-template-columns: 224px minmax(0, 1fr); align-items: start; gap: 60px; padding-block: 44px 72px; }
+.sidebar { position: sticky; top: 100px; min-width: 0; font-size: 13px; }
+.author__avatar { width: 156px; height: 156px; margin-bottom: 18px; border-radius: 50%; overflow: hidden; }
+.profile-photo { width: 100%; height: 100%; object-fit: cover; object-position: 22% 26%; }
+.author__name { font-size: 23px; font-weight: 700; }
+.author__pronunciation { margin-top: 2px; color: var(--muted); font-size: 14px; }
+.author__role { margin-top: 13px; color: var(--ink); line-height: 1.5; }
+.author__affiliation, .author__location { margin-top: 4px; line-height: 1.5; }
+.author__location { color: var(--muted); }
+.author__urls-wrapper { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.author__urls-title { margin-bottom: 10px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.author__urls { display: grid; gap: 8px; list-style: none; padding: 0; }
+.author__urls li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.author__urls .label { color: var(--muted); font-size: 12px; }
+.author__urls span, .author__urls a { overflow-wrap: anywhere; }
+.hidden-links, .cv-links { display: flex; flex-wrap: wrap; gap: 5px 12px; }
+
+.page__content { min-width: 0; max-width: 760px; }
+.page__content section { margin-top: 36px; scroll-margin-top: 12px; }
+.page__content section:first-child { margin-top: 0; }
+.page__content h1, .page__content h2 { padding-bottom: 9px; margin-bottom: 18px; border-bottom: 1px solid var(--line); font-size: 22px; font-weight: 700; }
+.page__content h3 { font-size: 16px; font-weight: 700; }
+.page__content p + p { margin-top: 9px; }
+.page__content li + li { margin-top: 8px; }
+.news-list { list-style: none; padding: 0; }
+.news-list li { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 8px; }
+.news-date, .item-date { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.news-archive { margin-top: 14px; }
+.news-archive summary, .project-details summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 13px; }
+.news-archive .news-list { margin-top: 12px; }
+.publication__venue { margin-bottom: 4px; color: var(--muted); font-size: 13px; font-weight: 700; }
+.publication h3 a { color: var(--ink); }
+.publication h3 a:hover { color: var(--link); }
+.publication__authors { margin-top: 6px; font-size: 14px; }
+.publication__authors strong { color: var(--ink); }
+.publication__summary { margin-top: 7px; }
+.publication__links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 8px; font-size: 13px; }
+.archive__item + .archive__item { margin-top: 25px; }
+.archive__item-title { margin-bottom: 4px; }
+.page__content .page__meta { margin-bottom: 8px; color: var(--muted); font-size: 13px; }
+.subsection-title { margin: 20px 0 10px; }
+.dated-list { list-style: none; padding: 0; }
+.dated-list li { display: grid; grid-template-columns: 142px minmax(0, 1fr); gap: 12px; }
+.project-details { margin-top: 10px; }
+.project-demo { margin: 12px 0 0; }
+.project-demo video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #171b1e; border: 1px solid var(--line); }
+.project-demo figcaption { margin-top: 5px; font-size: 13px; }
+.site-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-block: 16px 28px; color: var(--muted); font-size: 12px; }
+
+@media (max-width: 1150px) {
+  .desktop-nav { display: none; }
+  .menu-toggle { display: inline-flex; }
+}
+@media (max-width: 850px) {
+  .page-width { width: min(740px, calc(100% - 44px)); }
+  .page-layout { grid-template-columns: minmax(0, 1fr); gap: 26px; padding-top: 30px; }
+  .sidebar { position: static; display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 0 20px; }
+  .author__avatar { width: 128px; height: 128px; margin: 0; }
+  .author__urls-wrapper { grid-column: 1 / -1; margin-top: 18px; }
+  .author__urls { grid-template-columns: 1fr 1fr; gap: 8px 20px; }
+  .page__content { max-width: none; }
+}
+@media (max-width: 560px) {
+  .page-width { width: calc(100% - 36px); }
+  .header-inner { gap: 10px; }
+  .header-actions { gap: 6px; }
+  .header-cv { display: none; }
+  .wordmark { font-size: 13px; }
+  .wordmark-cn { font-size: 12px; }
+  .sidebar { grid-template-columns: 92px minmax(0, 1fr); gap: 0 16px; }
+  .author__avatar { width: 92px; height: 92px; }
+  .author__name { font-size: 21px; }
+  .author__role { margin-top: 7px; }
+  .author__urls { grid-template-columns: 1fr; }
+  .page__content h1, .page__content h2 { font-size: 20px; }
+  .news-list li, .dated-list li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .news-date, .item-date { margin-bottom: 1px; }
+  .page__content section { margin-top: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
