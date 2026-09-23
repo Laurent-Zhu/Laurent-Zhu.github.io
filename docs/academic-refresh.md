@@ -71,10 +71,12 @@ guidelines (https://nus.edu.sg/identity/guidelines/logo-guideline).
 Portfolio combines the former Ongoing Research and Selected Projects sections.
 Its image-led, horizontally scrollable cards and arrow/progress controls are
 adapted from the structure of https://chenxxxxxx06.github.io/ while retaining
-this page's dark green palette and compact academic copy. The owner's
-`assets/img/cadqueryllm.png` diagram is copied to `assets/img/portfolio/` and
-displayed without cropping. The UAV and AgriGuard card art is newly generated
-project-poster imagery, not a screenshot of either working system. Their
+this page's dark green palette and compact academic copy. The owner's original
+CadQueryLLM workflow diagram is retained in `assets/img/portfolio/cadqueryllm.png`;
+the card displays a newly generated CAD-themed poster instead, with an HTML
+status badge at the lower left that switches language with the page. The UAV
+and AgriGuard card art is also generated project-poster imagery, not a screenshot
+of either working system. Their
 original demo videos and real interface frames remain available through the
 expandable Watch demo controls. The original `#projects` anchor remains intact.
 

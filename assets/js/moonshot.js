@@ -12,7 +12,7 @@
       poster: 'View full BrepLLM poster', posterAlt: 'BrepLLM ECCV 2026 research poster',
       portfolioNavigation: 'Portfolio navigation', portfolioTrack: 'Projects',
       portfolioTopics: 'Topics', previousProject: 'Previous project', nextProject: 'Next project',
-      cadqueryImage: 'CadQueryLLM workflow diagram showing model training and CAD agent verification',
+      cadqueryImage: 'Mechanical CAD model changing from wireframe to verified solid',
       uavImage: 'UAV viewing urban traffic through visible and infrared cameras',
       agriImage: 'Rice leaf roller moth detection and pest management workflow'
     },
@@ -26,7 +26,7 @@
       poster: '查看 BrepLLM 完整海报', posterAlt: 'BrepLLM ECCV 2026 研究海报',
       portfolioNavigation: '作品集切换', portfolioTrack: '项目作品',
       portfolioTopics: '项目关键词', previousProject: '上一个项目', nextProject: '下一个项目',
-      cadqueryImage: 'CadQueryLLM 模型训练与 CAD Agent 验证流程图',
+      cadqueryImage: '从线框过渡到验证后实体模型的机械 CAD 零件',
       uavImage: '无人机通过可见光与红外影像观察城市交通',
       agriImage: '稻纵卷叶螟识别与病虫害管理流程'
     }
