@@ -38,6 +38,9 @@ The supplied public widget script tracks page visits, uses a dark theme and
 slow rotation, and disables rotation when reduced motion is requested. The
 globe's data remains hosted by Statable; this site does not copy another
 homepage's visitor data or credentials.
+On desktop the sidebar stays sticky while the main column scrolls. Short
+viewports can scroll the sidebar's own content to reach the globe; mobile
+layouts keep the sidebar in the normal document flow.
 
 This refresh uses `assets/css/academic.css`, `assets/js/academic-content.js`,
 and `assets/js/moonshot-background.js`.
