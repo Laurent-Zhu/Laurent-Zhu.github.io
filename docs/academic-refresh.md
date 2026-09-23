@@ -33,6 +33,12 @@ https://eccv.ecva.net/media/PosterPDFs/ECCV%202026/5778.png).
 No citation counter is shown because this site does not have
 a reliable, automatically maintained source for it.
 
+The profile column also includes the owner's Statable 30-day 3D visitor globe.
+The supplied public widget script tracks page visits, uses a dark theme and
+slow rotation, and disables rotation when reduced motion is requested. The
+globe's data remains hosted by Statable; this site does not copy another
+homepage's visitor data or credentials.
+
 This refresh uses `assets/css/academic.css`, `assets/js/academic-content.js`,
 and `assets/js/moonshot-background.js`.
 The original homepage, CVs, videos, and former dark-theme files are retained.

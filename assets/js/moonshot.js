@@ -24,6 +24,10 @@
   let language = 'en';
   const menuButton = document.querySelector('.menu-toggle');
   const menu = document.querySelector('#mobile-nav');
+  const globeScript = document.querySelector('.visitor-globe__embed script');
+  if (globeScript && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    globeScript.dataset.rotationSpeed = 'off';
+  }
 
   function updateMenuLabel(open) {
     const label = copy[language][open ? 'menuClose' : 'menuOpen'];
