@@ -7,14 +7,18 @@
       openVideo: 'Open video',
       home: 'Yifan Zhu, home', menuOpen: 'Open navigation', menuClose: 'Close navigation',
       backTop: 'Back to top', profileAlt: 'Yifan Zhu',
-      videoUAV: 'UAV traffic perception demo', videoAgri: 'AgriGuard pest management demo'
+      videoUAV: 'UAV traffic perception demo', videoAgri: 'AgriGuard pest management demo',
+      profileLinks: 'Profile links', resumeZh: 'Chinese CV', resumeEn: 'English CV',
+      poster: 'View full BrepLLM poster', posterAlt: 'BrepLLM ECCV 2026 research poster'
     },
     zh: {
       skip: '跳转到正文',
       openVideo: '打开视频',
       home: '朱羿帆，回到顶部', menuOpen: '打开导航', menuClose: '关闭导航',
       backTop: '回到顶部', profileAlt: '朱羿帆',
-      videoUAV: '无人机交通感知系统演示', videoAgri: 'AgriGuard 病虫害管理平台演示'
+      videoUAV: '无人机交通感知系统演示', videoAgri: 'AgriGuard 病虫害管理平台演示',
+      profileLinks: '个人主页链接', resumeZh: '中文简历', resumeEn: '英文简历',
+      poster: '查看 BrepLLM 完整海报', posterAlt: 'BrepLLM ECCV 2026 研究海报'
     }
   };
   let language = 'en';
@@ -47,6 +51,17 @@
     document.querySelectorAll('[data-copy]').forEach(element => {
       const value = copy[language][element.dataset.copy];
       if (value !== undefined) element.innerHTML = value;
+    });
+    document.querySelectorAll('[data-aria-copy]').forEach(element => {
+      const value = copy[language][element.dataset.ariaCopy];
+      if (value !== undefined) {
+        element.setAttribute('aria-label', value);
+        if (element.hasAttribute('title')) element.title = value;
+      }
+    });
+    document.querySelectorAll('[data-alt-copy]').forEach(element => {
+      const value = copy[language][element.dataset.altCopy];
+      if (value !== undefined) element.alt = value;
     });
     document.querySelectorAll('[data-language]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.language === language));

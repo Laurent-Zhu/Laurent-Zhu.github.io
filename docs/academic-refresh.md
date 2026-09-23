@@ -23,6 +23,16 @@ https://careers.kimi.com/land-on while retaining the compact academic hierarchy.
 The background's pause control, stored preference, reduced-motion behavior and
 mobile frame cap are unchanged from the previous Moonshot version.
 
+The profile column now takes its portrait-first, centered contact hierarchy from
+https://chang-xinhai.github.io/ without changing the two-column page layout. It
+keeps both email addresses, Google Scholar, GitHub, and both CV languages. The
+single ECCV publication uses the same reference's image-and-details pattern,
+with a local optimized preview of the official BrepLLM poster and a link to the
+full local poster (source:
+https://eccv.ecva.net/media/PosterPDFs/ECCV%202026/5778.png).
+No citation counter is shown because this site does not have
+a reliable, automatically maintained source for it.
+
 This refresh uses `assets/css/academic.css`, `assets/js/academic-content.js`,
 and `assets/js/moonshot-background.js`.
 The original homepage, CVs, videos, and former dark-theme files are retained.
