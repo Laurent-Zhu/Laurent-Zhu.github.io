@@ -3,925 +3,273 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
   <title>Yifan Zhu · 朱羿帆</title>
-  <meta name="description" content="Yifan Zhu (朱羿帆), Software Engineering undergraduate at Northwestern Polytechnical University.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --clay: #d97757;
-      --clay-light: rgba(217, 119, 87, 0.1);
-      --clay-mid: rgba(217, 119, 87, 0.22);
-      --bg: #faf9f5;
-      --bg-sidebar: #f3f1ea;
-      --bg-card: #fefdfb;
-      --bg-hover: rgba(20, 20, 19, 0.05);
-      --bg-muted: #eeebe3;
-      --ink: #141413;
-      --ink-body: rgba(20, 20, 19, 0.8);
-      --ink-2: #5c5b57;
-      --ink-3: #aaa89f;
-      --rule-soft: rgba(20, 20, 19, 0.08);
-      --rule-default: rgba(20, 20, 19, 0.14);
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.04);
-      --sans: Inter, system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-      --serif: Lora, Georgia, "Times New Roman", serif;
-      --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink-body);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    a {
-      color: var(--clay);
-      text-decoration: none;
-      transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-    a:hover { color: var(--ink); }
-
-    .masthead {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(250, 249, 245, 0.93);
-      border-bottom: 1px solid var(--rule-soft);
-      backdrop-filter: blur(14px);
-    }
-
-    .masthead__inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .site-title {
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .site-title span {
-      display: block;
-      margin-top: -4px;
-      color: var(--ink-3);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0;
-    }
-
-    .masthead__menu {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 18px;
-      min-width: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .nav-links a { color: var(--ink-2); }
-    .nav-links a:hover { color: var(--clay); }
-
-    .lang-toggle {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid var(--rule-default);
-      background: var(--bg-card);
-      border-radius: 999px;
-      padding: 3px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .lang-toggle button {
-      border: 0;
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: transparent;
-      color: var(--ink-3);
-      cursor: pointer;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .lang-toggle button.active {
-      background: var(--clay);
-      color: #fff;
-    }
-
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 38px 28px 70px;
-      display: grid;
-      grid-template-columns: 270px minmax(0, 1fr);
-      gap: 56px;
-      align-items: start;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 92px;
-      min-width: 0;
-      color: var(--ink-2);
-    }
-
-    .author__avatar {
-      width: 168px;
-      height: 168px;
-      margin: 0 0 22px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 6px 24px rgba(217, 119, 87, 0.16);
-      border: 1px solid var(--clay-mid);
-      background: var(--bg-card);
-    }
-
-    .author__avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 22% 26%;
-      display: block;
-    }
-
-    .author__name {
-      margin: 0;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 28px;
-      line-height: 1.2;
-      font-weight: 600;
-    }
-
-    .author__pronunciation {
-      margin: 6px 0 10px;
-      color: var(--ink-2);
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .author__bio {
-      margin: 0 0 18px;
-      max-width: 240px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .author__urls-wrapper {
-      margin-top: 18px;
-      padding-top: 18px;
-      border-top: 1px solid var(--rule-soft);
-    }
-
-    .author__urls-title {
-      margin: 0 0 10px;
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .author__urls {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 7px;
-      font-size: 13px;
-    }
-
-    .author__urls a,
-    .author__urls span {
-      color: var(--ink-2);
-      overflow-wrap: anywhere;
-    }
-
-    .author__urls li {
-      display: grid;
-      grid-template-columns: 88px minmax(0, 1fr);
-      align-items: start;
-      column-gap: 14px;
-    }
-
-    .author__urls a:hover { color: var(--clay); }
-    .author__urls .label {
-      color: var(--ink-3);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 600;
-      overflow-wrap: normal;
-      white-space: nowrap;
-    }
-
-    .page__content {
-      min-width: 0;
-      max-width: 790px;
-    }
-
-    .page__title {
-      margin: 0 0 18px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: clamp(32px, 4vw, 46px);
-      line-height: 1.18;
-      font-weight: 600;
-    }
-
-    .page__lead {
-      margin: 0 0 34px;
-      color: var(--ink-2);
-      font-size: 18px;
-      line-height: 1.75;
-    }
-
-    .notice {
-      margin: 0 0 34px;
-      padding: 16px 18px;
-      border-left: 4px solid var(--clay);
-      background: var(--clay-light);
-      color: var(--ink-body);
-    }
-
-    section {
-      padding: 34px 0;
-      border-top: 1px solid var(--rule-soft);
-      scroll-margin-top: 88px;
-    }
-
-    section:first-of-type { border-top: 0; padding-top: 4px; }
-
-    h2 {
-      margin: 0 0 18px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 25px;
-      line-height: 1.3;
-      font-weight: 600;
-    }
-
-    h3 {
-      margin: 0 0 5px;
-      color: var(--ink);
-      font-size: 17px;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-
-    p { margin: 0 0 14px; }
-    ul { margin: 8px 0 0; padding-left: 20px; }
-    li { margin: 0 0 7px; }
-    li::marker { color: var(--clay); }
-
-    .archive__item {
-      margin: 0 0 22px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid var(--rule-soft);
-    }
-
-    .archive__item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: 0;
-    }
-
-    .archive__item-title {
-      margin-bottom: 4px;
-    }
-
-    .page__meta {
-      margin: 0 0 8px;
-      color: var(--ink-3);
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .archive__item-excerpt {
-      margin: 0;
-      color: var(--ink-body);
-      font-size: 15px;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 10px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      border: 1px solid var(--rule-soft);
-      border-radius: 4px;
-      background: var(--bg-muted);
-      color: var(--ink-2);
-      padding: 2px 8px;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .project-demo {
-      margin-top: 16px;
-    }
-
-    .project-demo video {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 1px solid var(--rule-soft);
-      border-radius: 8px;
-      background: #000;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .project-demo figcaption {
-      margin-top: 8px;
-      color: var(--ink-3);
-      font-family: var(--mono);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .hidden-links,
-    .cv-links {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .hidden-links a,
-    .cv-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      border: 1px solid var(--rule-soft);
-      border-radius: 999px;
-      background: var(--bg-card);
-      padding: 2px 9px;
-      color: var(--ink-2);
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .hidden-links a:hover,
-    .cv-links a:hover {
-      border-color: var(--clay-mid);
-      background: var(--clay-light);
-      color: var(--clay);
-    }
-
-    .compact-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 10px;
-    }
-
-    .compact-list li {
-      margin: 0;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .compact-list li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.75em;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--clay);
-    }
-
-    .news-list {
-      gap: 12px;
-    }
-
-    .news-list li {
-      line-height: 1.65;
-    }
-
-    .news-date {
-      display: inline-block;
-      min-width: 86px;
-      color: var(--ink);
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .info-card {
-      border: 1px solid var(--rule-soft);
-      border-radius: 8px;
-      background: rgba(254, 253, 251, 0.6);
-      padding: 16px;
-    }
-
-    .footer {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 26px 28px 34px;
-      border-top: 1px solid var(--rule-soft);
-      color: var(--ink-3);
-      font-family: var(--mono);
-      font-size: 12px;
-    }
-
-    @media (max-width: 920px) {
-      .masthead__inner {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .masthead__menu {
-        width: 100%;
-        align-items: flex-start;
-        justify-content: space-between;
-      }
-
-      .nav-links {
-        overflow-x: auto;
-        padding-bottom: 4px;
-      }
-
-      .page {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding-top: 28px;
-      }
-
-      .sidebar {
-        position: static;
-        display: grid;
-        grid-template-columns: 124px minmax(0, 1fr);
-        gap: 18px;
-        align-items: start;
-      }
-
-      .author__avatar {
-        width: 124px;
-        height: 124px;
-      }
-
-      .author__urls-wrapper {
-        grid-column: 1 / -1;
-        margin-top: 0;
-      }
-
-      .author__bio { max-width: none; }
-    }
-
-    @media (max-width: 620px) {
-      body { font-size: 15px; }
-      .masthead__inner { padding: 13px 18px; }
-      .page { padding: 24px 18px 56px; }
-      .site-title { font-size: 18px; }
-      .masthead__menu { flex-direction: column; gap: 12px; }
-      .nav-links { width: 100%; }
-      .sidebar { grid-template-columns: 96px minmax(0, 1fr); }
-      .author__avatar { width: 96px; height: 96px; }
-      .author__name { font-size: 23px; }
-      .page__lead { font-size: 16px; }
-      .two-column { grid-template-columns: 1fr; }
-      .news-date { display: block; min-width: 0; margin-bottom: 2px; }
-    }
-  </style>
+  <meta name="description" content="Yifan Zhu, Software Engineering undergraduate at Northwestern Polytechnical University. Research in large language models, multimodal agents and intelligent 3D-CAD modeling.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/academic.css?v=project-links-1">
+  <script src="assets/js/academic-content.js?v=cadquery-poster-1" defer=""></script>
+  <script src="assets/js/moonshot.js?v=cadquery-poster-1" defer=""></script>
+  <script src="assets/js/moonshot-background.js?v=academic-dark-1" defer=""></script>
 </head>
 <body>
-  <header class="masthead">
-    <div class="masthead__inner">
-      <a class="site-title" href="#about">
-        <span data-i18n="site.eyebrow">Academic Homepage</span>
-        <strong data-i18n="site.title">Yifan Zhu</strong>
-      </a>
-      <div class="masthead__menu">
-        <nav class="nav-links" aria-label="Primary navigation">
-          <a href="#about" data-i18n="nav.about">About</a>
-          <a href="#news" data-i18n="nav.news">News</a>
-          <a href="#research" data-i18n="nav.research">Research</a>
-          <a href="#publications" data-i18n="nav.publications">Publications</a>
-          <a href="#experience" data-i18n="nav.experience">Experience</a>
-          <a href="#projects" data-i18n="nav.projects">Projects</a>
-          <a href="#honors" data-i18n="nav.honors">Honors</a>
-          <a href="assets/cv/yifan_zhu_resume.pdf" data-i18n="nav.cv">CV</a>
-        </nav>
-        <div class="lang-toggle" aria-label="Language switcher">
-          <button type="button" data-lang-btn="en">EN</button>
-          <button type="button" data-lang-btn="zh">中文</button>
+  <canvas class="space-background" id="space-background" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#about" data-copy="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner page-width">
+      <a class="wordmark" href="#home" aria-label="Yifan Zhu, home">Yifan Zhu <span class="wordmark-cn">/ 朱羿帆</span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#news" data-i18n="nav.news">News</a>
+        <a href="#publications" data-i18n="nav.publications">Publications</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#projects" data-i18n="nav.projects">Portfolio</a>
+        <a href="#honors" data-i18n="nav.honors">Honors</a>
+        <span class="nav-indicator" aria-hidden="true"></span>
+      </nav>
+      <div class="header-actions">
+        <button class="motion-toggle icon-button" type="button" aria-label="Pause background animation" title="Pause background animation" hidden><img class="icon" src="assets/icons/moonshot/pause.svg" alt=""></button>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" data-language="en" aria-pressed="true" lang="en">EN</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-language="zh" aria-pressed="false" lang="zh-CN">中</button>
         </div>
+        <a class="header-cv" href="assets/cv/yifan_zhu_resume_en.pdf" target="_blank" rel="noopener noreferrer"><span data-i18n="nav.cv">CV</span><img class="icon" src="assets/icons/moonshot/arrow-up-right.svg" alt=""></a>
+        <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation" title="Open navigation"><img class="icon" src="assets/icons/moonshot/menu.svg" alt=""></button>
       </div>
     </div>
+    <nav class="mobile-nav page-width" id="mobile-nav" aria-label="Mobile navigation" hidden="">
+      <a href="#about" data-i18n="nav.about">About</a><a href="#news" data-i18n="nav.news">News</a>
+      <a href="#publications" data-i18n="nav.publications">Publications</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a><a href="#projects" data-i18n="nav.projects">Portfolio</a>
+      <a href="#honors" data-i18n="nav.honors">Honors</a><a href="#cv" data-i18n="nav.cv">CV</a>
+    </nav>
   </header>
 
-  <div class="page">
-    <aside class="sidebar">
+  <div class="page-layout page-width" id="home">
+    <aside class="sidebar" aria-labelledby="profile-name">
       <div class="author__avatar">
-        <img src="assets/img/profile_1.jpg" alt="Yifan Zhu">
+        <img src="assets/img/profile_1.jpg" alt="Yifan Zhu" class="profile-photo" width="176" height="176" fetchpriority="high">
       </div>
       <div class="author__content">
-        <h1 class="author__name" data-i18n="author.name">Yifan Zhu</h1>
+        <h2 class="author__name" id="profile-name" data-i18n="author.name">Yifan Zhu</h2>
         <p class="author__pronunciation" data-i18n="author.zh">朱羿帆</p>
-        <p class="author__bio" data-i18n="author.bio">Software Engineering undergraduate at Northwestern Polytechnical University. Interested in LLMs, multimodal agents, AI agents, and intelligent 3D-CAD modeling.</p>
+        <a class="author__email" href="mailto:laurent.zhu666@mail.nwpu.edu.cn">laurent.zhu666@mail.nwpu.edu.cn</a>
+        <p class="author__secondary-email"><a href="mailto:laurent.zhu666@gmail.com" title="laurent.zhu666@gmail.com">Gmail</a></p>
+        <p class="author__role" data-i18n="author.role">Software Engineering undergraduate</p>
+        <p class="author__affiliation" data-i18n="author.affiliation">Northwestern Polytechnical University</p>
+        <p class="author__location" data-i18n="author.location">Xi'an, China</p>
       </div>
-      <div class="author__urls-wrapper">
-        <p class="author__urls-title" data-i18n="author.follow">Follow</p>
-        <ul class="author__urls">
-          <li><span class="label" data-i18n="label.location">Location</span><span data-i18n="author.location">Xi'an, China</span></li>
-          <li><span class="label" data-i18n="label.affiliation">Affiliation</span><span data-i18n="author.affiliation">Northwestern Polytechnical University</span></li>
-          <li>
-            <span class="label" data-i18n="label.email">Email</span>
-            <span class="hidden-links">
-              <a href="mailto:laurent.zhu666@mail.nwpu.edu.cn" data-i18n="author.email.npu">NPU Mail</a>
-              <a href="mailto:laurent.zhu666@gmail.com" data-i18n="author.email.gmail">Gmail</a>
-            </span>
-          </li>
-          <li><span class="label" data-i18n="label.github">GitHub</span><a href="https://github.com/Laurent-Zhu">Laurent-Zhu</a></li>
-          <li>
-            <span class="label" data-i18n="label.cv">CV</span>
-            <span class="cv-links">
-              <a href="assets/cv/yifan_zhu_resume.pdf" data-i18n="author.cv.zh">Chinese</a>
-              <a href="assets/cv/yifan_zhu_resume_en.pdf" data-i18n="author.cv.en">English</a>
-            </span>
-          </li>
-        </ul>
+      <div class="author__urls-wrapper" id="contact">
+        <nav aria-label="Profile links" data-aria-copy="profileLinks">
+          <ul class="author__urls">
+            <li><a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=zh-CN&amp;user=kARw7RoAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar"><img src="assets/icons/moonshot/graduation-cap.svg" alt=""><span>Scholar</span></a></li>
+            <li><a href="https://github.com/Laurent-Zhu" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><img src="assets/icons/moonshot/github.svg" alt=""><span>GitHub</span></a></li>
+            <li id="cv"><a href="assets/cv/yifan_zhu_resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Chinese CV" title="Chinese CV" data-aria-copy="resumeZh"><img src="assets/icons/moonshot/file-text.svg" alt=""><span data-i18n="author.cv.zh">Chinese</span></a></li>
+            <li><a href="assets/cv/yifan_zhu_resume_en.pdf" target="_blank" rel="noopener noreferrer" aria-label="English CV" title="English CV" data-aria-copy="resumeEn"><img src="assets/icons/moonshot/file-text.svg" alt=""><span data-i18n="author.cv.en">English</span></a></li>
+          </ul>
+        </nav>
       </div>
+      <section class="visitor-globe" aria-labelledby="visitor-globe-title">
+        <h3 class="visitor-globe__heading" id="visitor-globe-title"><span data-i18n="widget.visitors">Visitors</span><span class="visitor-globe__period" data-i18n="widget.period">30 days</span></h3>
+        <div class="visitor-globe__embed">
+          <script defer src="https://statable.com/js/b3S96A2eEE/t/gw.js" data-id="3351457" data-period="30d" data-primary-color="#0004FF" data-theme="dark" data-rotation-speed="slow"></script>
+        </div>
+        <noscript>This visitor globe requires JavaScript.</noscript>
+      </section>
     </aside>
-
     <main class="page__content">
-      <section id="about">
-        <h1 class="page__title" data-i18n="hero.title">Yifan Zhu / 朱羿帆</h1>
-        <p class="page__lead" data-i18n="hero.lead">I am a junior Software Engineering undergraduate at Northwestern Polytechnical University. My current research focuses on large language models, multimodal agents, AI agents, and intelligent 3D-CAD modeling.</p>
-        <div class="notice" data-i18n="hero.notice">I am especially interested in building systems that connect language, vision, executable CAD programs, and structured engineering knowledge.</div>
-        <p data-i18n="about.p1">I am contributing to BrepLLM, an ECCV 2026 provisionally accepted paper that studies how large language models understand boundary representations, and to a unified multimodal agent framework for CadQuery-based 3D-CAD generation, understanding, and editing.</p>
-        <p data-i18n="about.p2">In graduate study, I hope to systematically explore model architecture design, multimodal agents, and AI agents, and later work on frontier LLM research in leading technology companies or high-level research labs.</p>
+      <section id="about" aria-labelledby="about-title">
+        <h1 class="page__title" data-i18n="about.title" id="about-title">About</h1>
+        <p data-i18n="about.p1">I am a Software Engineering undergraduate at Northwestern Polytechnical University. My research focuses on multimodal learning and language models for structured 3D-CAD understanding and generation.</p>
+        <p data-i18n="about.p2">I co-authored BrepLLM at ECCV 2026 and am currently working on a CadQuery-based multimodal agent for CAD generation, understanding, and editing.</p>
       </section>
 
-      <section id="news">
-        <h2 data-i18n="news.title">News</h2>
+      <section id="news" aria-labelledby="news-title">
+        <h2 data-i18n="news.title" id="news-title">News</h2>
         <ul class="compact-list news-list">
-          <li data-i18n="news.n0"><span class="news-date">2026.06.18</span> BrepLLM was provisionally accepted by ECCV 2026.</li>
-          <li data-i18n="news.n1"><span class="news-date">2026.03</span> BrepLLM was submitted to ECCV 2026, and I contributed to paper writing, revision, and experiment organization.</li>
-          <li data-i18n="news.n2"><span class="news-date">2025.12</span> I received the 2025 National Scholarship for Undergraduates.</li>
-          <li data-i18n="news.n3"><span class="news-date">2025.08</span> I joined a Singapore academic exchange program with NTU, NUS, SMU, and NPU, and presented an Agentic AI tutoring project.</li>
-          <li data-i18n="news.n4"><span class="news-date">2025.07.08</span> I interned as a backend development engineer at Shenzhen Kuakua Jingling Technology, working on agent workflow orchestration.</li>
-          <li data-i18n="news.n5"><span class="news-date">2025.06</span> I completed my term as President of the Student Software Association at Northwestern Polytechnical University.</li>
-          <li data-i18n="news.n6"><span class="news-date">2024.12</span> I received the 2024 National Scholarship for Undergraduates.</li>
-          <li data-i18n="news.n7"><span class="news-date">2024.05</span> I began serving as President of the Student Software Association, organizing programming courses, competitions, and technology events.</li>
-          <li data-i18n="news.n8"><span class="news-date">2024.01</span> I participated in the NTU-NPU academic exchange program and completed an RPA capstone project with my team.</li>
+          <li data-i18n="news.online"><span class="news-date">2026.09</span> BrepLLM appeared in the ECCV 2026 proceedings.</li>
+          <li data-i18n="news.n0"><span class="news-date">2026.06</span> BrepLLM was accepted by ECCV 2026.</li>
         </ul>
-      </section>
-
-      <section id="education">
-        <h2 data-i18n="education.title">Education</h2>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="education.degree">B.Eng. in Software Engineering</h3>
-          <p class="page__meta" data-i18n="education.meta">Northwestern Polytechnical University · Xi'an, China · Sep 2023 - Present</p>
-          <ul>
-            <li data-i18n="education.li1">GPA 3.813 / 4.1 · Rank 11 / 270 · Comprehensive evaluation rank 12 / 270</li>
-            <li data-i18n="education.li2">CET-4 613 · CET-6 587 · CET-6 Speaking: Excellent</li>
-            <li data-i18n="education.li3">Two-time National Scholarship recipient, one of only three students in the grade each year</li>
+        <details class="news-archive">
+          <summary data-i18n="news.older">Earlier updates</summary>
+          <ul class="compact-list news-list">
+            <li data-i18n="news.n1"><span class="news-date">2026.03</span> BrepLLM was submitted to ECCV 2026.</li>
+            <li data-i18n="news.n2"><span class="news-date">2025.12</span> I received the 2025 National Scholarship for Undergraduates.</li>
+            <li data-i18n="news.n3"><span class="news-date">2025.08</span> I presented an Agentic AI tutoring project during a Singapore academic exchange.</li>
+            <li data-i18n="news.n4"><span class="news-date">2025.07</span> I began a backend development internship at Shenzhen Kuakua Jingling Technology.</li>
+            <li data-i18n="news.n5"><span class="news-date">2025.06</span> I completed my term as President of the NPU Student Software Association.</li>
+            <li data-i18n="news.n6"><span class="news-date">2024.12</span> I received the 2024 National Scholarship for Undergraduates.</li>
+            <li data-i18n="news.n7"><span class="news-date">2024.05</span> I began serving as President of the NPU Student Software Association.</li>
+            <li data-i18n="news.n8"><span class="news-date">2024.01</span> I participated in the NTU-NPU academic exchange program.</li>
           </ul>
-        </article>
+        </details>
       </section>
 
-      <section id="research">
-        <h2 data-i18n="research.title">Research</h2>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="research.r1.title">BrepLLM: Enabling Large Language Models to Understand Boundary Representations</h3>
-          <p class="page__meta" data-i18n="research.r1.meta">Provisionally accepted · ECCV 2026 · Fifth author</p>
-          <p class="archive__item-excerpt" data-i18n="research.r1.body">This work explores how LLMs can understand B-rep data in solid CAD models. I contribute to dataset construction and experimental validation.</p>
-          <div class="tag-list"><span class="tag">LLM</span><span class="tag">CAD / B-rep</span><span class="tag">Dataset</span></div>
-        </article>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="research.r2.title">Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing</h3>
-          <p class="page__meta" data-i18n="research.r2.meta">Ongoing research</p>
-          <p class="archive__item-excerpt" data-i18n="research.r2.body">This project studies a multimodal agent framework for 3D-CAD generation, understanding, and editing, using executable Python CadQuery programs as the unified modeling representation. My work focuses on high-quality CadQuery data construction, unified SFT data format design, model fine-tuning, and CAD-kernel-based automated evaluation and repair.</p>
-          <div class="tag-list"><span class="tag">CadQuery</span><span class="tag">Multimodal Agent</span><span class="tag">CAD Kernel</span><span class="tag">SFT</span></div>
-        </article>
-      </section>
-
-      <section id="publications">
-        <h2 data-i18n="publications.title">Publications</h2>
-        <ol class="compact-list">
-          <li data-i18n="publications.p1"><strong>BrepLLM: Enabling Large Language Models to Understand Boundary Representations.</strong> Provisionally accepted by ECCV 2026, fifth author.</li>
-          <li data-i18n="publications.p2"><strong>Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing.</strong> Ongoing research project.</li>
-        </ol>
-      </section>
-
-      <section id="experience">
-        <h2 data-i18n="experience.title">Experience</h2>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="experience.role">Backend Development Engineer Intern</h3>
-          <p class="page__meta" data-i18n="experience.meta">Shenzhen Kuakua Jingling Technology Co., Ltd. · Jul 2025 - Aug 2025</p>
-          <ul>
-            <li data-i18n="experience.li1">Built workflow orchestration for a digital employee agent that automatically generates enterprise materials.</li>
-            <li data-i18n="experience.li2">Co-developed integration interfaces for a municipal Big Data Bureau project, covering the full cycle from requirements to launch.</li>
-            <li data-i18n="experience.li3">Researched AI multi-turn QA and knowledge-base products, producing a report that supported technology selection and product planning.</li>
-          </ul>
-        </article>
-      </section>
-
-      <section id="projects">
-        <h2 data-i18n="projects.title">Projects</h2>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="projects.p1.title">Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System</h3>
-          <p class="page__meta" data-i18n="projects.p1.meta">Undergraduate Innovation Training Project</p>
-          <p class="archive__item-excerpt" data-i18n="projects.p1.body">A UAV-based urban traffic object detection and visualization system using visible-light and infrared dual-modal fusion. The system targets parking lots, main roads, residential areas, and other urban scenes, trains a customized YOLOv8-OBB fusion model on DroneVehicle, and uses an Edge-Cloud-Dashboard architecture for 15 fps WebSocket streaming, FastAPI multi-node forwarding, and React-based real-time monitoring and offline replay.</p>
-          <div class="tag-list"><span class="tag">YOLOv8-OBB</span><span class="tag">DroneVehicle</span><span class="tag">FastAPI</span><span class="tag">React</span></div>
-          <figure class="project-demo">
-            <video controls preload="metadata" playsinline aria-label="Demo video for the drone traffic perception project">
-              <source src="assets/video/drone-traffic-demo.mp4" type="video/mp4">
-              <span data-i18n="projects.p1.videoFallback">Your browser does not support embedded video.</span>
-            </video>
-            <figcaption data-i18n="projects.p1.videoCaption">Project demo: real-time dual-modal drone traffic perception and dashboard visualization.</figcaption>
-          </figure>
-        </article>
-        <article class="archive__item">
-          <h3 class="archive__item-title" data-i18n="projects.p2.title">AgriGuard Smart Agricultural Pest Management Platform</h3>
-          <p class="page__meta" data-i18n="projects.p2.meta">Agile Development Practice · Software Engineering Capstone Course</p>
-          <p class="archive__item-excerpt" data-i18n="projects.p2.body">An end-to-end digital pest control system for farmers, managers, and field workers, integrating pest image recognition, RAG-based treatment recommendation, task scheduling, work-log traceability, and 7-day risk forecasting into a browser-accessible workflow. The stack uses Vue 3, Element Plus, ECharts, Django 5, DRF, JWT, YOLO, FAISS, LLM, and MySQL; our 7-person Scrum team delivered 3 sprints and 298+ backend automated test cases. I worked on backend APIs for pest recognition, YOLO model training and deployment, and selected frontend pages.</p>
-          <div class="tag-list"><span class="tag">Vue 3</span><span class="tag">Django 5</span><span class="tag">YOLO</span><span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">MySQL</span></div>
-          <figure class="project-demo">
-            <video controls preload="metadata" playsinline aria-label="Demo video for the AgriGuard smart agricultural pest management platform">
-              <source src="assets/video/agri-guard-demo.mp4" type="video/mp4">
-              <span data-i18n="projects.p2.videoFallback">Your browser does not support embedded video.</span>
-            </video>
-            <figcaption data-i18n="projects.p2.videoCaption">Project demo: AgriGuard pest recognition, RAG recommendation, task workflow, and risk forecasting.</figcaption>
-          </figure>
-        </article>
-      </section>
-
-      <section id="honors">
-        <h2 data-i18n="honors.title">Honors and Awards</h2>
-        <ul class="compact-list">
-          <li data-i18n="honors.a1">Honorable Mention, Mathematical Contest in Modeling (MCM), 2026.05</li>
-          <li data-i18n="honors.a2">National Scholarship for Undergraduates, 2024 and 2025</li>
-          <li data-i18n="honors.a3">Second Prize, 19th Challenge Cup National College Student Extracurricular Academic Science and Technology Works Competition, Open-Call Track, 2024</li>
-          <li data-i18n="honors.a4">Third Prize, 16th Chinese Mathematics Competitions, Non-Math A, 2024</li>
-          <li data-i18n="honors.a5">Third Prize, 18th National College Software Innovation Contest, Northwest Regional, 2025</li>
-          <li data-i18n="honors.a6">Third Prize, 11th National Statistical Modeling Competition, Shaanxi Division, 2025</li>
-          <li data-i18n="honors.a7">Second Prize, National Mathematical Contest in Modeling, Shaanxi Division, 2025</li>
-        </ul>
-      </section>
-
-      <section id="skills">
-        <h2 data-i18n="skills.title">Skills</h2>
-        <div class="two-column">
-          <div class="info-card">
-            <h3 data-i18n="skills.programming">Programming</h3>
-            <div class="tag-list"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Java</span></div>
+      <section id="publications" aria-labelledby="publications-title">
+        <h2 data-i18n="publications.title" id="publications-title">Publications</h2>
+        <article class="publication">
+          <a class="publication__media" href="assets/img/moonshot/brepllm-poster.png" target="_blank" rel="noopener noreferrer" aria-label="View full BrepLLM poster" title="View full BrepLLM poster" data-aria-copy="poster"><span class="publication__badge" aria-hidden="true">ECCV 2026</span><img src="assets/img/moonshot/brepllm-poster-preview.webp" width="960" height="767" alt="BrepLLM ECCV 2026 research poster" data-alt-copy="posterAlt" loading="lazy" decoding="async"></a>
+          <div class="publication__body">
+            <h3><a href="https://link.springer.com/chapter/10.1007/978-3-032-37383-0_3" target="_blank" rel="noopener noreferrer">BrepLLM: Enabling Large Language Models to Understand Boundary Representations</a></h3>
+            <p class="publication__authors">Liyuan Deng, Hao Guo, Yongkang Dai, Yunpeng Bai, <strong>Yifan Zhu</strong>, Yuanyuan Gao, Huaxi Huang, Yilei Shi</p>
+            <p class="publication__summary" data-i18n="publications.summary">A multimodal framework that lets language models reason directly over geometric and topological structures in native B-rep CAD models.</p>
+            <p class="publication__venue">ECCV 2026</p>
+            <p class="publication__links"><a href="https://arxiv.org/abs/2512.16413" target="_blank" rel="noopener noreferrer" data-i18n="publication.paper">Paper</a><a href="https://user-deng.github.io/BrepLLM/" target="_blank" rel="noopener noreferrer" data-i18n="publication.project">Project</a><a href="https://github.com/user-deng/BrepLLM" target="_blank" rel="noopener noreferrer" data-i18n="publication.code">Code</a><a href="assets/img/moonshot/brepllm-poster.png" target="_blank" rel="noopener noreferrer" data-i18n="publication.poster">Poster</a></p>
           </div>
-          <div class="info-card">
-            <h3 data-i18n="skills.ai">AI and Research</h3>
-            <div class="tag-list"><span class="tag">Machine Learning</span><span class="tag">NLP</span><span class="tag">LLM</span><span class="tag">AI Agent</span><span class="tag">Reinforcement Learning</span></div>
-          </div>
+        </article>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <h2 data-i18n="experience.title" id="experience-title">Experience</h2>
+        <div class="experience-list">
+          <article class="experience-card">
+            <div class="experience-media">
+              <img src="assets/img/experience/npu-seal.jpg" alt="Northwestern Polytechnical University seal" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-body">
+              <h3 class="experience-title"><strong data-i18n="experience.education.institution">Northwestern Polytechnical University, Xi'an, China</strong></h3>
+              <p class="experience-meta"><time datetime="2023-09">2023.09</time> <span data-i18n="experience.education.until">- Present</span></p>
+              <p class="experience-role" data-i18n="experience.education.role">B.Eng. Candidate in Software Engineering</p>
+              <p class="experience-detail" data-i18n="experience.education.summary">GPA 3.813 / 4.1 · Rank 11 / 270</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-media experience-media--group">
+              <img src="assets/img/experience/ntu.png" alt="Nanyang Technological University logo" loading="lazy" decoding="async">
+              <img src="assets/img/experience/nus.svg" alt="National University of Singapore logo" loading="lazy" decoding="async">
+              <img src="assets/img/experience/smu.svg" alt="Singapore Management University logo" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-body">
+              <h3 class="experience-title"><strong data-i18n="experience.singapore.institution">NTU · NUS · SMU, Singapore</strong></h3>
+              <p class="experience-meta"><time datetime="2025-08">2025.08</time></p>
+              <p class="experience-role" data-i18n="experience.singapore.role">Visiting Student &amp; Project Presenter</p>
+              <p class="experience-detail" data-i18n="experience.singapore.summary">Joined a Singapore academic exchange and presented an Agentic AI tutoring project.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-media">
+              <img src="assets/img/experience/kuakuajingling.svg" alt="Kuakua Jingling logo" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-body">
+              <h3 class="experience-title"><strong data-i18n="experience.internship.institution">Shenzhen Kuakua Jingling Technology Co., Ltd.</strong></h3>
+              <p class="experience-meta"><time datetime="2025-07">2025.07</time> - <time datetime="2025-08">2025.08</time></p>
+              <p class="experience-role" data-i18n="experience.internship.role">Backend Development Intern</p>
+              <p class="experience-detail" data-i18n="experience.internship.summary">Built agent workflows for automated enterprise document generation and contributed backend interfaces for a municipal data platform.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-media">
+              <img src="assets/img/experience/npu-software-association.png" alt="NPU Student Software Association logo" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-body">
+              <h3 class="experience-title"><strong data-i18n="experience.association.institution">NPU Student Software Association</strong></h3>
+              <p class="experience-meta"><time datetime="2024-05">2024.05</time> - <time datetime="2025-06">2025.06</time></p>
+              <p class="experience-role" data-i18n="experience.association.role">President</p>
+              <p class="experience-detail" data-i18n="experience.association.summary">Organized programming courses and student technology events, and supported peer learning in software engineering.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-media experience-media--group experience-media--pair">
+              <img src="assets/img/experience/ntu.png" alt="Nanyang Technological University logo" loading="lazy" decoding="async">
+              <img src="assets/img/experience/npu.png" alt="Northwestern Polytechnical University logo" loading="lazy" decoding="async">
+            </div>
+            <div class="experience-body">
+              <h3 class="experience-title"><strong data-i18n="experience.ntu.institution">Nanyang Technological University · Northwestern Polytechnical University</strong></h3>
+              <p class="experience-meta"><time datetime="2024-01">2024.01</time></p>
+              <p class="experience-role" data-i18n="experience.ntu.role">Visiting Student &amp; Team Member</p>
+              <p class="experience-detail" data-i18n="experience.ntu.summary">Joined the NTU-NPU academic exchange and completed a team RPA capstone project.</p>
+            </div>
+          </article>
         </div>
       </section>
-    </main>
-  </div>
 
-  <footer class="footer" data-i18n="footer">© 2026 Yifan Zhu. Built with care and hosted on GitHub Pages.</footer>
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="portfolio-heading">
+          <h2 data-i18n="projects.title" id="projects-title">Portfolio</h2>
+          <div class="portfolio-controls" aria-label="Portfolio navigation" data-aria-copy="portfolioNavigation">
+            <span class="portfolio-counter" aria-live="polite"><span data-portfolio-index>01</span> / 03</span>
+            <button class="portfolio-arrow" type="button" data-portfolio-prev aria-label="Previous project" title="Previous project" data-aria-copy="previousProject" disabled>&larr;</button>
+            <button class="portfolio-arrow" type="button" data-portfolio-next aria-label="Next project" title="Next project" data-aria-copy="nextProject">&rarr;</button>
+          </div>
+        </div>
+        <div class="portfolio-track" data-portfolio-track role="region" aria-label="Projects" data-aria-copy="portfolioTrack" tabindex="0">
+          <article class="portfolio-card">
+            <div class="portfolio-card__media portfolio-card__media--cadquery">
+              <img src="assets/img/portfolio/cadqueryllm-poster.webp" width="1600" height="900" alt="Mechanical CAD model changing from wireframe to verified solid" data-alt-copy="cadqueryImage" loading="lazy" decoding="async">
+              <span class="portfolio-card__badge" data-i18n="projects.cadquery.badge">Ongoing Research</span>
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__eyebrow"><span>01 / 03</span><span data-i18n="projects.cadquery.type">Multimodal CAD agent</span></p>
+              <h3 data-i18n="research.r2.title">Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing</h3>
+              <p class="portfolio-card__description" data-i18n="research.r2.body">I work on CadQuery data construction, unified SFT data design, model fine-tuning, and CAD-kernel-based verification and repair for an agent that generates, understands, and edits 3D-CAD models.</p>
+              <ul class="portfolio-card__tags" aria-label="Topics" data-aria-copy="portfolioTopics"><li>CadQuery</li><li data-i18n="projects.cadquery.tag">Multimodal agents</li></ul>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <div class="portfolio-card__media">
+              <img src="assets/img/portfolio/uav-traffic-poster.webp" width="1600" height="900" alt="UAV viewing urban traffic through visible and infrared cameras" data-alt-copy="uavImage" loading="lazy" decoding="async">
+              <span class="portfolio-card__badge" data-i18n="projects.p1.badge">Innovation project</span>
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__eyebrow"><span>02 / 03</span><span data-i18n="projects.p1.type">Computer vision</span></p>
+              <h3><a href="https://github.com/Laurent-Zhu/BiModalDroneTrafficObjectDetection-public" target="_blank" rel="noopener noreferrer" data-i18n="projects.p1.title">Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System</a></h3>
+              <p class="portfolio-card__meta" data-i18n="projects.p1.meta">National Undergraduate Innovation Training Project · Completed with a Good rating</p>
+              <p class="portfolio-card__description" data-i18n="projects.p1.body">Built a visible-light and infrared UAV traffic perception system with YOLOv8-OBB detection and real-time Edge-Cloud-Dashboard visualization.</p>
+              <ul class="portfolio-card__tags" aria-label="Topics" data-aria-copy="portfolioTopics"><li>YOLOv8-OBB</li><li data-i18n="projects.p1.tag">Edge-cloud</li></ul>
+              <details class="project-details">
+                <summary data-i18n="projects.watchDemo">Watch demo</summary>
+                <figure class="project-demo">
+                  <video controls="" preload="none" playsinline="" aria-label="UAV traffic perception demo" poster="assets/img/moonshot/drone-poster.webp">
+                    <source src="assets/video/drone-traffic-demo.mp4" type="video/mp4">
+                    <span data-i18n="projects.p1.videoFallback">Your browser does not support embedded video.</span>
+                  </video>
+                  <figcaption><a href="assets/video/drone-traffic-demo.mp4" target="_blank" rel="noopener noreferrer" data-copy="openVideo">Open video</a></figcaption>
+                </figure>
+              </details>
+            </div>
+          </article>
+          <article class="portfolio-card">
+            <div class="portfolio-card__media">
+              <img src="assets/img/portfolio/agriguard-poster.webp" width="1600" height="900" alt="Rice leaf roller moth detection and pest management workflow" data-alt-copy="agriImage" loading="lazy" decoding="async">
+              <span class="portfolio-card__badge" data-i18n="projects.p2.badge">Course project</span>
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__eyebrow"><span>03 / 03</span><span data-i18n="projects.p2.type">Agricultural AI</span></p>
+              <h3><a href="https://github.com/Laurent-Zhu/AgriGuard" target="_blank" rel="noopener noreferrer" data-i18n="projects.p2.title">AgriGuard Smart Agricultural Pest Management Platform</a></h3>
+              <p class="portfolio-card__meta" data-i18n="projects.p2.meta">Agile Software Development Course Project</p>
+              <p class="portfolio-card__description" data-i18n="projects.p2.body">Developed pest recognition APIs and deployed a YOLO model in a Scrum-built agricultural management system with RAG advice, task workflows and risk forecasting.</p>
+              <ul class="portfolio-card__tags" aria-label="Topics" data-aria-copy="portfolioTopics"><li data-i18n="projects.p2.tag">Pest recognition</li><li>RAG</li></ul>
+              <details class="project-details">
+                <summary data-i18n="projects.watchDemo">Watch demo</summary>
+                <figure class="project-demo">
+                  <video controls="" preload="none" playsinline="" aria-label="AgriGuard pest management demo" poster="assets/img/moonshot/agri-poster.webp">
+                    <source src="assets/video/agri-guard-demo.mp4" type="video/mp4">
+                    <span data-i18n="projects.p2.videoFallback">Your browser does not support embedded video.</span>
+                  </video>
+                  <figcaption><a href="assets/video/agri-guard-demo.mp4" target="_blank" rel="noopener noreferrer" data-copy="openVideo">Open video</a></figcaption>
+                </figure>
+              </details>
+            </div>
+          </article>
+        </div>
+        <div class="portfolio-progress" aria-hidden="true"><span data-portfolio-progress></span></div>
+      </section>
 
-  <script>
-    const I18N = {
-      en: {
-        "site.eyebrow": "Academic Homepage",
-        "site.title": "Yifan Zhu",
-        "nav.about": "About",
-        "nav.news": "News",
-        "nav.research": "Research",
-        "nav.publications": "Publications",
-        "nav.experience": "Experience",
-        "nav.projects": "Projects",
-        "nav.honors": "Honors",
-        "nav.cv": "CV",
-        "author.name": "Yifan Zhu",
-        "author.zh": "朱羿帆",
-        "author.bio": "Software Engineering undergraduate at Northwestern Polytechnical University. Interested in LLMs, multimodal agents, AI agents, and intelligent 3D-CAD modeling.",
-        "author.follow": "Follow",
-        "author.location": "Xi'an, China",
-        "author.affiliation": "Northwestern Polytechnical University",
-        "author.email.npu": "NPU Mail",
-        "author.email.gmail": "Gmail",
-        "author.cv.zh": "Chinese",
-        "author.cv.en": "English",
-        "label.location": "Location",
-        "label.affiliation": "Affiliation",
-        "label.email": "Email",
-        "label.github": "GitHub",
-        "label.cv": "CV",
-        "hero.title": "Yifan Zhu / 朱羿帆",
-        "hero.lead": "I am a junior Software Engineering undergraduate at Northwestern Polytechnical University. My current research focuses on large language models, multimodal agents, AI agents, and intelligent 3D-CAD modeling.",
-        "hero.notice": "I am especially interested in building systems that connect language, vision, executable CAD programs, and structured engineering knowledge.",
-        "about.p1": "I am contributing to BrepLLM, an ECCV 2026 provisionally accepted paper that studies how large language models understand boundary representations, and to a unified multimodal agent framework for CadQuery-based 3D-CAD generation, understanding, and editing.",
-        "about.p2": "In graduate study, I hope to systematically explore model architecture design, multimodal agents, and AI agents, and later work on frontier LLM research in leading technology companies or high-level research labs.",
-        "news.title": "News",
-        "news.n0": "<span class=\"news-date\">2026.06.18</span> BrepLLM was provisionally accepted by ECCV 2026.",
-        "news.n1": "<span class=\"news-date\">2026.03</span> BrepLLM was submitted to ECCV 2026, and I contributed to paper writing, revision, and experiment organization.",
-        "news.n2": "<span class=\"news-date\">2025.12</span> I received the 2025 National Scholarship for Undergraduates.",
-        "news.n3": "<span class=\"news-date\">2025.08</span> I joined a Singapore academic exchange program with NTU, NUS, SMU, and NPU, and presented an Agentic AI tutoring project.",
-        "news.n4": "<span class=\"news-date\">2025.07.08</span> I interned as a backend development engineer at Shenzhen Kuakua Jingling Technology, working on agent workflow orchestration.",
-        "news.n5": "<span class=\"news-date\">2025.06</span> I completed my term as President of the Student Software Association at Northwestern Polytechnical University.",
-        "news.n6": "<span class=\"news-date\">2024.12</span> I received the 2024 National Scholarship for Undergraduates.",
-        "news.n7": "<span class=\"news-date\">2024.05</span> I began serving as President of the Student Software Association, organizing programming courses, competitions, and technology events.",
-        "news.n8": "<span class=\"news-date\">2024.01</span> I participated in the NTU-NPU academic exchange program and completed an RPA capstone project with my team.",
-        "education.title": "Education",
-        "education.degree": "B.Eng. in Software Engineering",
-        "education.meta": "Northwestern Polytechnical University · Xi'an, China · Sep 2023 - Present",
-        "education.li1": "GPA 3.813 / 4.1 · Rank 11 / 270 · Comprehensive evaluation rank 12 / 270",
-        "education.li2": "CET-4 613 · CET-6 587 · CET-6 Speaking: Excellent",
-        "education.li3": "Two-time National Scholarship recipient, one of only three students in the grade each year",
-        "research.title": "Research",
-        "research.r1.title": "BrepLLM: Enabling Large Language Models to Understand Boundary Representations",
-        "research.r1.meta": "Provisionally accepted · ECCV 2026 · Fifth author",
-        "research.r1.body": "This work explores how LLMs can understand B-rep data in solid CAD models. I contribute to dataset construction and experimental validation.",
-        "research.r2.title": "Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing",
-        "research.r2.meta": "Ongoing research",
-        "research.r2.body": "This project studies a multimodal agent framework for 3D-CAD generation, understanding, and editing, using executable Python CadQuery programs as the unified modeling representation. My work focuses on high-quality CadQuery data construction, unified SFT data format design, model fine-tuning, and CAD-kernel-based automated evaluation and repair.",
-        "publications.title": "Publications",
-        "publications.p1": "<strong>BrepLLM: Enabling Large Language Models to Understand Boundary Representations.</strong> Provisionally accepted by ECCV 2026, fifth author.",
-        "publications.p2": "<strong>Unified Multimodal Agent Framework for CadQuery-based 3D-CAD Generation, Understanding and Editing.</strong> Ongoing research project.",
-        "experience.title": "Experience",
-        "experience.role": "Backend Development Engineer Intern",
-        "experience.meta": "Shenzhen Kuakua Jingling Technology Co., Ltd. · Jul 2025 - Aug 2025",
-        "experience.li1": "Built workflow orchestration for a digital employee agent that automatically generates enterprise materials.",
-        "experience.li2": "Co-developed integration interfaces for a municipal Big Data Bureau project, covering the full cycle from requirements to launch.",
-        "experience.li3": "Researched AI multi-turn QA and knowledge-base products, producing a report that supported technology selection and product planning.",
-        "projects.title": "Projects",
-        "projects.p1.title": "Dual-modal UAV Urban Traffic Perception and Intelligent Analysis System",
-        "projects.p1.meta": "Undergraduate Innovation Training Project",
-        "projects.p1.body": "A UAV-based urban traffic object detection and visualization system using visible-light and infrared dual-modal fusion. The system targets parking lots, main roads, residential areas, and other urban scenes, trains a customized YOLOv8-OBB fusion model on DroneVehicle, and uses an Edge-Cloud-Dashboard architecture for 15 fps WebSocket streaming, FastAPI multi-node forwarding, and React-based real-time monitoring and offline replay.",
-        "projects.p1.videoFallback": "Your browser does not support embedded video.",
-        "projects.p1.videoCaption": "Project demo: real-time dual-modal drone traffic perception and dashboard visualization.",
-        "projects.p2.title": "AgriGuard Smart Agricultural Pest Management Platform",
-        "projects.p2.meta": "Agile Development Practice · Software Engineering Capstone Course",
-        "projects.p2.body": "An end-to-end digital pest control system for farmers, managers, and field workers, integrating pest image recognition, RAG-based treatment recommendation, task scheduling, work-log traceability, and 7-day risk forecasting into a browser-accessible workflow. The stack uses Vue 3, Element Plus, ECharts, Django 5, DRF, JWT, YOLO, FAISS, LLM, and MySQL; our 7-person Scrum team delivered 3 sprints and 298+ backend automated test cases. I worked on backend APIs for pest recognition, YOLO model training and deployment, and selected frontend pages.",
-        "projects.p2.videoFallback": "Your browser does not support embedded video.",
-        "projects.p2.videoCaption": "Project demo: AgriGuard pest recognition, RAG recommendation, task workflow, and risk forecasting.",
-        "honors.title": "Honors and Awards",
-        "honors.a1": "Honorable Mention, Mathematical Contest in Modeling (MCM), 2026.05",
-        "honors.a2": "National Scholarship for Undergraduates, 2024 and 2025",
-        "honors.a3": "Second Prize, 19th Challenge Cup National College Student Extracurricular Academic Science and Technology Works Competition, Open-Call Track, 2024",
-        "honors.a4": "Third Prize, 16th Chinese Mathematics Competitions, Non-Math A, 2024",
-        "honors.a5": "Third Prize, 18th National College Software Innovation Contest, Northwest Regional, 2025",
-        "honors.a6": "Third Prize, 11th National Statistical Modeling Competition, Shaanxi Division, 2025",
-        "honors.a7": "Second Prize, National Mathematical Contest in Modeling, Shaanxi Division, 2025",
-        "skills.title": "Skills",
-        "skills.programming": "Programming",
-        "skills.ai": "AI and Research",
-        "footer": "© 2026 Yifan Zhu. Built with care and hosted on GitHub Pages."
-      },
-      zh: {
-        "site.eyebrow": "学术主页",
-        "site.title": "朱羿帆",
-        "nav.about": "关于",
-        "nav.news": "News",
-        "nav.research": "科研",
-        "nav.publications": "论文",
-        "nav.experience": "经历",
-        "nav.projects": "项目",
-        "nav.honors": "荣誉",
-        "nav.cv": "简历",
-        "author.name": "朱羿帆",
-        "author.zh": "Yifan Zhu",
-        "author.bio": "西北工业大学软件工程本科生，关注大语言模型、多模态 Agent、AI Agent 与智能 3D-CAD 建模。",
-        "author.follow": "链接",
-        "author.location": "中国西安",
-        "author.affiliation": "西北工业大学",
-        "author.email.npu": "学校邮箱",
-        "author.email.gmail": "Gmail",
-        "author.cv.zh": "中文",
-        "author.cv.en": "英文",
-        "label.location": "地点",
-        "label.affiliation": "单位",
-        "label.email": "邮箱",
-        "label.github": "GitHub",
-        "label.cv": "简历",
-        "hero.title": "朱羿帆 / Yifan Zhu",
-        "hero.lead": "我是西北工业大学软件工程专业本科三年级学生，当前主要关注大语言模型、多模态 Agent、AI Agent 与智能 3D-CAD 建模。",
-        "hero.notice": "我尤其关注如何构建连接语言、视觉、可执行 CAD 程序与结构化工程知识的智能系统。",
-        "about.p1": "目前我参与两项科研工作：BrepLLM，一篇研究大语言模型理解边界表示、已获 ECCV 2026 暂定接收的论文；以及面向 CadQuery 的统一多模态 Agent 框架，用于支持 3D-CAD 的生成、理解与编辑。",
-        "about.p2": "未来我希望在研究生阶段系统开展大模型方向研究，重点聚焦模型架构、多模态 Agent 和 AI Agent 等前沿课题。毕业后，期待进入行业内顶尖企业或高水平实验室，从事大模型相关研究与落地工作。",
-        "news.title": "News",
-        "news.n0": "<span class=\"news-date\">2026.06.18</span> BrepLLM 被 ECCV 2026 暂定接收。",
-        "news.n1": "<span class=\"news-date\">2026.03</span> BrepLLM 投稿至 ECCV 2026，我参与论文写作、修改与实验材料整理。",
-        "news.n2": "<span class=\"news-date\">2025.12</span> 获得 2025 年本科生国家奖学金。",
-        "news.n3": "<span class=\"news-date\">2025.08</span> 参加 NTU、NUS、SMU 与西北工业大学新加坡学术交流项目，并展示 Agentic AI 个性化辅导项目。",
-        "news.n4": "<span class=\"news-date\">2025.07.08</span> 在深圳夸夸菁领科技有限公司担任后端开发工程师实习生，参与 Agent 工作流编排。",
-        "news.n5": "<span class=\"news-date\">2025.06</span> 完成西北工业大学学生软件协会主席任期。",
-        "news.n6": "<span class=\"news-date\">2024.12</span> 获得 2024 年本科生国家奖学金。",
-        "news.n7": "<span class=\"news-date\">2024.05</span> 开始担任学生软件协会主席，组织编程课程、竞赛与学生技术活动。",
-        "news.n8": "<span class=\"news-date\">2024.01</span> 参加 NTU-NPU 学术交流项目，并与团队完成 RPA 结课项目。",
-        "education.title": "教育背景",
-        "education.degree": "软件工程本科",
-        "education.meta": "西北工业大学 · 中国西安 · 2023.09 至今",
-        "education.li1": "GPA 3.813 / 4.1 · 年级排名 11 / 270 · 综合测评排名 12 / 270",
-        "education.li2": "CET-4 613 · CET-6 587 · CET-6 口语优秀",
-        "education.li3": "连续两年获得本科生国家奖学金，全年级仅 3 位",
-        "research.title": "科研经历",
-        "research.r1.title": "BrepLLM: Enabling Large Language Models to Understand Boundary Representations",
-        "research.r1.meta": "ECCV 2026 暂定接收 · 五作",
-        "research.r1.body": "该工作研究大语言模型如何理解实体 CAD 模型中的边界表示（B-rep）数据，我参与数据集构建与实验验证。",
-        "research.r2.title": "面向 CadQuery 的统一多模态 Agent 框架：支持 3D-CAD 生成、理解与编辑",
-        "research.r2.meta": "在研项目",
-        "research.r2.body": "围绕 3D-CAD 的生成、理解与编辑，研究以可执行 Python CadQuery 程序为统一建模表示的多模态 Agent 框架。我主要参与高质量 CadQuery 数据构建、统一 SFT 数据格式设计、模型微调，以及基于 CAD Kernel 的自动评测与修复。",
-        "publications.title": "论文与在研工作",
-        "publications.p1": "<strong>BrepLLM: Enabling Large Language Models to Understand Boundary Representations.</strong> ECCV 2026 暂定接收，五作。",
-        "publications.p2": "<strong>面向 CadQuery 的统一多模态 Agent 框架：支持 3D-CAD 生成、理解与编辑。</strong> 在研项目。",
-        "experience.title": "实习经历",
-        "experience.role": "后端开发工程师实习生",
-        "experience.meta": "深圳夸夸菁领科技有限公司 · 2025.07 - 2025.08",
-        "experience.li1": "完成数智员工 Agent 的流程编排，实现企业材料自动生成。",
-        "experience.li2": "协助完成某市大数据局项目的对接接口开发，走通从需求到上线的全流程。",
-        "experience.li3": "开展 AI 多轮对话问答与知识库产品调研，撰写调研报告，为公司技术选型与产品规划提供参考。",
-        "projects.title": "项目经验",
-        "projects.p1.title": "无人机双模态城市交通感知与智能分析系统",
-        "projects.p1.meta": "大学生创新训练项目",
-        "projects.p1.body": "基于可见光与红外双模态融合的无人机城市交通目标检测与可视化系统，面向停车场、主干道、住宅区等城市场景，使用 DroneVehicle 数据集训练定制化 YOLOv8-OBB 融合模型。我负责构建 Edge-云-仪表盘三层架构，支持 15 fps WebSocket 视频流与检测结果上报、FastAPI 多节点转发，以及基于 React 的实时监控与离线回放。",
-        "projects.p1.videoFallback": "当前浏览器不支持内嵌视频播放。",
-        "projects.p1.videoCaption": "项目 Demo：无人机双模态交通感知与仪表盘实时可视化。",
-        "projects.p2.title": "AgriGuard 智慧农业病虫害管理平台",
-        "projects.p2.meta": "敏捷开发实践 · 软件工程综合能力训练课程项目",
-        "projects.p2.body": "面向农户、管理员与田间工作人员的端到端数字化病虫害防治系统，整合病虫害图像识别、基于 RAG 的处置建议、任务调度、工作日志追溯与 7 日风险预测，形成完整的浏览器端业务流程。技术栈包括 Vue 3、Element Plus、ECharts、Django 5、DRF、JWT、YOLO、FAISS、LLM 与 MySQL；7 人 Scrum 团队完成 3 次 Sprint，并交付 298+ 条后端自动化测试用例。我负责病虫害识别模块后端 API、YOLO 模型训练与部署，以及部分前端页面。",
-        "projects.p2.videoFallback": "当前浏览器不支持内嵌视频播放。",
-        "projects.p2.videoCaption": "项目 Demo：AgriGuard 病虫害识别、RAG 建议、任务流程与风险预测。",
-        "honors.title": "主要荣誉奖励",
-        "honors.a1": "2026 年美国大学生数学建模竞赛（MCM）Honorable Mention，2026.05",
-        "honors.a2": "本科生国家奖学金，2024、2025",
-        "honors.a3": "第十九届“挑战杯”全国大学生课外学术科技作品竞赛揭榜挂帅专项赛二等奖，2024",
-        "honors.a4": "第十六届全国大学生数学竞赛（非数学 A 类）三等奖，2024",
-        "honors.a5": "第十八届全国大学生软件创新大赛软件设计创新赛西北区域赛三等奖，2025",
-        "honors.a6": "第十一届全国大学生统计建模大赛陕西赛区三等奖，2025",
-        "honors.a7": "全国大学生数学建模竞赛陕西赛区二等奖，2025",
-        "skills.title": "技能",
-        "skills.programming": "编程语言",
-        "skills.ai": "AI 与科研方向",
-        "footer": "© 2026 朱羿帆。用心构建，托管于 GitHub Pages。"
-      }
-    };
+      <section id="honors" aria-labelledby="honors-title">
+        <h2 data-i18n="honors.title" id="honors-title">Honors and Awards</h2>
+        <ul class="dated-list honors-list">
+          <li data-i18n="honors.a1"><span class="item-date">2026.05</span><span>MCM Honorable Mention</span></li>
+          <li data-i18n="honors.a2"><span class="item-date">2024, 2025</span><span>National Scholarship for Undergraduates (twice)</span></li>
+          <li data-i18n="honors.a7"><span class="item-date">2025.11</span><span>Second Prize, National Mathematical Contest in Modeling, Shaanxi Division</span></li>
+          <li data-i18n="honors.a6"><span class="item-date">2025.05</span><span>Third Prize, National Statistical Modeling Competition, Shaanxi Division</span></li>
+          <li data-i18n="honors.a5"><span class="item-date">2025.04</span><span>Third Prize, National Undergraduate Software Innovation Competition, Northwest Regional</span></li>
+          <li data-i18n="honors.a4"><span class="item-date">2024.12</span><span>Third Prize, Chinese Mathematics Competition, Non-Math A</span></li>
+          <li data-i18n="honors.a3"><span class="item-date">2024.11</span><span>Second Prize, 19th Challenge Cup, Open-Call Track</span></li>
+        </ul>
+      </section>
+    </main></div>
+  <footer class="site-footer page-width"><p>© 2026 Yifan Zhu</p><a class="icon-button" href="#home" aria-label="Back to top" title="Back to top"><img class="icon" src="assets/icons/moonshot/arrow-up.svg" alt=""></a></footer>
 
-    function applyLanguage(lang) {
-      const dict = I18N[lang] || I18N.en;
-      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.getAttribute("data-i18n");
-        if (!Object.prototype.hasOwnProperty.call(dict, key)) return;
-        if (dict[key].includes("<")) {
-          element.innerHTML = dict[key];
-        } else {
-          element.textContent = dict[key];
-        }
-      });
-      document.querySelectorAll("[data-lang-btn]").forEach((button) => {
-        button.classList.toggle("active", button.dataset.langBtn === lang);
-      });
-      localStorage.setItem("preferred-language", lang);
-    }
 
-    const savedLanguage = localStorage.getItem("preferred-language");
-    const browserLanguage = navigator.language && navigator.language.toLowerCase().startsWith("zh") ? "zh" : "en";
-    applyLanguage(savedLanguage || browserLanguage);
-
-    document.querySelectorAll("[data-lang-btn]").forEach((button) => {
-      button.addEventListener("click", () => applyLanguage(button.dataset.langBtn));
-    });
-  </script>
-</body>
-</html>
+</body></html>
