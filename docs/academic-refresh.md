@@ -30,6 +30,9 @@ single ECCV publication uses the same reference's image-and-details pattern,
 with a local optimized preview of the official BrepLLM poster and a link to the
 full local poster (source:
 https://eccv.ecva.net/media/PosterPDFs/ECCV%202026/5778.png).
+Its image now carries a small venue badge, followed by the title, authors,
+one-sentence summary, venue, and compact resource links in the adjacent column.
+The poster keeps its full aspect ratio rather than being cropped as a teaser.
 No citation counter is shown because this site does not have
 a reliable, automatically maintained source for it.
 
