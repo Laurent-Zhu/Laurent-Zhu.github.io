@@ -109,6 +109,20 @@ img { display: block; max-width: 100%; }
 .subsection-title { margin: 20px 0 10px; }
 .dated-list { list-style: none; padding: 0; }
 .dated-list li { display: grid; grid-template-columns: 142px minmax(0, 1fr); gap: 12px; }
+.experience-entry { display: grid; grid-template-columns: 142px minmax(0, 1fr); gap: 20px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.experience-entry:first-child { padding-top: 0; }
+.experience-entry:last-child { padding-bottom: 0; border-bottom: 0; }
+.experience-logos { display: flex; align-items: center; justify-content: center; width: 142px; min-height: 112px; padding: 12px; border-radius: 3px; background: #f7f8f7; }
+.experience-logos img { display: block; object-fit: contain; }
+.experience-logos--single img { width: 100%; max-width: 82px; max-height: 82px; }
+.experience-logos--association img { max-width: 112px; max-height: 86px; }
+.experience-logos--group { flex-direction: column; gap: 6px; }
+.experience-logos--group img { width: 100%; height: 42px; }
+.experience-body { min-width: 0; }
+.experience-body h3 { margin-bottom: 4px; }
+.page__content .experience-date { margin: 0; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.page__content .experience-role { margin-top: 7px; color: var(--ink); font-weight: 700; }
+.page__content .experience-role + p { margin-top: 3px; }
 .project-details { margin-top: 10px; }
 .project-demo { margin: 12px 0 0; }
 .project-demo video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #171b1e; border: 1px solid var(--line); }
@@ -149,6 +163,13 @@ img { display: block; max-width: 100%; }
   .author__urls { justify-content: center; }
   .page__content h1, .page__content h2 { font-size: 20px; }
   .news-list li, .dated-list li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .experience-entry { grid-template-columns: minmax(0, 1fr); gap: 11px; }
+  .experience-logos { width: 100%; min-height: 68px; max-height: 76px; padding: 7px 10px; }
+  .experience-logos--group { flex-direction: row; gap: 8px; }
+  .experience-logos--group img { width: calc((100% - 16px) / 3); height: 54px; }
+  .experience-logos--pair img { width: calc((100% - 8px) / 2); }
+  .experience-logos--single img { max-height: 56px; }
+  .experience-logos--association img { max-width: 84px; }
   .news-date, .item-date { margin-bottom: 1px; }
   .page__content section { margin-top: 30px; }
 }

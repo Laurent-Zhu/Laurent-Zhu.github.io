@@ -42,11 +42,23 @@ On desktop the sidebar stays sticky while the main column scrolls. Short
 viewports can scroll the sidebar's own content to reach the globe; mobile
 layouts keep the sidebar in the normal document flow.
 
+Experience now uses the institution-logo and detail layout of
+https://chang-xinhai.github.io/. The Singapore exchange remains one entry
+with NTU, NUS, and SMU logos; the 2024 exchange pairs NTU with NPU. The
+internship and software-association entries use the owner's supplied icons.
+School marks are stored locally at `assets/img/experience/`: NTU from
+https://www.ntu.edu.sg/ResourcePackages/NTU/assets/images/NTU_Logo.png,
+SMU from https://engage.smu.edu.sg/themes/smubase_5g/assets/site-headers/logo-smu-d.svg,
+NPU from https://www.nwpu.edu.cn/images/logo2.png, and the complete NUS
+logo from https://en.wikipedia.org/wiki/File:NationalUniversityofSingapore.svg.
+The NUS crest and namestyle are kept together in line with its identity
+guidelines (https://nus.edu.sg/identity/guidelines/logo-guideline).
+
 This refresh uses `assets/css/academic.css`, `assets/js/academic-content.js`,
 and `assets/js/moonshot-background.js`.
 The original homepage, CVs, videos, and former dark-theme files are retained.
-Eight DOM checks cover assets, reading order, publication metadata, translation,
-chronological News, CVs and demos, and mobile navigation. Sixteen Canvas checks
+Eleven DOM checks cover assets, reading order, publication metadata, translation,
+chronological News and Experience, CVs, demos, and mobile navigation. Sixteen Canvas checks
 cover desktop/mobile pixels, controls, lifecycle and fallback states. Browser visual QA was
 unavailable because the computer-use browser connection failed and local file
 preview was blocked by browser URL policy.
