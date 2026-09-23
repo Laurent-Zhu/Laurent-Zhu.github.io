@@ -63,6 +63,9 @@ img { display: block; max-width: 100%; }
 .author__pronunciation { margin-top: 2px; color: var(--muted); font-size: 14px; }
 .author__email { display: block; margin-top: 10px; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
 .author__secondary-email { margin-top: 2px; font-size: 12px; }
+.author__emails { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 24px; margin-top: 10px; font-size: 12px; line-height: 1.5; }
+.author__emails a { white-space: nowrap; }
+.author__emails-divider { flex: 0 0 1px; width: 1px; height: 12px; background: #69736b; }
 .author__role { margin-top: 13px; color: var(--ink); line-height: 1.5; }
 .author__affiliation, .author__location { margin-top: 4px; line-height: 1.5; }
 .author__location { color: var(--muted); }
@@ -171,6 +174,7 @@ img { display: block; max-width: 100%; }
   .page-layout { grid-template-columns: minmax(0, 1fr); gap: 26px; padding-top: 30px; }
   .sidebar { position: static; display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 0 20px; max-height: none; overflow: visible; text-align: left; }
   .author__avatar { width: 128px; height: 128px; margin: 0; }
+  .author__emails { justify-content: flex-start; }
   .author__urls-wrapper { grid-column: 2; margin-top: 6px; padding-top: 0; border: 0; }
   .author__urls { justify-content: flex-start; }
   .visitor-globe { grid-column: 1 / -1; width: min(100%, 224px); margin: 21px auto 0; }
