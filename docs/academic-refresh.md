@@ -42,8 +42,10 @@ On desktop the sidebar stays sticky while the main column scrolls. Short
 viewports can scroll the sidebar's own content to reach the globe; mobile
 layouts keep the sidebar in the normal document flow.
 
-Experience now uses the institution-logo and detail layout of
-https://chang-xinhai.github.io/. The Singapore exchange remains one entry
+Experience now uses the fixed-square logo, institution/date/role/detail, and
+individual card layout of https://chang-xinhai.github.io/, recolored for the
+dark Moonshot theme. Every logo frame is 100 x 100 pixels on desktop and
+88 x 88 pixels on small screens. The Singapore exchange remains one entry
 with NTU, NUS, and SMU logos; the 2024 exchange pairs NTU with NPU. The
 internship and software-association entries use the owner's supplied icons.
 School marks are stored locally at `assets/img/experience/`: NTU from
