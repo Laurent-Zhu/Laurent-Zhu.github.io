@@ -115,32 +115,29 @@
   const desktop = window.matchMedia('(min-width: 1151px)');
   desktop.addEventListener('change', event => { if (event.matches) setMenu(false); });
 
-  if ('IntersectionObserver' in window) {
-    const navigation = [...document.querySelectorAll('.desktop-nav a')];
-    const activeSections = new Set();
-    const updateCurrentSection = () => {
-      const pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      const atBottom = pageHeight > window.innerHeight && window.scrollY + window.innerHeight >= pageHeight - 2;
-      const current = atBottom
-        ? navigation[navigation.length - 1]
-        : [...navigation].reverse().find(link => activeSections.has(link.hash.slice(1)));
-      navigation.forEach(link => {
-        if (link === current) link.setAttribute('aria-current', 'location');
-        else link.removeAttribute('aria-current');
-      });
-    };
-    const navigationObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) activeSections.add(entry.target.id);
-        else activeSections.delete(entry.target.id);
-      });
-      updateCurrentSection();
-    }, { rootMargin: '-15% 0px -20% 0px' });
-    navigation.forEach(link => navigationObserver.observe(document.querySelector(link.hash)));
-    window.addEventListener('scroll', updateCurrentSection, { passive: true });
-    window.addEventListener('resize', updateCurrentSection);
-    window.addEventListener('hashchange', updateCurrentSection);
+  const navigation = [...document.querySelectorAll('.desktop-nav a')];
+  const sections = navigation.map(link => document.querySelector(link.hash));
+  const header = document.querySelector('.site-header');
+  function updateCurrentSection() {
+    const readingLine = header.getBoundingClientRect().bottom + 40;
+    let currentIndex = 0;
+    sections.forEach((section, index) => {
+      if (section.getBoundingClientRect().top <= readingLine) currentIndex = index;
+    });
+    const pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+    if (pageHeight > window.innerHeight && window.scrollY + window.innerHeight >= pageHeight - 2) {
+      currentIndex = navigation.length - 1;
+    }
+    navigation.forEach((link, index) => {
+      if (index === currentIndex) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
   }
+  window.addEventListener('scroll', updateCurrentSection, { passive: true });
+  window.addEventListener('resize', updateCurrentSection);
+  window.addEventListener('hashchange', updateCurrentSection);
+  window.addEventListener('load', updateCurrentSection);
+  updateCurrentSection();
 
   // Keep only one project soundtrack playing at a time.
   const videos = [...document.querySelectorAll('video')];
