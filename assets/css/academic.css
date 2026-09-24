@@ -76,7 +76,7 @@ h1, h2, h3 { color: var(--ink); line-height: 1.35; }
 ul, ol { margin: 0; padding-left: 20px; }
 img { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
-.page-width { width: min(1100px, calc(100% - 56px)); margin-inline: auto; }
+.page-width { width: min(1160px, calc(100% - 56px)); margin-inline: auto; }
 .icon { width: 17px; height: 17px; flex: 0 0 17px; filter: invert(1); }
 .icon-button { display: inline-flex; justify-content: center; align-items: center; width: 38px; height: 38px; background: transparent; border-radius: 3px; }
 .icon-button:hover { background: #252723; }
@@ -105,7 +105,7 @@ img { display: block; max-width: 100%; }
 .mobile-nav { position: absolute; top: 100%; inset-inline: 0; max-height: calc(100dvh - 64px); overflow-y: auto; background: var(--page); border: 1px solid var(--line); border-top: 0; padding: 10px 22px 18px; }
 .mobile-nav a { display: block; padding: 10px 0; color: var(--ink); font-size: 17px; }
 
-.page-layout { display: grid; grid-template-columns: 224px minmax(0, 1fr); align-items: start; gap: 60px; padding-block: 44px 72px; }
+.page-layout { display: grid; grid-template-columns: clamp(224px, 20vw, 260px) minmax(0, 1fr); align-items: start; gap: clamp(48px, 5vw, 80px); padding-block: 44px 72px; }
 .sidebar { position: sticky; top: 80px; min-width: 0; max-height: calc(100dvh - 96px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--line) transparent; font-size: 15px; text-align: center; }
 .author__avatar { width: 176px; height: 176px; margin: 0 auto 17px; border: 1px solid var(--line); border-radius: 50%; overflow: hidden; }
 .profile-photo { width: 100%; height: 100%; object-fit: cover; object-position: 22% 26%; }
@@ -133,7 +133,7 @@ img { display: block; max-width: 100%; }
 .visitor-globe__embed > div { max-width: 100%; }
 .visitor-globe noscript { display: block; color: var(--muted); font-size: 14px; }
 
-.page__content { min-width: 0; max-width: 760px; }
+.page__content { min-width: 0; }
 .page__content section { margin-top: 36px; scroll-margin-top: 12px; }
 .page__content section:first-child { margin-top: 0; }
 .page__content h1, .page__content h2 { padding-bottom: 9px; margin-bottom: 18px; border-bottom: 1px solid var(--line); font-size: 28px; font-weight: 700; }
