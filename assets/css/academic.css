@@ -1,8 +1,24 @@
 @font-face {
-  font-family: 'Geist';
-  src: url('../fonts/geist-variable.woff2') format('woff2');
+  font-family: 'Crimson Pro';
+  src: url('../fonts/crimson-pro-latin-variable.woff2') format('woff2');
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('../fonts/noto-serif-sc-homepage.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../fonts/space-grotesk-latin-variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 700;
   font-display: swap;
 }
 
@@ -15,10 +31,18 @@
 }
 
 @font-face {
-  font-family: 'Fusion Pixel';
-  src: url('../fonts/fusion-pixel-homepage.otf') format('opentype');
+  font-family: 'Ubuntu Mono';
+  src: url('../fonts/ubuntu-mono-latin-400.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  src: url('../fonts/ubuntu-mono-latin-700.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -31,13 +55,14 @@
   --line: #30332e;
   --link: #bcf6cb;
   --hover: #f2f2ef;
-  --sans: 'Geist', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --pixel: 'Fusion Pixel', 'Geist', monospace;
+  --serif: 'Crimson Pro', 'Noto Serif SC', Georgia, 'Songti SC', serif;
+  --sans: 'Space Grotesk', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --mono: 'Ubuntu Mono', 'Noto Sans SC', Consolas, monospace;
 }
 
 * { box-sizing: border-box; letter-spacing: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 86px; }
-body { margin: 0; isolation: isolate; background: var(--page); color: var(--body); font: 15px/1.65 var(--sans); }
+body { margin: 0; isolation: isolate; background: var(--page); color: var(--body); font: 15px/1.65 var(--serif); }
 body.menu-open { overflow: hidden; }
 .space-background { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; image-rendering: pixelated; }
 ::selection { background: var(--link); color: var(--page); }
@@ -127,7 +152,7 @@ img { display: block; max-width: 100%; }
 .publication__media img { display: block; width: 100%; height: auto; aspect-ratio: 3604 / 2880; object-fit: contain; }
 .publication__badge { position: absolute; top: 10px; left: 10px; z-index: 1; padding: 5px 8px; border-radius: 4px; background: #1e422d; color: #e3ffea; font-size: 11px; font-weight: 700; line-height: 1; box-shadow: 0 3px 10px rgb(0 0 0 / 22%); }
 .publication__body { min-width: 0; }
-.publication h3 { font: 600 19px/1.3 var(--sans); }
+.publication h3 { font: 600 19px/1.3 var(--serif); }
 .publication h3 a { color: var(--link); }
 .publication h3 a:hover { color: var(--ink); }
 .publication__authors { margin-top: 8px; font-size: 14px; line-height: 1.45; }
@@ -148,7 +173,7 @@ img { display: block; max-width: 100%; }
 .experience-media--group img { height: 26px; }
 .experience-media--pair img { height: 39px; }
 .experience-body { min-width: 0; }
-.page__content .experience-title { margin: 0 0 4px; color: var(--ink); font: 400 19px/1.3 var(--sans); }
+.page__content .experience-title { margin: 0 0 4px; color: var(--ink); font: 400 19px/1.3 var(--serif); }
 .experience-title strong { font-weight: 600; }
 .page__content .experience-meta { margin: 0 0 6px; color: var(--muted); font-size: 13px; line-height: 1.3; font-variant-numeric: tabular-nums; }
 .page__content .experience-role { margin: 0 0 3px; color: var(--ink); font-size: 15px; line-height: 1.4; }
@@ -195,8 +220,10 @@ img { display: block; max-width: 100%; }
 .mobile-nav,
 .language-switch,
 .header-cv,
-.page__content h1,
-.page__content h2,
+.page__content .portfolio-card h3 {
+  font-family: var(--sans);
+}
+
 .news-date,
 .item-date,
 .experience-meta,
@@ -204,7 +231,7 @@ img { display: block; max-width: 100%; }
 .portfolio-card__eyebrow,
 .publication__badge,
 .portfolio-card__badge {
-  font-family: var(--pixel);
+  font-family: var(--mono);
 }
 
 @media (max-width: 1150px) {
