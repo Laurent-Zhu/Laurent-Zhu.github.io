@@ -43,6 +43,8 @@
     globeScript.dataset.rotationSpeed = 'off';
   }
   let themeTransition = null;
+  let themeSwitchPending = false;
+  const rainFontReady = document.fonts.load("700 12px 'Ubuntu Mono'").catch(() => {});
 
   function updateMenuLabel(open) {
     const label = copy[language][open ? 'menuClose' : 'menuOpen'];
@@ -83,19 +85,20 @@
     if (!context) return null;
     const width = window.innerWidth;
     const height = window.innerHeight;
+    // Keep the 12px grid in CSS pixels, but render and align glyphs at device resolution.
+    const scale = Math.max(1, window.devicePixelRatio || 1);
+    const snap = value => Math.round(value * scale) / scale;
     const element = document.createElement('div');
     element.className = 'theme-rain';
     element.setAttribute('aria-hidden', 'true');
-    canvas.width = width;
+    canvas.width = Math.ceil(width * scale);
     canvas.height = 1;
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
     const light = theme === 'light';
     const tones = light ? ['#171717', '#666666', '#aaaaaa'] : ['#f5f5f5', '#a0a0a0', '#585858'];
     const cell = 12;
-    const columns = Array.from({ length: Math.ceil(width / cell) }, (_, index) => ({
-      delay: 0.055 + (Math.sin(index * 0.19) + 1) * 0.028 + Math.random() * 0.018,
-      duration: 0.69 + Math.random() * 0.025,
-      speed: 38 + Math.random() * 65,
+    const columns = Array.from({ length: Math.ceil(width / cell) }, () => ({
+      edgeOffset: Math.floor(Math.random() * 3) - 1,
       seed: Math.floor(Math.random() * 10000)
     }));
     const hash = value => {
@@ -122,43 +125,46 @@
         lastPaint = now - (now - lastPaint) % interval;
         const progress = elapsed / 1500;
         const edge = [];
-        const heads = columns.map(column => {
-          const travel = Math.max(0, Math.min(1, (progress - column.delay) / column.duration));
-          return -170 + travel * (height + 370);
-        });
-        const bandTop = Math.max(0, Math.floor(Math.min(...heads) - 150));
-        const bandHeight = Math.max(1, Math.min(height, Math.ceil(Math.max(...heads) + 130)) - bandTop);
-        if (canvas.height !== bandHeight) canvas.height = bandHeight;
-        context.clearRect(0, 0, width, bandHeight);
+        // One moving grid keeps every column on the same baseline and removes broad waves.
+        const travel = Math.max(0, Math.min(1, (progress - 0.075) / 0.71));
+        const head = -190 + travel * (height + 400);
+        const drift = elapsed * 72 / 1000;
+        const firstRow = Math.floor((head - 170 - drift) / cell);
+        const lastRow = Math.ceil((head + 170 - drift) / cell);
+        const bandTop = Math.max(0, Math.floor((head - 182) * scale) / scale);
+        const bandHeight = Math.max(1, Math.min(height, Math.ceil(head + 194)) - bandTop);
+        const pixelHeight = Math.ceil(bandHeight * scale);
+        if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+        context.setTransform(1, 0, 0, 1, 0, 0);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.setTransform(scale, 0, 0, scale, 0, 0);
         context.font = "bold 12px 'Ubuntu Mono', monospace";
-        context.textBaseline = 'top';
+        context.textBaseline = 'alphabetic';
         columns.forEach((column, index) => {
-          const head = heads[index];
-          const cut = Math.max(0, Math.min(height, Math.floor(head / cell) * cell));
+          const cut = Math.max(0, Math.min(height,
+            (Math.floor((head - drift) / cell) + column.edgeOffset) * cell + drift));
           const x = index * cell;
           edge.push(`${x}px ${cut}px`, `${Math.min(width, x + cell)}px ${cut}px`);
-          const drift = elapsed * column.speed / 1000;
-          const firstRow = Math.floor((head - 150 - drift) / cell);
-          const lastRow = Math.ceil((head + 115 - drift) / cell);
           for (let row = firstRow; row <= lastRow; row += 1) {
             const y = row * cell + drift;
             if (y < -cell || y > height) continue;
             const distance = Math.abs(y - head);
             const seed = column.seed + row * 7919;
             const tick = Math.floor(elapsed / (65 + hash(seed) * 80));
-            const density = distance < 36 ? 1 : Math.pow(Math.max(0, 1 - (distance - 36) / 115), 1.7);
+            const density = distance < 60 ? 1 : Math.pow(Math.max(0, 1 - (distance - 60) / 110), 1.7);
             if (hash(seed + tick * 1013) > density) continue;
-            context.globalAlpha = distance < 48 ? 1 : 0.8;
+            context.globalAlpha = distance < 72 ? 1 : 0.8;
             context.fillStyle = light ? '#ffffff' : '#101010';
-            context.fillRect(x, y - bandTop, cell, cell);
+            const drawY = snap(y) - bandTop;
+            context.fillRect(snap(x), drawY, cell, cell);
             context.fillStyle = tones[Math.floor(hash(seed + tick * 157) * tones.length)];
-            context.fillText(characters[Math.floor(hash(seed + tick * 313) * characters.length)], x + 2, y - bandTop);
+            context.fillText(characters[Math.floor(hash(seed + tick * 313) * characters.length)], snap(x + 2), snap(drawY + 9));
           }
         });
         revealRule.style.clipPath = `polygon(${edge.join(',')},${width}px ${height}px,0 ${height}px)`;
         // A view-transition snapshot freezes canvas contents; paint its overlay background each frame.
         rainRule.style.backgroundPosition = `0 ${bandTop}px`;
-        rainRule.style.backgroundSize = `${width}px ${bandHeight}px`;
+        rainRule.style.backgroundSize = `${canvas.width / scale}px ${canvas.height / scale}px`;
         rainRule.style.backgroundImage = `url("${canvas.toDataURL()}")`;
       }
       frame = requestAnimationFrame(paint);
@@ -171,15 +177,44 @@
     } };
   }
 
-  function switchTheme() {
-    if (themeTransition) return;
+  function waitForThemeViewport() {
+    if (!window.matchMedia('(pointer: coarse)').matches) return Promise.resolve();
+    return new Promise(resolve => {
+      const started = performance.now();
+      let stableSince = started;
+      let previousSize = '';
+      function check() {
+        const now = performance.now();
+        const size = `${window.innerWidth}:${window.innerHeight}:${window.visualViewport?.height}`;
+        if (size !== previousSize) { previousSize = size; stableSince = now; }
+        if (now - stableSince >= 120 || now - started >= 600) resolve();
+        else window.setTimeout(check, 40);
+      }
+      check();
+    });
+  }
+
+  async function switchTheme() {
+    if (themeTransition || themeSwitchPending) return;
     const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
     if (!document.startViewTransition || reducedMotion.matches) {
       setTheme(nextTheme);
       return;
     }
+    themeSwitchPending = true;
+    // Keep browser toolbars stable while the full-page snapshots are on screen.
+    const holdScroll = event => { if (event.cancelable) event.preventDefault(); };
+    window.addEventListener('touchmove', holdScroll, { passive: false });
+    window.addEventListener('wheel', holdScroll, { passive: false });
+    const releaseScroll = () => {
+      window.removeEventListener('touchmove', holdScroll);
+      window.removeEventListener('wheel', holdScroll);
+    };
+    await Promise.all([rainFontReady, waitForThemeViewport()]);
+    themeSwitchPending = false;
     const rain = makeThemeRain(nextTheme);
     if (!rain) {
+      releaseScroll();
       setTheme(nextTheme);
       return;
     }
@@ -189,17 +224,24 @@
         setTheme(nextTheme);
       });
       const transition = themeTransition;
-      const abort = () => transition.skipTransition();
+      const transitionWidth = window.innerWidth;
+      const finish = () => transition.skipTransition();
+      const onResize = () => {
+        // Mobile browser chrome can resize the viewport without changing the column layout.
+        if (Math.abs(window.innerWidth - transitionWidth) > 1) finish();
+      };
       const cleanup = () => {
         rain.stop();
-        window.removeEventListener('resize', abort);
+        releaseScroll();
+        window.removeEventListener('resize', onResize);
         themeTransition = null;
       };
-      window.addEventListener('resize', abort, { once: true });
-      transition.ready.then(() => rain.start(abort), () => {});
+      window.addEventListener('resize', onResize);
+      transition.ready.then(() => rain.start(finish), () => {});
       themeTransition.finished.then(cleanup, cleanup);
     } catch {
       rain.stop();
+      releaseScroll();
       themeTransition = null;
       setTheme(nextTheme);
     }
