@@ -310,8 +310,6 @@ html[data-theme='light'] {
   --link: #17679b;
   --hover: #103f63;
 }
-html[data-theme='light'] .space-background { opacity: 0; }
-html[data-theme='light'] .motion-toggle { display: none; }
 html[data-theme='light'] .icon,
 html[data-theme='light'] .author__urls img { filter: none; }
 html[data-theme='light'] .icon-button:hover,

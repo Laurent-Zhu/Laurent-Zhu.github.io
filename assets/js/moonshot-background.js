@@ -95,14 +95,15 @@
   function draw() {
     const pixels = frame.data;
     const columns = canvas.width;
-    // Cap luminance at #303030 so even muted 12px dates retain AA contrast.
+    const light = document.documentElement.dataset.theme === 'light';
+    // Mirror the dark luminance range around a white base for the light theme.
     for (let index = 0; index < field.length; index += 1) {
       const x = index % columns;
       const y = Math.floor(index / columns);
       const pulse = Math.sin(elapsed * 0.24 + shimmer[index]) * 0.045;
       const threshold = (bayer[(y % 4) * 4 + x % 4] + 0.5) / 16;
       const level = Math.floor(clamp(field[index] + pulse * field[index]) * 4 + threshold);
-      const value = 16 + level * 8;
+      const value = light ? 255 - level * 8 : 16 + level * 8;
       const offset = index * 4;
       pixels[offset] = value;
       pixels[offset + 1] = value;
@@ -112,7 +113,8 @@
     stars.forEach(star => {
       const brightness = star.brightness * (0.78 + Math.sin(elapsed * star.speed + star.phase) * 0.22);
       const offset = star.index * 4;
-      const value = Math.max(pixels[offset], 16 + Math.round(brightness * 32));
+      const starValue = light ? 255 - Math.round(brightness * 32) : 16 + Math.round(brightness * 32);
+      const value = light ? Math.min(pixels[offset], starValue) : Math.max(pixels[offset], starValue);
       pixels[offset] = value;
       pixels[offset + 1] = value;
       pixels[offset + 2] = value;
@@ -121,7 +123,7 @@
   }
 
   function wantsMotion() {
-    return document.documentElement.dataset.theme !== 'light' && !manuallyPaused && !reducedMotion.matches;
+    return !manuallyPaused && !reducedMotion.matches;
   }
 
   function updateLabel() {
@@ -173,7 +175,10 @@
     resizeTimer = window.setTimeout(resize, 120);
   }, { passive: true });
   new MutationObserver(mutations => {
-    if (mutations.some(mutation => mutation.attributeName === 'data-theme')) syncMotion();
+    if (mutations.some(mutation => mutation.attributeName === 'data-theme')) {
+      draw();
+      syncMotion();
+    }
     else updateLabel();
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang', 'data-theme'] });
   resize();
