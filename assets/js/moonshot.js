@@ -38,9 +38,11 @@
   const themeToggle = document.querySelector('.theme-toggle');
   const menu = document.querySelector('#mobile-nav');
   const globeScript = document.querySelector('.visitor-globe__embed script');
-  if (globeScript && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (globeScript && reducedMotion.matches) {
     globeScript.dataset.rotationSpeed = 'off';
   }
+  let themeTransition = null;
 
   function updateMenuLabel(open) {
     const label = copy[language][open ? 'menuClose' : 'menuOpen'];
@@ -72,6 +74,134 @@
     updateThemeLabel();
     if (persist) {
       try { localStorage.setItem('academic-theme', light ? 'light' : 'dark'); } catch { /* Optional preference. */ }
+    }
+  }
+
+  function makeThemeRain(theme) {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    if (!context) return null;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const element = document.createElement('div');
+    element.className = 'theme-rain';
+    element.setAttribute('aria-hidden', 'true');
+    canvas.width = width;
+    canvas.height = 1;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+    const light = theme === 'light';
+    const tones = light ? ['#171717', '#666666', '#aaaaaa'] : ['#f5f5f5', '#a0a0a0', '#585858'];
+    const cell = 12;
+    const columns = Array.from({ length: Math.ceil(width / cell) }, (_, index) => ({
+      delay: 0.055 + (Math.sin(index * 0.19) + 1) * 0.028 + Math.random() * 0.018,
+      duration: 0.69 + Math.random() * 0.025,
+      speed: 38 + Math.random() * 65,
+      seed: Math.floor(Math.random() * 10000)
+    }));
+    const hash = value => {
+      value = Math.imul(value ^ (value >>> 16), 0x45d9f3b);
+      return ((value ^ (value >>> 16)) >>> 0) / 4294967296;
+    };
+    let frame = 0;
+    let stopped = false;
+    const styles = document.createElement('style');
+    styles.textContent = '::view-transition-old(root) { clip-path: inset(0); } ::view-transition-group(theme-rain) {}';
+    document.head.appendChild(styles);
+    const [revealRule, rainRule] = styles.sheet.cssRules;
+
+    function start(finish) {
+      const started = performance.now();
+      const interval = 1000 / 30;
+      let lastPaint = started - interval;
+      function paint(now) {
+        if (stopped) return;
+        const elapsed = now - started;
+        if (elapsed >= 1500) { finish(); return; }
+        frame = requestAnimationFrame(paint);
+        if (now - lastPaint < interval) return;
+        lastPaint = now - (now - lastPaint) % interval;
+        const progress = elapsed / 1500;
+        const edge = [];
+        const heads = columns.map(column => {
+          const travel = Math.max(0, Math.min(1, (progress - column.delay) / column.duration));
+          return -170 + travel * (height + 370);
+        });
+        const bandTop = Math.max(0, Math.floor(Math.min(...heads) - 150));
+        const bandHeight = Math.max(1, Math.min(height, Math.ceil(Math.max(...heads) + 130)) - bandTop);
+        if (canvas.height !== bandHeight) canvas.height = bandHeight;
+        context.clearRect(0, 0, width, bandHeight);
+        context.font = "bold 12px 'Ubuntu Mono', monospace";
+        context.textBaseline = 'top';
+        columns.forEach((column, index) => {
+          const head = heads[index];
+          const cut = Math.max(0, Math.min(height, Math.floor(head / cell) * cell));
+          const x = index * cell;
+          edge.push(`${x}px ${cut}px`, `${Math.min(width, x + cell)}px ${cut}px`);
+          const drift = elapsed * column.speed / 1000;
+          const firstRow = Math.floor((head - 150 - drift) / cell);
+          const lastRow = Math.ceil((head + 115 - drift) / cell);
+          for (let row = firstRow; row <= lastRow; row += 1) {
+            const y = row * cell + drift;
+            if (y < -cell || y > height) continue;
+            const distance = Math.abs(y - head);
+            const seed = column.seed + row * 7919;
+            const tick = Math.floor(elapsed / (65 + hash(seed) * 80));
+            const density = distance < 36 ? 1 : Math.pow(Math.max(0, 1 - (distance - 36) / 115), 1.7);
+            if (hash(seed + tick * 1013) > density) continue;
+            context.globalAlpha = distance < 48 ? 1 : 0.8;
+            context.fillStyle = light ? '#ffffff' : '#101010';
+            context.fillRect(x, y - bandTop, cell, cell);
+            context.fillStyle = tones[Math.floor(hash(seed + tick * 157) * tones.length)];
+            context.fillText(characters[Math.floor(hash(seed + tick * 313) * characters.length)], x + 2, y - bandTop);
+          }
+        });
+        revealRule.style.clipPath = `polygon(${edge.join(',')},${width}px ${height}px,0 ${height}px)`;
+        // A view-transition snapshot freezes canvas contents; paint its overlay background each frame.
+        rainRule.style.backgroundPosition = `0 ${bandTop}px`;
+        rainRule.style.backgroundSize = `${width}px ${bandHeight}px`;
+        rainRule.style.backgroundImage = `url("${canvas.toDataURL()}")`;
+      }
+      frame = requestAnimationFrame(paint);
+    }
+    return { element, start, stop() {
+      stopped = true;
+      cancelAnimationFrame(frame);
+      element.remove();
+      styles.remove();
+    } };
+  }
+
+  function switchTheme() {
+    if (themeTransition) return;
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    if (!document.startViewTransition || reducedMotion.matches) {
+      setTheme(nextTheme);
+      return;
+    }
+    const rain = makeThemeRain(nextTheme);
+    if (!rain) {
+      setTheme(nextTheme);
+      return;
+    }
+    try {
+      themeTransition = document.startViewTransition(() => {
+        document.body.appendChild(rain.element);
+        setTheme(nextTheme);
+      });
+      const transition = themeTransition;
+      const abort = () => transition.skipTransition();
+      const cleanup = () => {
+        rain.stop();
+        window.removeEventListener('resize', abort);
+        themeTransition = null;
+      };
+      window.addEventListener('resize', abort, { once: true });
+      transition.ready.then(() => rain.start(abort), () => {});
+      themeTransition.finished.then(cleanup, cleanup);
+    } catch {
+      rain.stop();
+      themeTransition = null;
+      setTheme(nextTheme);
     }
   }
 
@@ -121,7 +251,7 @@
   let savedLanguage;
   try { savedLanguage = localStorage.getItem('moonshot-language'); } catch { /* Use browser language. */ }
   applyLanguage(savedLanguage || (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en'), false);
-  themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'));
+  themeToggle.addEventListener('click', switchTheme);
   window.addEventListener('storage', event => {
     if (event.key === 'academic-theme') setTheme(event.newValue === 'light' ? 'light' : 'dark', false);
   });

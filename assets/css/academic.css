@@ -65,6 +65,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 86px; }
 body { margin: 0; isolation: isolate; background: var(--page); color: var(--body); font: 18px/1.6 var(--serif); }
 body.menu-open { overflow: hidden; }
 .space-background { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none; image-rendering: pixelated; transition: opacity 220ms ease; }
+.theme-rain { position: fixed; inset: 0; pointer-events: none; view-transition-name: theme-rain; }
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 2; clip-path: inset(0); animation: theme-hold 2000ms linear both; }
+::view-transition-new(root) { z-index: 1; }
+::view-transition-group(theme-rain) { z-index: 3; animation: none; background-position: 0 0; background-size: 100% 100%; background-repeat: no-repeat; image-rendering: pixelated; }
+::view-transition-image-pair(theme-rain) { visibility: hidden; }
+@keyframes theme-hold { from { opacity: 1; } to { opacity: 1; } }
 ::selection { background: var(--link); color: var(--page); }
 a { color: var(--link); text-decoration: none; }
 a:hover { color: var(--hover); text-decoration: underline; text-underline-offset: 3px; }
@@ -334,4 +341,4 @@ html[data-theme='light'] .portfolio-card__media--cadquery { background: #edf3f7;
 html[data-theme='light'] .portfolio-card__badge { border-color: #d6e4ee; background: #ffffff; color: var(--ink); box-shadow: 0 2px 10px rgb(15 40 64 / 16%); }
 html[data-theme='light'] .portfolio-card h3 a { text-decoration-color: #87abc5; }
 html[data-theme='light'] .portfolio-card__tags li { border-color: #d5e3ed; background: #f1f7fb; color: #315e7d; }
-html[data-theme='light'] .visitor-globe__embed > div { filter: invert(1) hue-rotate(180deg) brightness(.72) contrast(1.15); }
+html[data-theme='light'] .visitor-globe__embed canvas { filter: invert(1) sepia(.34) saturate(1.55) hue-rotate(166deg) brightness(.9) contrast(1.15) drop-shadow(0 8px 12px rgb(30 82 112 / 12%)); }
