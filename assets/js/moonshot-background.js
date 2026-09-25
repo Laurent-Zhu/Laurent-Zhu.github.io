@@ -121,7 +121,7 @@
   }
 
   function wantsMotion() {
-    return !manuallyPaused && !reducedMotion.matches;
+    return document.documentElement.dataset.theme !== 'light' && !manuallyPaused && !reducedMotion.matches;
   }
 
   function updateLabel() {
@@ -172,7 +172,10 @@
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(resize, 120);
   }, { passive: true });
-  new MutationObserver(updateLabel).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  new MutationObserver(mutations => {
+    if (mutations.some(mutation => mutation.attributeName === 'data-theme')) syncMotion();
+    else updateLabel();
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang', 'data-theme'] });
   resize();
   toggle.hidden = false;
   syncMotion();

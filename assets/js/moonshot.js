@@ -12,6 +12,7 @@
       poster: 'View full BrepLLM poster', posterAlt: 'BrepLLM ECCV 2026 research poster',
       portfolioNavigation: 'Portfolio navigation', portfolioTrack: 'Projects',
       portfolioTopics: 'Topics', previousProject: 'Previous project', nextProject: 'Next project',
+      themeLight: 'Switch to light theme', themeDark: 'Switch to dark theme',
       cadqueryImage: 'Mechanical CAD model changing from wireframe to verified solid',
       uavImage: 'UAV viewing urban traffic through visible and infrared cameras',
       agriImage: 'Rice leaf roller moth detection and pest management workflow'
@@ -26,6 +27,7 @@
       poster: '查看 BrepLLM 完整海报', posterAlt: 'BrepLLM ECCV 2026 研究海报',
       portfolioNavigation: '作品集切换', portfolioTrack: '项目作品',
       portfolioTopics: '项目关键词', previousProject: '上一个项目', nextProject: '下一个项目',
+      themeLight: '切换为浅色主题', themeDark: '切换为深色主题',
       cadqueryImage: '从线框过渡到验证后实体模型的机械 CAD 零件',
       uavImage: '无人机通过可见光与红外影像观察城市交通',
       agriImage: '稻纵卷叶螟识别与病虫害管理流程'
@@ -33,6 +35,7 @@
   };
   let language = 'en';
   const menuButton = document.querySelector('.menu-toggle');
+  const themeToggle = document.querySelector('.theme-toggle');
   const menu = document.querySelector('#mobile-nav');
   const globeScript = document.querySelector('.visitor-globe__embed script');
   if (globeScript && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -52,6 +55,24 @@
     document.body.classList.toggle('menu-open', open);
     updateMenuLabel(open);
     if (returnFocus) menuButton.focus();
+  }
+
+  function updateThemeLabel() {
+    const light = document.documentElement.dataset.theme === 'light';
+    const label = copy[language][light ? 'themeDark' : 'themeLight'];
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.title = label;
+    themeToggle.querySelector('img').src = `assets/icons/moonshot/${light ? 'moon' : 'sun'}.svg`;
+  }
+
+  function setTheme(theme, persist = true) {
+    const light = theme === 'light';
+    document.documentElement.dataset.theme = light ? 'light' : 'dark';
+    document.querySelector('meta[name="theme-color"]').content = light ? '#ffffff' : '#101010';
+    updateThemeLabel();
+    if (persist) {
+      try { localStorage.setItem('academic-theme', light ? 'light' : 'dark'); } catch { /* Optional preference. */ }
+    }
   }
 
   function applyLanguage(next, persist = true) {
@@ -81,6 +102,7 @@
       button.setAttribute('aria-pressed', String(button.dataset.language === language));
     });
     updateMenuLabel(!menu.hidden);
+    updateThemeLabel();
     document.querySelector('.header-cv').href = language === 'zh'
       ? 'assets/cv/yifan_zhu_resume.pdf' : 'assets/cv/yifan_zhu_resume_en.pdf';
     document.querySelector('.profile-photo').alt = copy[language].profileAlt;
@@ -99,6 +121,10 @@
   let savedLanguage;
   try { savedLanguage = localStorage.getItem('moonshot-language'); } catch { /* Use browser language. */ }
   applyLanguage(savedLanguage || (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en'), false);
+  themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'));
+  window.addEventListener('storage', event => {
+    if (event.key === 'academic-theme') setTheme(event.newValue === 'light' ? 'light' : 'dark', false);
+  });
   document.querySelectorAll('[data-language]').forEach(button => {
     button.addEventListener('click', () => {
       applyLanguage(button.dataset.language);

@@ -7,10 +7,15 @@
   <title>Yifan Zhu · 朱羿帆</title>
   <meta name="description" content="Yifan Zhu, Software Engineering undergraduate at Northwestern Polytechnical University and incoming joint Ph.D. student at Shanghai Jiao Tong University and the Shenzhen Loop Area Institute. Research interests in 3D vision.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/academic.css?v=wide-layout-1">
+  <script>
+    try { document.documentElement.dataset.theme = localStorage.getItem('academic-theme') === 'light' ? 'light' : 'dark'; }
+    catch { document.documentElement.dataset.theme = 'dark'; }
+    if (document.documentElement.dataset.theme === 'light') document.querySelector('meta[name="theme-color"]').content = '#ffffff';
+  </script>
+  <link rel="stylesheet" href="assets/css/academic.css?v=theme-toggle-1">
   <script src="assets/js/academic-content.js?v=about-school-links-1" defer=""></script>
-  <script src="assets/js/moonshot.js?v=cadquery-poster-1" defer=""></script>
-  <script src="assets/js/moonshot-background.js?v=academic-dark-1" defer=""></script>
+  <script src="assets/js/moonshot.js?v=theme-toggle-1" defer=""></script>
+  <script src="assets/js/moonshot-background.js?v=theme-toggle-1" defer=""></script>
 </head>
 <body>
   <canvas class="space-background" id="space-background" aria-hidden="true"></canvas>
@@ -28,6 +33,7 @@
         <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
       <div class="header-actions">
+        <button class="theme-toggle icon-button" type="button" aria-label="Switch to light theme" title="Switch to light theme"><img class="icon" src="assets/icons/moonshot/sun.svg" alt=""></button>
         <button class="motion-toggle icon-button" type="button" aria-label="Pause background animation" title="Pause background animation" hidden><img class="icon" src="assets/icons/moonshot/pause.svg" alt=""></button>
         <div class="language-switch" role="group" aria-label="Language">
           <button type="button" data-language="en" aria-pressed="true" lang="en">EN</button>
