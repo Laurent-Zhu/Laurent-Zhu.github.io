@@ -111,6 +111,18 @@
     styles.textContent = '::view-transition-old(root) { clip-path: inset(0); } ::view-transition-group(theme-rain) {}';
     document.head.appendChild(styles);
     const [revealRule, rainRule] = styles.sheet.cssRules;
+    // Root snapshots may omit the propagated page background on mobile browsers.
+    // Keep an opaque copy behind the old content, clipped by the same rain edge.
+    const oldLight = document.documentElement.dataset.theme === 'light';
+    revealRule.style.backgroundColor = oldLight ? '#ffffff' : '#101010';
+    const background = document.querySelector('#space-background');
+    if (background) {
+      try {
+        revealRule.style.backgroundImage = `url("${background.toDataURL()}")`;
+        revealRule.style.backgroundSize = '100% 100%';
+        revealRule.style.backgroundRepeat = 'no-repeat';
+      } catch { /* The opaque theme color still prevents the new background leaking through. */ }
+    }
 
     function start(finish) {
       const started = performance.now();
